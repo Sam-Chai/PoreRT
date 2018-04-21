@@ -27,7 +27,7 @@
 package blue.lapis.pore.impl.event.block;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.converter.type.material.ItemStackConverter;
 import blue.lapis.pore.event.PoreEvent;
@@ -133,6 +133,8 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @RegisterEvent
     public static void register() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         PoreEventRegistry.register(PoreBlockPlaceEvent.class, ChangeBlockEvent.Place.class, event -> {
             Player player = event.getCause().get(SOURCE, Player.class).orElse(null);
             if (player != null) {
@@ -143,6 +145,7 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
                 return ImmutableList.of();
             }
         });
+        */
     }
 
 }

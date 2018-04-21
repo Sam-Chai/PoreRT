@@ -26,6 +26,7 @@ import blue.lapis.pore.Pore;
 import blue.lapis.pore.util.PoreWrapper;
 
 import net.milkbowl.vault.permission.Permission;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.OfflinePlayer;
 import org.spongepowered.api.service.context.Context;
 import org.spongepowered.api.service.permission.PermissionService;
@@ -69,7 +70,8 @@ public class PoreVaultPermissions extends Permission {
     }
 
     public static Subject getGroupByName(String string) {
-        return string == null ? null : getPermsService().getGroupSubjects().get(string);
+        throw new NotImplementedException("TODO"); // TODO
+        //return string == null ? null : getPermsService().getGroupSubjects().get(string);
     }
 
     public static Set<Context> getContextByWorldName(String world) {
@@ -79,11 +81,14 @@ public class PoreVaultPermissions extends Permission {
 
     @Override
     public String[] getGroups() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         ArrayList<String> groups = new ArrayList<String>();
         for (Subject subject : getPermsService().getGroupSubjects().getAllSubjects()) {
             groups.add(subject.getIdentifier());
         }
         return groups.toArray(new String[groups.size()]);
+        */
     }
 
     // -- start PEX format copy -- //
@@ -94,12 +99,14 @@ public class PoreVaultPermissions extends Permission {
 
     @Override
     public boolean groupAdd(final String world, String name, final String permission) {
-        return getGroupByName(name).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.TRUE);
+        throw new NotImplementedException("TODO"); // TODO
+        //return getGroupByName(name).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.TRUE);
     }
 
     @Override
     public boolean groupRemove(final String world, String name, final String permission) {
-        return getGroupByName(name).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.FALSE);
+        throw new NotImplementedException("TODO"); // TODO
+        //return getGroupByName(name).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.FALSE);
     }
 
     @Override
@@ -109,36 +116,44 @@ public class PoreVaultPermissions extends Permission {
 
     @Override
     public boolean playerAdd(final String world, OfflinePlayer player, final String permission) {
-        return getUserByOfflinePlayer(player).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.TRUE);
+        throw new NotImplementedException("TODO"); // TODO
+        //return getUserByOfflinePlayer(player).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.TRUE);
     }
 
     @Override
     public boolean playerRemove(final String world, OfflinePlayer player, final String permission) {
-        return getUserByOfflinePlayer(player).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.FALSE);
+        throw new NotImplementedException("TODO"); // TODO
+        //return getUserByOfflinePlayer(player).getSubjectData().setPermission(getContextByWorldName(world), permission, Tristate.FALSE);
     }
 
 
     @Override
     public boolean playerInGroup(String world, OfflinePlayer player, String group) {
-        return getUserByOfflinePlayer(player).isChildOf(getContextByWorldName(world), getGroupByName(group));
+        throw new NotImplementedException("TODO"); // TODO
+        //return getUserByOfflinePlayer(player).isChildOf(getContextByWorldName(world), getGroupByName(group));
     }
 
     @Override
     public boolean playerAddGroup(final String world, OfflinePlayer player, final String group) {
-        return getUserByOfflinePlayer(player).getSubjectData().addParent(getContextByWorldName(world), getGroupByName(group));
+        throw new NotImplementedException("TODO"); // TODO
+        //return getUserByOfflinePlayer(player).getSubjectData().addParent(getContextByWorldName(world), getGroupByName(group));
     }
 
     @Override
     public boolean playerRemoveGroup(final String world, OfflinePlayer player, final String group) {
-        return getUserByOfflinePlayer(player).getSubjectData().removeParent(getContextByWorldName(world), getGroupByName(group));
+        throw new NotImplementedException("TODO"); // TODO
+        //return getUserByOfflinePlayer(player).getSubjectData().removeParent(getContextByWorldName(world), getGroupByName(group));
     }
 
     @Override
     public String[] getPlayerGroups(String world, OfflinePlayer player) {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         return getUserByOfflinePlayer(player).getParents(getContextByWorldName(world))
                 .stream().map(subject -> {
                     return subject.getIdentifier();
                 }).toArray(size -> new String[size]);
+        */
     }
 
     @Override // copied

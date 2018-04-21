@@ -32,6 +32,7 @@ import blue.lapis.pore.converter.type.statistic.AchievementConverter;
 import blue.lapis.pore.converter.type.statistic.StatisticConverter;
 
 import com.google.common.collect.Iterables;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.UnsafeValues;
@@ -40,7 +41,7 @@ import org.bukkit.util.StringUtil;
 import org.spongepowered.api.CatalogType;
 import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.item.ItemType;
-import org.spongepowered.api.statistic.achievement.Achievement;
+//import org.spongepowered.api.statistic.achievement.Achievement;
 
 import java.util.List;
 import java.util.Optional;
@@ -107,16 +108,21 @@ public class PoreUnsafeValues implements UnsafeValues {
 
     @Override
     public org.bukkit.Achievement getAchievementFromInternalName(String name) {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         Optional<Achievement> ach = Pore.getGame().getRegistry().getType(Achievement.class, name); //TODO is this right?
         if (ach.isPresent()) {
             return AchievementConverter.of(ach.get());
         } else {
             return null;
         }
+        */
     }
 
     @Override
     public List<String> tabCompleteInternalStatisticOrAchievementName(String token, List<String> completions) {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         List<String> found = StringUtil.copyPartialMatches(
                 token,
                 Iterables.transform(Pore.getGame().getRegistry().getAllOf(Achievement.class), //TODO is this right?
@@ -131,5 +137,6 @@ public class PoreUnsafeValues implements UnsafeValues {
                 completions
         ));
         return found;
+        */
     }
 }

@@ -27,7 +27,7 @@
 package blue.lapis.pore.impl.event.block;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.PoreEventRegistry;
@@ -35,6 +35,7 @@ import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.impl.block.PoreBlock;
 
 import com.google.common.collect.ImmutableList;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBurnEvent;
 import org.spongepowered.api.block.BlockSnapshot;
@@ -85,6 +86,8 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
 
     @RegisterEvent
     public static void register() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         PoreEventRegistry.register(PoreBlockBurnEvent.class, ChangeBlockEvent.class, event -> {
             ArrayList<PoreBlockBurnEvent> events = new ArrayList<PoreBlockBurnEvent>();
             BlockSnapshot fire = event.getCause().get(SOURCE, BlockSnapshot.class).orElse(null);
@@ -99,6 +102,7 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
             }
             return ImmutableList.copyOf(events);
         });
+        */
     }
 
 }

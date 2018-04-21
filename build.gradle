@@ -17,20 +17,20 @@ buildscript {
 
     dependencies {
         classpath 'net.minecrell:VanillaGradle:2.0.3_1'
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
-        classpath "org.spongepowered:mixingradle:0.4-SNAPSHOT"
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
 
 // Apply Gradle plugins
 plugins {
-    id 'org.spongepowered.plugin' version '0.8'
+    id 'org.spongepowered.plugin' version '0.8.1'
     //id 'checkstyle'
 
     //id 'net.minecrell.gitpatcher' version '0.8'
     id 'blue.lapis.methodremapper' version '0.2'
 
-    id 'com.github.johnrengelman.shadow' version '1.2.3'
+    id 'com.github.johnrengelman.shadow' version '2.0.3'
 }
 
 apply plugin: 'net.minecrell.vanilla.server.library'
@@ -47,8 +47,8 @@ sponge {
 
 sourceSets.main.refMap = "mixins.pore.refmap.json"
 minecraft { // reminder : keep updated
-    version = '1.11'
-    mappings = 'snapshot_20161124'
+    version = '1.12.2'
+    mappings = 'snapshot_20171003'
 }
 
 allprojects {
@@ -124,13 +124,13 @@ configurations {
 // Project dependencies
 dependencies {
     compile project(':ap')
-    compile("org.spongepowered:mixin:0.6.1-SNAPSHOT")
+    compile("org.spongepowered:mixin:0.7.8-SNAPSHOT")
 
     // To update, go to https://repo.spongepowered.org/maven/org/spongepowered/spongeapi/2.1-SNAPSHOT/
     // Then pick latest version (or whatever version you want)
-    compile 'org.spongepowered:spongeapi:6.0.0-20161223.142907-29'
-    compile 'org.spongepowered:spongevanilla:1.11-6.0.0-BETA-190'
-    runtime 'blue.lapis.methodremapper:tweaker:0.1'
+    compile 'org.spongepowered:spongeapi:7.1.0-20180415.070036-19'
+    compile 'org.spongepowered:spongevanilla:1.12.2-7.1.0-BETA-39'
+    //runtime 'blue.lapis.methodremapper:tweaker:0.1'
 
     shadow project('Porekit')
     shadow 'net.sf.trove4j:trove4j:3.0.3'

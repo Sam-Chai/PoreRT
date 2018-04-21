@@ -24,9 +24,10 @@ package blue.lapis.pore.impl.enchantments;
 
 import blue.lapis.pore.converter.type.material.ItemStackConverter;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
-import org.spongepowered.api.item.Enchantment;
+import org.spongepowered.api.item.enchantment.Enchantment;
 
 public class PoreEnchantment extends org.bukkit.enchantments.Enchantment {
 
@@ -44,17 +45,20 @@ public class PoreEnchantment extends org.bukkit.enchantments.Enchantment {
 
     @Override
     public String getName() {
-        return getHandle().getName();
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().getName();
     }
 
     @Override
     public int getMaxLevel() {
-        return getHandle().getMaximumLevel();
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().getMaximumLevel();
     }
 
     @Override
     public int getStartLevel() {
-        return getHandle().getMinimumLevel();
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().getMinimumLevel();
     }
 
     @Override
@@ -94,12 +98,14 @@ public class PoreEnchantment extends org.bukkit.enchantments.Enchantment {
 
     @Override
     public boolean conflictsWith(org.bukkit.enchantments.Enchantment other) {
-        return getHandle().isCompatibleWith(((PoreEnchantment) other).getHandle());
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().isCompatibleWith(((PoreEnchantment) other).getHandle());
     }
 
     @Override
     public boolean canEnchantItem(ItemStack item) {
-        return getHandle().canBeAppliedToStack(ItemStackConverter.of(item));
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().canBeAppliedToStack(ItemStackConverter.of(item));
     }
 
     @Override

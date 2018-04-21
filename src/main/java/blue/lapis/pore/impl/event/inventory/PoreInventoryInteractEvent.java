@@ -35,11 +35,12 @@ import blue.lapis.pore.impl.entity.PorePlayer;
 import blue.lapis.pore.impl.inventory.PoreInventory;
 import blue.lapis.pore.impl.inventory.PoreInventoryView;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.event.item.inventory.InteractInventoryEvent;
 
 import java.util.List;
@@ -80,8 +81,11 @@ public final class PoreInventoryInteractEvent extends org.bukkit.event.inventory
 
     @Override
     public HumanEntity getWhoClicked() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         return PorePlayer.of(getHandle().getCause()
                 .get(NamedCause.OWNER, org.spongepowered.api.entity.living.player.Player.class).orElse(null));
+        */
     }
 
     @Override

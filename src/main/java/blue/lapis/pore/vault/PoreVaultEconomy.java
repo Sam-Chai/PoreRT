@@ -30,8 +30,9 @@ import blue.lapis.pore.Pore;
 import net.milkbowl.vault.economy.AbstractEconomy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
+import org.apache.commons.lang3.NotImplementedException;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.service.economy.Currency;
 import org.spongepowered.api.service.economy.EconomyService;
 import org.spongepowered.api.service.economy.account.Account;
@@ -72,7 +73,8 @@ public class PoreVaultEconomy extends AbstractEconomy {
     }
 
     public static Cause generateCause() {
-        return Cause.of(NamedCause.source(Pore.getPlugin()));
+        throw new NotImplementedException("TODO");
+        //return Cause.of(NamedCause.source(Pore.getPlugin()));
     }
 
     // -- start banks -- // (taken from vault's essentials economy)

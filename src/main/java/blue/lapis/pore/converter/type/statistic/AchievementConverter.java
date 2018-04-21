@@ -30,13 +30,14 @@ import blue.lapis.pore.converter.type.TypeConverter;
 
 import com.google.common.base.Converter;
 import org.bukkit.Achievement;
-import org.spongepowered.api.statistic.achievement.Achievements;
+//import org.spongepowered.api.statistic.achievement.Achievements;
 
 public final class AchievementConverter {
 
     private AchievementConverter() {
     }
 
+    /*
     private static final Converter<Achievement, org.spongepowered.api.statistic.achievement.Achievement> CONVERTER =
             TypeConverter.builder(Achievement.class, org.spongepowered.api.statistic.achievement.Achievement.class)
                     .add(Achievement.OPEN_INVENTORY, Achievements.OPEN_INVENTORY)
@@ -74,7 +75,9 @@ public final class AchievementConverter {
                     .add(Achievement.DIAMONDS_TO_YOU, Achievements.DIAMONDS_TO_YOU)
                     .add(Achievement.OVERPOWERED, Achievements.OVERPOWERED)
                     .build();
+    */
 
+    /*
     public static org.spongepowered.api.statistic.achievement.Achievement of(Achievement achievement) {
         return CONVERTER.convert(achievement);
     }
@@ -82,5 +85,6 @@ public final class AchievementConverter {
     public static Achievement of(org.spongepowered.api.statistic.achievement.Achievement achievement) {
         return CONVERTER.reverse().convert(achievement);
     }
+    */
 
 }

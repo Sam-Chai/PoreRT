@@ -27,7 +27,7 @@
 package blue.lapis.pore.impl.event.block;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.PoreEventRegistry;
@@ -36,6 +36,7 @@ import blue.lapis.pore.impl.block.PoreBlock;
 import blue.lapis.pore.impl.block.PoreBlockState;
 
 import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.block.BlockGrowEvent;
@@ -61,7 +62,8 @@ public final class PoreBlockGrowEvent extends BlockGrowEvent implements PoreEven
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(handle.getCause().get(SOURCE, BlockSnapshot.class).orElse(null).getLocation().orElse(null));
+        throw new NotImplementedException("TODO"); // TODO
+        //return PoreBlock.of(handle.getCause().get(SOURCE, BlockSnapshot.class).orElse(null).getLocation().orElse(null));
     }
 
     @Override

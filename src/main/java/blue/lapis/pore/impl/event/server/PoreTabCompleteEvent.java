@@ -27,8 +27,9 @@ import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.impl.command.PoreCommandSender;
 import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.NotImplementedException;
 import org.spongepowered.api.command.CommandSource;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.event.command.TabCompleteEvent;
 
 import java.util.Collections;
@@ -52,7 +53,8 @@ public final class PoreTabCompleteEvent extends org.bukkit.event.server.TabCompl
 
     @Override
     public org.bukkit.command.CommandSender getSender() {
-        return PoreCommandSender.of(getHandle().getCause().get(NamedCause.SOURCE, CommandSource.class).get());
+        throw new NotImplementedException("TODO"); // TODO
+        //return PoreCommandSender.of(getHandle().getCause().get(NamedCause.SOURCE, CommandSource.class).get());
     }
 
     @Override

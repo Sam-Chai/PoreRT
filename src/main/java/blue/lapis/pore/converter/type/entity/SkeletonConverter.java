@@ -30,8 +30,8 @@ import blue.lapis.pore.converter.type.TypeConverter;
 
 import com.google.common.base.Converter;
 import org.bukkit.entity.Skeleton;
-import org.spongepowered.api.data.type.SkeletonType;
-import org.spongepowered.api.data.type.SkeletonTypes;
+//import org.spongepowered.api.data.type.SkeletonType;
+//import org.spongepowered.api.data.type.SkeletonTypes;
 
 @Deprecated
 public final class SkeletonConverter {
@@ -39,6 +39,7 @@ public final class SkeletonConverter {
     private SkeletonConverter() {
     }
 
+    /*
     public static final Converter<Skeleton.SkeletonType, SkeletonType> CONVERTER =
             TypeConverter.builder(Skeleton.SkeletonType.class, SkeletonType.class)
                     .add(Skeleton.SkeletonType.NORMAL, SkeletonTypes.NORMAL)
@@ -53,6 +54,7 @@ public final class SkeletonConverter {
     public static Skeleton.SkeletonType of(SkeletonType type) {
         return CONVERTER.reverse().convert(type);
     }
+    */
 
     /*
     ▒▒▒░░░░░░░░░░▄▐░░░░

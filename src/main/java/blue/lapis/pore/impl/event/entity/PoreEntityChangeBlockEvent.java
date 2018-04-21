@@ -24,7 +24,7 @@ package blue.lapis.pore.impl.event.entity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.converter.data.block.BlockDataConverter;
 import blue.lapis.pore.converter.type.entity.EntityConverter;
@@ -36,6 +36,7 @@ import blue.lapis.pore.impl.block.PoreBlock;
 import blue.lapis.pore.impl.entity.PoreEntity;
 
 import com.google.common.collect.ImmutableList;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -107,6 +108,8 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
 
     @RegisterEvent
     public static void register() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         PoreEventRegistry.register(PoreEntityChangeBlockEvent.class, ChangeBlockEvent.class, event -> {
             if (!(event instanceof ChangeBlockEvent.Post)) { // post creates duplicate events
                 Entity entity = event.getCause().get(SOURCE, Entity.class).orElse(null);
@@ -118,6 +121,7 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
             }
             return ImmutableList.of();
         });
+        */
     }
 
 }

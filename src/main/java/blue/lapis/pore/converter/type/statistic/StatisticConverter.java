@@ -30,7 +30,7 @@ import blue.lapis.pore.converter.type.TypeConverter;
 
 import com.google.common.base.Converter;
 import org.bukkit.Statistic;
-import org.spongepowered.api.statistic.StatisticGroups;
+//import org.spongepowered.api.statistic.StatisticGroups;
 import org.spongepowered.api.statistic.Statistics;
 
 public final class StatisticConverter {
@@ -70,7 +70,7 @@ public final class StatisticConverter {
                     .add(Statistic.HORSE_ONE_CM, Statistics.HORSE_ONE_CM)
                     .add(Statistic.ITEM_ENCHANTED, Statistics.ITEM_ENCHANTED)
                     .add(Statistic.JUMP, Statistics.JUMP)
-                    .add(Statistic.JUNK_FISHED, Statistics.JUNK_FISHED)
+                    //.add(Statistic.JUNK_FISHED, Statistics.JUNK_FISHED)
                     .add(Statistic.LEAVE_GAME, Statistics.LEAVE_GAME)
                     .add(Statistic.MINECART_ONE_CM, Statistics.MINECART_ONE_CM)
                     .add(Statistic.MOB_KILLS, Statistics.MOB_KILLS)
@@ -86,7 +86,7 @@ public final class StatisticConverter {
                     .add(Statistic.TIME_SINCE_DEATH, Statistics.TIME_SINCE_DEATH)
                     .add(Statistic.TRADED_WITH_VILLAGER, Statistics.TRADED_WITH_VILLAGER)
                     .add(Statistic.TRAPPED_CHEST_TRIGGERED, Statistics.TRAPPED_CHEST_TRIGGERED)
-                    .add(Statistic.TREASURE_FISHED, Statistics.TREASURE_FISHED)
+                    //.add(Statistic.TREASURE_FISHED, Statistics.TREASURE_FISHED)
                     .add(Statistic.WALK_ONE_CM, Statistics.WALK_ONE_CM)
                     .build();
 

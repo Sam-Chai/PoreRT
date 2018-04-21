@@ -56,12 +56,14 @@ public class PoreAbstractHorse extends PoreTameable implements AbstractHorse {
 
     @Override
     public Variant getVariant() {
-        return HorseConverter.of(getHandle().getHorseData().variant().get());
+        //return HorseConverter.of(getHandle().getHorseData().variant().get());
+        throw new NotImplementedException("TODO");
     }
 
     @Override
     public void setVariant(Variant variant) {
-        getHandle().getHorseData().variant().set(HorseConverter.of(variant));
+        //getHandle().getHorseData().variant().set(HorseConverter.of(variant));
+        throw new NotImplementedException("TODO");
     }
 
     @Override

@@ -27,7 +27,7 @@
 package blue.lapis.pore.impl.event.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.converter.vector.LocationConverter;
 import blue.lapis.pore.event.PoreEvent;
@@ -99,6 +99,8 @@ public final class PorePlayerMoveEvent extends PlayerMoveEvent implements PoreEv
 
     @RegisterEvent
     public static void register() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         PoreEventRegistry.register(PorePlayerMoveEvent.class, MoveEntityEvent.class, event -> {
             org.spongepowered.api.entity.living.player.Player player =
                     event.getCause().get(SOURCE, org.spongepowered.api.entity.living.player.Player.class).orElse(null);
@@ -108,5 +110,6 @@ public final class PorePlayerMoveEvent extends PlayerMoveEvent implements PoreEv
                 return ImmutableList.of();
             }
         });
+        */
     }
 }

@@ -27,13 +27,14 @@
 package blue.lapis.pore.event;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
+//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
 import blue.lapis.pore.util.constructor.BiClassConstructor;
 import blue.lapis.pore.util.constructor.PoreConstructors;
 import blue.lapis.pore.util.constructor.SimpleClassConstructor;
 
 import com.google.common.collect.ImmutableList;
+import org.apache.commons.lang3.NotImplementedException;
 import org.spongepowered.api.event.Event;
 
 import java.lang.reflect.Constructor;
@@ -133,6 +134,8 @@ abstract class EventConstructor<P extends org.bukkit.event.Event & PoreEvent<S>,
 
         @Override
         public ImmutableList<P> apply(S event) {
+            throw new NotImplementedException("TODO"); // TODO
+            /*
             T source = event.getCause().get(SOURCE, this.source).orElse(null);
             if (source == null || !test(event)) {
                 return ImmutableList.of();
@@ -143,6 +146,7 @@ abstract class EventConstructor<P extends org.bukkit.event.Event & PoreEvent<S>,
             }
 
             return ImmutableList.of(this.constructor.apply(event, source));
+            */
         }
 
     }

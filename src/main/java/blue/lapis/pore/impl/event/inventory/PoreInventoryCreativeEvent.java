@@ -45,7 +45,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.event.item.inventory.ClickInventoryEvent;
 
 import java.util.List;
@@ -92,8 +92,11 @@ public final class PoreInventoryCreativeEvent extends InventoryCreativeEvent
 
     @Override
     public HumanEntity getWhoClicked() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         return PorePlayer.of(getHandle().getCause()
                 .get(NamedCause.OWNER, org.spongepowered.api.entity.living.player.Player.class).orElse(null));
+        */
     }
 
     @Override

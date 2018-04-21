@@ -31,8 +31,8 @@ import org.spongepowered.api.data.type.HorseColor;
 import org.spongepowered.api.data.type.HorseColors;
 import org.spongepowered.api.data.type.HorseStyle;
 import org.spongepowered.api.data.type.HorseStyles;
-import org.spongepowered.api.data.type.HorseVariant;
-import org.spongepowered.api.data.type.HorseVariants;
+//import org.spongepowered.api.data.type.HorseVariant;
+//import org.spongepowered.api.data.type.HorseVariants;
 
 @SuppressWarnings("deprecation")
 public final class HorseConverter {
@@ -40,6 +40,7 @@ public final class HorseConverter {
     private HorseConverter() {
     }
 
+    /*
     private static final Converter<Horse.Variant, HorseVariant> VARIANT_CONVERTER =
             TypeConverter.builder(Horse.Variant.class, HorseVariant.class)
                     .add(Horse.Variant.HORSE, HorseVariants.HORSE)
@@ -57,6 +58,7 @@ public final class HorseConverter {
     public static Horse.Variant of(HorseVariant variant) {
         return VARIANT_CONVERTER.reverse().convert(variant);
     }
+    */
 
     private static final Converter<Horse.Color, HorseColor> COLOR_CONVERTER =
             TypeConverter.builder(Horse.Color.class, HorseColor.class)

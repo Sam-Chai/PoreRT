@@ -100,7 +100,7 @@ import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.source.ConsoleSource;
 import org.spongepowered.api.entity.living.player.User;
-import org.spongepowered.api.item.Enchantments;
+//import org.spongepowered.api.item.Enchantments;
 import org.spongepowered.api.item.inventory.Carrier;
 import org.spongepowered.api.item.inventory.Inventory;
 import org.spongepowered.api.item.inventory.property.InventoryDimension;
@@ -183,6 +183,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
     }
 
     private static void registerEnchantments() {
+        /*
         for (Field field : Enchantments.class.getFields()) {
             try {
                 Enchantment.registerEnchantment(new PoreEnchantment(
@@ -192,6 +193,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
             }
         }
         Enchantment.stopAcceptingRegistrations();
+        */
     }
 
     public void loadPlugins() {
@@ -824,7 +826,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
         }
 
         Inventory.Builder inventory = Inventory.builder().property(
-                InventoryDimension.PROPERTY_NAM, new InventoryDimension(9, size / 9));
+                InventoryDimension.PROPERTY_NAME, new InventoryDimension(9, size / 9));
 
         return finalizeInventory(inventory, owner, title);
     }

@@ -28,13 +28,14 @@ import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.impl.block.PoreBlock;
 
 import com.google.common.collect.ImmutableList;
+import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import java.util.stream.Collectors;
 
 public final class PoreBlockRedstoneEvent extends BlockRedstoneEvent
@@ -55,7 +56,8 @@ public final class PoreBlockRedstoneEvent extends BlockRedstoneEvent
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(getHandle().getCause().get(NamedCause.SOURCE, BlockSnapshot.class).get().getLocation().get());
+        throw new NotImplementedException("TODO"); // TODO
+        //return PoreBlock.of(getHandle().getCause().get(NamedCause.SOURCE, BlockSnapshot.class).get().getLocation().get());
     }
 
     @Override

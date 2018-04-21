@@ -375,9 +375,12 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public InventoryView openInventory(Inventory inventory) {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         getHandle().openInventory(((PoreInventory)inventory).getHandle(), Cause.source(this).build());
         return PoreInventoryView.builder().setPlayer(getHandle())
                 .setBottomInventory(this.getInventory()).setTopInventory(inventory).build();
+        */
     }
 
     @Override
@@ -387,17 +390,20 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void awardAchievement(Achievement achievement) {
-        getHandle().offer(getHandle().getAchievementData().achievements().add(AchievementConverter.of(achievement)));
+        throw new NotImplementedException("TODO"); // TODO
+        //getHandle().offer(getHandle().getAchievementData().achievements().add(AchievementConverter.of(achievement)));
     }
 
     @Override
     public void removeAchievement(Achievement achievement) {
-        getHandle().offer(getHandle().getAchievementData().achievements().remove(AchievementConverter.of(achievement)));
+        throw new NotImplementedException("TODO"); // TODO
+        //getHandle().offer(getHandle().getAchievementData().achievements().remove(AchievementConverter.of(achievement)));
     }
 
     @Override
     public boolean hasAchievement(Achievement achievement) {
-        return getHandle().getAchievementData().achievements().contains(AchievementConverter.of(achievement));
+        throw new NotImplementedException("TODO"); // TODO
+        //return getHandle().getAchievementData().achievements().contains(AchievementConverter.of(achievement));
     }
 
     @Override

@@ -44,7 +44,7 @@ import org.spongepowered.api.block.BlockTypes;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.Humanoid;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.item.inventory.Carrier;
 import org.spongepowered.api.item.inventory.entity.PlayerInventory;
 import org.spongepowered.api.world.Location;
@@ -141,10 +141,13 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public void closeInventory() {
+        throw new NotImplementedException("TODO"); // TODO
+        /*
         if (getHandle() instanceof org.spongepowered.api.entity.living.player.Player) {
             ((org.spongepowered.api.entity.living.player.Player) getHandle())
                 .closeInventory(Cause.of(NamedCause.source(this)));
         }
+        */
     }
 
     @Override
