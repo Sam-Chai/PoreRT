@@ -337,10 +337,7 @@ public class PoreWorld extends PoreWrapper<World> implements org.bukkit.World {
             return null;
         }
 
-        /*
-        getHandle().spawnEntity(entity, Cause.of( throw new NotImplementedException("TODO"); // TODO
-                NamedCause.source(SpawnCause.builder().type(SpawnTypes.PLUGIN).build())));
-        */
+        getHandle().spawnEntity(entity);
         return PoreEntity.of(entity);
     }
 
@@ -531,7 +528,7 @@ public class PoreWorld extends PoreWrapper<World> implements org.bukkit.World {
                 .shouldBreakBlocks(breakBlocks)
                 .build();
 
-        //explosion.getWorld().triggerExplosion(explosion, Cause.source(this).build()); throw new NotImplementedException("TODO"); // TODO
+        explosion.getWorld().triggerExplosion(explosion);
         return true; // TODO
     }
 

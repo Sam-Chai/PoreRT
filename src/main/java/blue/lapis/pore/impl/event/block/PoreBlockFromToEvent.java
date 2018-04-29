@@ -38,6 +38,7 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 //import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContextKeys;
 import org.spongepowered.api.util.GuavaCollectors;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
@@ -93,12 +94,10 @@ public final class PoreBlockFromToEvent extends BlockFromToEvent implements Pore
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PoreBlockFromToEvent.class, ChangeBlockEvent.Pre.class, event -> {
-            if (event.getCause().containsNamed(NamedCause.LIQUID_FLOW)) {
+            if (event.getContext().containsKey(EventContextKeys.LIQUID_MIX)) {
                 System.out.println(event);
-                Optional<BlockSnapshot> optSource = event.getCause().get(NamedCause.SOURCE, BlockSnapshot.class);
+                Optional<BlockSnapshot> optSource = Optional.of((BlockSnapshot) event.getSource());
                 if (optSource.isPresent() && optSource.get().getLocation().isPresent()) {
                     PoreBlock source = PoreBlock.of(optSource.get().getLocation().get());
                     return event.getLocations().stream()
@@ -108,6 +107,5 @@ public final class PoreBlockFromToEvent extends BlockFromToEvent implements Pore
             }
             return ImmutableList.of();
         });
-        */
     }
 }

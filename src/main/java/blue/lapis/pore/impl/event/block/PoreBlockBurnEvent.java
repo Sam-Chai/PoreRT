@@ -86,11 +86,9 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PoreBlockBurnEvent.class, ChangeBlockEvent.class, event -> {
             ArrayList<PoreBlockBurnEvent> events = new ArrayList<PoreBlockBurnEvent>();
-            BlockSnapshot fire = event.getCause().get(SOURCE, BlockSnapshot.class).orElse(null);
+            BlockSnapshot fire = (BlockSnapshot) event.getSource();
             if (fire != null && fire.getState().getType() == BlockTypes.FIRE) {
                 for (Transaction<BlockSnapshot> trans : event.getTransactions()) {
                     BlockType from = trans.getOriginal().getState().getType();
@@ -102,7 +100,6 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
             }
             return ImmutableList.copyOf(events);
         });
-        */
     }
 
 }

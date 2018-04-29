@@ -72,11 +72,7 @@ public final class PoreFurnaceExtractEvent extends FurnaceExtractEvent
 
     @Override
     public Player getPlayer() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
-        return PorePlayer.of(getHandle().getCause()
-                .get(NamedCause.OWNER, org.spongepowered.api.entity.living.player.Player.class).orElse(null));
-        */
+        return PorePlayer.of((org.spongepowered.api.entity.living.player.Player) getHandle().getSource());
     }
 
     @Override

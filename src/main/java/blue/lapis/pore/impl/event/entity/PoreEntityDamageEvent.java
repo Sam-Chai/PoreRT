@@ -107,15 +107,12 @@ public final class PoreEntityDamageEvent extends EntityDamageEvent implements Po
 
     @Override
     public DamageCause getCause() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         DamageSource cause = null;
-        Optional<DamageSource> source = getHandle().getCause().get(NamedCause.SOURCE, DamageSource.class);
+        Optional<DamageSource> source = Optional.of((DamageSource) getHandle().getSource());
         if (source.isPresent()) {
             cause = source.get();
         }
         return DamageCauseConverter.of(cause);
-        */
     }
 
     @Override

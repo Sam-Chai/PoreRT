@@ -45,6 +45,7 @@ import org.slf4j.helpers.NOPLogger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.entity.living.player.Player;
 //import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 import org.spongepowered.api.event.game.state.GameAboutToStartServerEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartingServerEvent;
@@ -157,9 +158,8 @@ public final class Pore implements PoreEventManager {
 
     @Override // This is horrible but it's needed for setDisplayName ...
     public void onChatEvent(MessageChannelEvent.Chat event) {
-        Optional<Player> optPlayer = null; //event.getCause().get(NamedCause.SOURCE, Player.class); //todo
-        if (optPlayer.isPresent()) { // fire ASyncPlayerChatEvent and PlayerChatEvent
-            Player player = optPlayer.get();
+        Player player = (Player) event.getSource();
+        if (player != null) { // fire ASyncPlayerChatEvent and PlayerChatEvent
             MessageFormatter formatter = event.getFormatter();
 
             SimpleTextTemplateApplier header = formatter.getHeader().get(0);

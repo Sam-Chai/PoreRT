@@ -110,10 +110,8 @@ public final class PoreBlockPistonExtendEvent extends BlockPistonExtendEvent
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PoreBlockPistonExtendEvent.class, ChangeBlockEvent.Pre.class, event -> {
-            Optional<BlockSnapshot> block = event.getCause().get(NamedCause.SOURCE, BlockSnapshot.class);
+            Optional<BlockSnapshot> block = Optional.of((BlockSnapshot) event.getSource());
             if (block.isPresent() && block.get().getExtendedState().getType().equals(BlockTypes.PISTON)) {
                 if (!block.get().get(Keys.EXTENDED).get()) {
                     return ImmutableList.of(new PoreBlockPistonExtendEvent(event, block.get()));
@@ -121,7 +119,6 @@ public final class PoreBlockPistonExtendEvent extends BlockPistonExtendEvent
             }
             return ImmutableList.of();
         });
-        */
     }
 
 }

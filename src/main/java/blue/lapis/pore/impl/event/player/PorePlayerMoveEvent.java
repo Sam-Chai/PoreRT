@@ -99,17 +99,14 @@ public final class PorePlayerMoveEvent extends PlayerMoveEvent implements PoreEv
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PorePlayerMoveEvent.class, MoveEntityEvent.class, event -> {
             org.spongepowered.api.entity.living.player.Player player =
-                    event.getCause().get(SOURCE, org.spongepowered.api.entity.living.player.Player.class).orElse(null);
+                    (org.spongepowered.api.entity.living.player.Player) event.getSource();
             if (player != null) {
                 return ImmutableList.of(new PorePlayerMoveEvent(event));
             } else {
                 return ImmutableList.of();
             }
         });
-        */
     }
 }

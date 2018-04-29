@@ -53,8 +53,7 @@ public final class PoreTabCompleteEvent extends org.bukkit.event.server.TabCompl
 
     @Override
     public org.bukkit.command.CommandSender getSender() {
-        throw new NotImplementedException("TODO"); // TODO
-        //return PoreCommandSender.of(getHandle().getCause().get(NamedCause.SOURCE, CommandSource.class).get());
+        return PoreCommandSender.of((CommandSource) getHandle().getSource());
     }
 
     @Override

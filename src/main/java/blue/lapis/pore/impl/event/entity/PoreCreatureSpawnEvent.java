@@ -45,6 +45,7 @@ import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.Living;
 //import org.spongepowered.api.event.cause.NamedCause;
 //import org.spongepowered.api.event.cause.entity.spawn.SpawnCause;
+import org.spongepowered.api.event.cause.entity.spawn.SpawnType;
 import org.spongepowered.api.event.entity.SpawnEntityEvent;
 
 import java.util.ArrayList;
@@ -91,11 +92,7 @@ public final class PoreCreatureSpawnEvent extends CreatureSpawnEvent implements 
 
     @Override
     public SpawnReason getSpawnReason() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
-        return SpawnReasonConverter.of(getHandle().getCause()
-                .get(NamedCause.SOURCE, SpawnCause.class).orElse(null).getType());
-                */
+        return SpawnReasonConverter.of((SpawnType) getHandle().getSource());
     }
 
     @Override

@@ -46,6 +46,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 //import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.item.inventory.ClickInventoryEvent;
 
 import java.util.List;
@@ -87,11 +88,7 @@ public final class PoreInventoryDragEvent extends InventoryDragEvent implements 
 
     @Override
     public HumanEntity getWhoClicked() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
-        return PorePlayer.of(getHandle().getCause()
-                .get(NamedCause.OWNER, org.spongepowered.api.entity.living.player.Player.class).orElse(null));
-        */
+        return PorePlayer.of((Player) getHandle().getSource());
     }
 
     @Override

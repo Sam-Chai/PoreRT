@@ -108,11 +108,9 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PoreEntityChangeBlockEvent.class, ChangeBlockEvent.class, event -> {
             if (!(event instanceof ChangeBlockEvent.Post)) { // post creates duplicate events
-                Entity entity = event.getCause().get(SOURCE, Entity.class).orElse(null);
+                Entity entity = (Entity) event.getSource();
                 if (entity != null && !(entity instanceof Player)) {
                     return event.getTransactions().stream()
                             .map(transaction -> new PoreEntityChangeBlockEvent(event, entity, transaction))
@@ -121,7 +119,6 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
             }
             return ImmutableList.of();
         });
-        */
     }
 
 }

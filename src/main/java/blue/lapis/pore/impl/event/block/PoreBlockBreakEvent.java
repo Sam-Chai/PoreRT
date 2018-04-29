@@ -102,10 +102,8 @@ public final class PoreBlockBreakEvent extends BlockBreakEvent implements PoreEv
 
     @RegisterEvent
     public static void register() {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         PoreEventRegistry.register(PoreBlockBreakEvent.class, ChangeBlockEvent.Break.class, event -> {
-            Player player = event.getCause().get(SOURCE, Player.class).orElse(null);
+            Player player = (Player) event.getSource();
             if (player != null) {
                 return event.getTransactions().stream()
                         .map(transaction -> new PoreBlockBreakEvent(event, player, transaction))
@@ -114,7 +112,6 @@ public final class PoreBlockBreakEvent extends BlockBreakEvent implements PoreEv
                 return ImmutableList.of();
             }
         });
-        */
     }
 
 }
