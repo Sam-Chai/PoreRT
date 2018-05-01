@@ -134,7 +134,7 @@ abstract class EventConstructor<P extends org.bukkit.event.Event & PoreEvent<S>,
 
         @Override
         public ImmutableList<P> apply(S event) {
-            T source = (T) event.getCause().root();
+            T source = (T) event.getSource();
             if (source == null || !test(event)) {
                 return ImmutableList.of();
             }

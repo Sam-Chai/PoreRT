@@ -69,7 +69,7 @@ public final class PorePlayerMoveEvent extends PlayerMoveEvent implements PoreEv
 
     @Override
     public void setFrom(Location from) {
-        throw new NotImplementedException("TODO");
+        getHandle().setToTransform(LocationConverter.toTransform(from));
     }
 
     @Override
@@ -100,13 +100,17 @@ public final class PorePlayerMoveEvent extends PlayerMoveEvent implements PoreEv
     @RegisterEvent
     public static void register() {
         PoreEventRegistry.register(PorePlayerMoveEvent.class, MoveEntityEvent.class, event -> {
-            org.spongepowered.api.entity.living.player.Player player =
-                    (org.spongepowered.api.entity.living.player.Player) event.getSource();
-            if (player != null) {
-                return ImmutableList.of(new PorePlayerMoveEvent(event));
-            } else {
-                return ImmutableList.of();
+            Object source = event.getSource();
+            if (source instanceof org.spongepowered.api.entity.living.player.Player){
+                org.spongepowered.api.entity.living.player.Player player =
+                        (org.spongepowered.api.entity.living.player.Player) source;
+                if (player != null) {
+                    return ImmutableList.of(new PorePlayerMoveEvent(event));
+                } else {
+                    return ImmutableList.of();
+                }
             }
+            return ImmutableList.of();
         });
     }
 }

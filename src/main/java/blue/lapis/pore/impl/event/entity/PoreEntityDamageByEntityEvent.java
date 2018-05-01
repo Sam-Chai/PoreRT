@@ -28,6 +28,7 @@ package blue.lapis.pore.impl.event.entity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import blue.lapis.pore.converter.modifier.DamageModifierConverter;
 import blue.lapis.pore.converter.type.entity.EntityConverter;
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.RegisterEvent;
@@ -35,11 +36,15 @@ import blue.lapis.pore.event.Source;
 import blue.lapis.pore.impl.entity.PoreEntity;
 import blue.lapis.pore.impl.entity.PorePlayer;
 
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.event.entity.DamageEntityEvent;
+
+import java.util.function.DoubleUnaryOperator;
 
 @RegisterEvent
 public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEvent
@@ -49,8 +54,13 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
     private final Entity cause;
 
     @SuppressWarnings("deprecation")
-    public PoreEntityDamageByEntityEvent(DamageEntityEvent handle, @Source Entity entity) {
+    public PoreEntityDamageByEntityEvent(DamageEntityEvent handle, @Source DamageSource damageSource) {
+        //@Source不能为entity 传回的参数是DamageSource 所有@Source估计都得改
         super(null, null, null, -1.0);
+        Entity entity = null;
+        if (damageSource instanceof EntityDamageSource){
+            entity = checkNotNull(((Entity)((EntityDamageSource) damageSource).getTrueSource()),"entity");
+        }
         this.handle = checkNotNull(handle, "handle");
         this.cause = checkNotNull(entity, "entity");
     }
@@ -81,12 +91,20 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
 
     @Override
     public void setDamage(DamageModifier type, double damage) throws IllegalArgumentException {
+        getHandle().setDamage(org.spongepowered.api.event.cause.entity.damage.DamageModifier.builder()
+                .type(DamageModifierConverter.of(type)).build(), new DoubleUnaryOperator() {
+            @Override
+            public double applyAsDouble(double operand) {
+                return operand + damage;
+            }
+        });
         throw new NotImplementedException("TODO");
     }
 
     @Override
     public double getDamage(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        return getHandle().getDamage(org.spongepowered.api.event.cause.entity.damage.DamageModifier.builder()
+                .type(DamageModifierConverter.of(type)).build());
     }
 
     @Override

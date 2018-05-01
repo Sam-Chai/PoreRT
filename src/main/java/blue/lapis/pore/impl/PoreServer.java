@@ -211,6 +211,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
                     getLogger().log(Level.SEVERE,
                             ex.getMessage() + " initializing " + plugin.getDescription().getFullName()
                                     + " (Is it up to date?)", ex);
+                    Pore.unableWork(plugin.getDescription().getFullName());
                 }
             }
         } else {
@@ -238,6 +239,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
             getLogger().log(Level.SEVERE,
                     ex.getMessage() + " loading " + plugin.getDescription().getFullName()
                             + " (Is it up to date?)");
+            Pore.unableWork(plugin.getDescription().getFullName());
         }
     }
 

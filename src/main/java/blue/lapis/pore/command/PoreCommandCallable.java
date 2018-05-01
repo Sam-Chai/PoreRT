@@ -56,6 +56,9 @@ public class PoreCommandCallable extends PoreWrapper<Command> implements Command
 
     @Override
     public CommandResult process(CommandSource source, String arguments) throws CommandException {
+        if (source.getName().contains("@")){
+            return CommandResult.empty();
+        }
         if (getHandle().execute(PoreCommandSender.of(source), label, StringUtils.split(arguments))) {
             return CommandResult.success();
         } else {

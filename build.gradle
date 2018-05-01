@@ -197,14 +197,14 @@ jar {
                 'Main-Class': 'blue.lapis.pore.util.InfoMain',
                 "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder": 0,
-                "MixinConfigs": "mixins.pore.core.json",
+                "MixinConfigs": "mixins.pore.core.json,mixins.pore.bukkit.json,mixins.pore.lib.json",
                 'FMLAT': 'pore_at.cfg',
                 "ForceLoadAsMod": true
         )
     }
 }
 
-def mappings = "lib/SpongeRemapping/mappings/v1_11_R1/" // reminder : keep updated
+def mappings = "lib/SpongeRemapping/mappings/v1_12_R1/" // reminder : keep updated
 shadowJar {
     from { ["LICENSE", "LICENSE-AGPL", "LICENSE-MIT"] } // include licences
     from { [mappings + "vcb2pore.srg"] } // vcb2pore translation

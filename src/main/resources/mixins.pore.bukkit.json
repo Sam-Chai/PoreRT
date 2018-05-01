@@ -4,10 +4,6 @@
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "net.minecraft.entity.player.MixinEntityPlayerMP",
-        "net.minecraft.network.MixinNetworkManager",
-        "net.minecraft.network.MixinNetHandlerPlayServer",
-        "net.minecraft.item.MixinItemStack"
     ],
     "injectors": {
         "defaultRequire": 1

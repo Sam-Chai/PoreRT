@@ -71,6 +71,8 @@ import org.bukkit.conversations.ConversationAbandonedEvent;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
+import org.bukkit.event.player.PlayerRegisterChannelEvent;
+import org.bukkit.event.player.PlayerUnregisterChannelEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.MainHand;
@@ -87,6 +89,7 @@ import org.spongepowered.api.data.type.HandPreferences;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.entity.living.player.tab.TabListEntry;
 import org.spongepowered.api.event.cause.Cause;
+import org.spongepowered.api.network.ChannelBinding;
 import org.spongepowered.api.profile.GameProfile;
 import org.spongepowered.api.resourcepack.ResourcePacks;
 import org.spongepowered.api.service.ban.BanService;
@@ -103,17 +106,14 @@ import java.io.FileNotFoundException;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Player {
 
     private static final MetadataStore<org.bukkit.entity.Player> playerMeta =
             new PoreMetadataStore<org.bukkit.entity.Player>();
     private String displayName = this.getName();
+    private final Set<String> channels = new HashSet<String>();
 
     public static PorePlayer of(Player handle) {
         return WrapperConverter.of(PorePlayer.class, handle);
@@ -375,12 +375,9 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public InventoryView openInventory(Inventory inventory) {
-        throw new NotImplementedException("TODO"); // TODO
-        /*
-        getHandle().openInventory(((PoreInventory)inventory).getHandle(), Cause.source(this).build());
+        getHandle().openInventory(((PoreInventory)inventory).getHandle());
         return PoreInventoryView.builder().setPlayer(getHandle())
                 .setBottomInventory(this.getInventory()).setTopInventory(inventory).build();
-        */
     }
 
     @Override
@@ -922,9 +919,23 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void sendPluginMessage(Plugin source, String channel, byte[] message) {
-        Pore.getGame().getChannelRegistrar().getOrCreateRaw(Pore.getPlugin(), channel).sendTo(getHandle(), buf -> {
+        ChannelBinding.RawDataChannel rdc = Pore.getGame().getChannelRegistrar().getOrCreateRaw(Pore.getPlugin(), channel);
+        rdc.sendTo(getHandle(), buf -> {
             buf.writeBytes(message);
         }); // contained classloaders are fun ...
+        Pore.getGame().getChannelRegistrar().unbindChannel(rdc);
+    }
+
+    public void addChannel(String channel) {
+        if (channels.add(channel)) {
+            getServer().getPluginManager().callEvent(new PlayerRegisterChannelEvent(this, channel));
+        }
+    }
+
+    public void removeChannel(String channel) {
+        if (channels.remove(channel)) {
+            getServer().getPluginManager().callEvent(new PlayerUnregisterChannelEvent(this, channel));
+        }
     }
 
     @Override

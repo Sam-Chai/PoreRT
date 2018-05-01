@@ -19,7 +19,7 @@
  * An exception applies to this license, see the LICENSE file in the main directory for more information.
  */
 
-package blue.lapis.pore.mixin.item;
+package blue.lapis.pore.mixin.net.minecraft.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

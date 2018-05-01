@@ -28,6 +28,7 @@ import blue.lapis.pore.event.PoreEventRegistry;
 import blue.lapis.pore.impl.PoreServer;
 import blue.lapis.pore.impl.event.player.PoreAsyncPlayerChatEvent;
 import blue.lapis.pore.impl.event.player.PorePlayerChatEvent;
+import blue.lapis.pore.launch.PoreBootstrap;
 import blue.lapis.pore.launch.PoreEventManager;
 import blue.lapis.pore.lib.org.slf4j.bridge.SLF4JBridgeHandler;
 import blue.lapis.pore.plugin.PorePluginContainer;
@@ -37,6 +38,7 @@ import blue.lapis.pore.vault.PoreVaultInjector;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import org.bstats.sponge.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginLoadOrder;
@@ -44,8 +46,6 @@ import org.slf4j.Logger;
 import org.slf4j.helpers.NOPLogger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.entity.living.player.Player;
-//import org.spongepowered.api.event.cause.NamedCause;
-import org.spongepowered.api.event.cause.EventContext;
 import org.spongepowered.api.event.game.state.GameAboutToStartServerEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartingServerEvent;
@@ -58,11 +58,10 @@ import org.spongepowered.api.text.TextRepresentable;
 import org.spongepowered.api.text.TextTemplate;
 import org.spongepowered.api.text.transform.SimpleTextTemplateApplier;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.Callable;
 
 /**
  * An implementation of the Bukkit API built on Sponge.
@@ -79,6 +78,8 @@ public final class Pore implements PoreEventManager {
     private final PluginContainer plugin;
 
     private PoreServer server;
+
+    public Metrics metrics = PoreBootstrap.metrics;
 
     @Inject
     public Pore(Game game, Logger logger, PluginContainer plugin) {
@@ -168,7 +169,7 @@ public final class Pore implements PoreEventManager {
 
             SimpleTextTemplateApplier body = formatter.getBody().get(0);
             String text = PoreText.convert(((TextRepresentable)body.getParameter(MessageEvent.PARAM_MESSAGE_BODY)).toText());
-            String second = PoreText.convert(body.toText()).replace(name, "%2$s");
+            String second = PoreText.convert(body.toText()).replace(text, "%2$s");
 
             String format = first.concat(second);
             if (!name.equals(player.getName())) {
@@ -206,5 +207,33 @@ public final class Pore implements PoreEventManager {
             if (iter.hasNext()) args.add(TextTemplate.arg(arg));
         }
         return TextTemplate.of(args.toArray());
+    }
+
+    public static void unableWork(String name){
+        Pore.getInstance().metrics.addCustomChart(new Metrics.SimpleBarChart("UnableWork", new Callable<Map<String, Integer>>() {
+            @Override
+            public Map<String, Integer> call() throws Exception {
+                Map<String, Integer> map = new HashMap<>();
+                map.put(name, 1);
+                return map;
+            }
+        }));
+    }
+
+    public static void catchTodo(String classname){
+        for (Plugin plugin : getServer().getPluginManager().getPlugins()){
+            InputStream inputStream = plugin.getResource(classname.replaceAll(".", "/") + ".class");
+            int size = 0;
+            try {
+                size = inputStream.available();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (size != 0){
+                System.out.println("TODO Plugin : " + plugin.getName());
+                unableWork(plugin.getName());
+                break;
+            }
+        }
     }
 }

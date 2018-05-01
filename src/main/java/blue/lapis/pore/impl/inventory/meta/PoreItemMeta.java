@@ -36,9 +36,9 @@ import org.spongepowered.api.data.manipulator.mutable.DisplayNameData;
 import org.spongepowered.api.data.manipulator.mutable.item.EnchantmentData;
 import org.spongepowered.api.data.manipulator.mutable.item.HideData;
 import org.spongepowered.api.data.manipulator.mutable.item.LoreData;
-//import org.spongepowered.api.data.meta.ItemEnchantment;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.common.item.enchantment.SpongeEnchantment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +48,8 @@ import java.util.Optional;
 import java.util.Set;
 
 public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
+
+    private boolean unbreakable;
 
     public PoreItemMeta(ItemStack holder) {
         super(holder);
@@ -125,114 +127,96 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
 
     @Override
     public boolean hasEnchant(Enchantment ench) {
-        //throw new NotImplementedException("TODO");
-        /*
         Optional<EnchantmentData> enchants = getHandle().get(EnchantmentData.class);
-        org.spongepowered.api.item.Enchantment target = getEnchant(ench);
+        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
         if (enchants.isPresent()) {
-            for (ItemEnchantment itmEnch : enchants.get().asList()) {
-                if (itmEnch.getEnchantment().equals(target)) {
+            for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get().asList()) {
+                if (itmEnch.getType().equals(target)) {
                     return true;
                 }
             }
         }
-        */
         return false;
     }
 
     @Override
     public int getEnchantLevel(Enchantment ench) {
-        //throw new NotImplementedException("TODO");
-        /*
         Optional<EnchantmentData> enchants = getHandle().get(EnchantmentData.class);
-        org.spongepowered.api.item.Enchantment target = getEnchant(ench);
+        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
         if (enchants.isPresent()) {
-            for (ItemEnchantment itmEnch : enchants.get().asList()) {
-                if (itmEnch.getEnchantment().equals(target)) {
+            for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get().asList()) {
+                if (itmEnch.getType().equals(target)) {
                     return itmEnch.getLevel();
                 }
             }
         }
-        */
         return 0;
     }
 
     @Override
     public Map<Enchantment, Integer> getEnchants() {
-        //throw new NotImplementedException("TODO");
         Optional<EnchantmentData> enchants = getHandle().get(EnchantmentData.class);
         Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
-        /*
         if (enchants.isPresent()) {
-            for (ItemEnchantment itmEnch : enchants.get().asList()) {
-                map.put(Enchantment.getByName(itmEnch.getEnchantment().getName()), itmEnch.getLevel());
+            for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get().asList()) {
+                map.put(Enchantment.getByName(itmEnch.getType().getName()), itmEnch.getLevel());
             }
         }
-        */
         return ImmutableMap.copyOf(map);
     }
 
     @Override
     public boolean addEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction) {
-        //throw new NotImplementedException("TODO");
-        /*
         Optional<EnchantmentData> enchants = getHandle().getOrCreate(EnchantmentData.class);
         if (enchants.isPresent()) {
             if (level > ench.getMaxLevel() && !ignoreLevelRestriction) {
                 level = ench.getMaxLevel();
             }
 
-            org.spongepowered.api.item.Enchantment copy = getEnchant(ench);
-            getHandle().offer(enchants.get().addElement(new ItemEnchantment(copy, level)));
+            org.spongepowered.api.item.enchantment.Enchantment copy = getEnchant(ench);
+            getHandle().offer(enchants.get().addElement(new SpongeEnchantment(copy.getType(), level)));
             return true;
         }
-        */
         return false;
     }
 
     @Override
     public boolean removeEnchant(Enchantment ench) {
-        //throw new NotImplementedException("TODO");
-        /*
         Optional<EnchantmentData> enchants = getHandle().get(EnchantmentData.class);
-        org.spongepowered.api.item.Enchantment target = getEnchant(ench);
+        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
         if (enchants.isPresent()) {
-            for (ItemEnchantment itmEnch : enchants.get().asList()) {
-                if (itmEnch.getEnchantment().equals(target)) {
+            for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get().asList()) {
+                if (itmEnch.getType().equals(target)) {
                     getHandle().offer(enchants.get().remove(itmEnch));
                     return true;
                 }
             }
         }
-        */
         return false;
     }
 
     @Override
     public boolean hasConflictingEnchant(Enchantment ench) {
-        //throw new NotImplementedException("TODO");
-        /*
         Optional<EnchantmentData> enchants = getHandle().get(EnchantmentData.class);
-        org.spongepowered.api.item.Enchantment target = getEnchant(ench);
+        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
         if (enchants.isPresent()) {
-        for (ItemEnchantment itmEnch : enchants.get().asList()) {
-            if (!itmEnch.getEnchantment().isCompatibleWith(target)) {
-                return true;
+            for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get().asList()) {
+                if (!itmEnch.getType().isCompatibleWith(target.getType())) {
+                    return true;
+                }
             }
         }
-        }
-        */
         return false;
     }
 
-    /*
-    private static org.spongepowered.api.item.Enchantment getEnchant(Enchantment ench) {
+
+    private static org.spongepowered.api.item.enchantment.Enchantment getEnchant(Enchantment ench) {
         if (ench instanceof EnchantmentWrapper) {
             ench = ((EnchantmentWrapper) ench).getEnchantment();
         }
         return ((PoreEnchantment) ench).getHandle();
     }
-    */
+
 
     @Override
     public void addItemFlags(ItemFlag... itemFlags) {
@@ -290,12 +274,12 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
 
     @Override
     public boolean isUnbreakable() {
-        throw new NotImplementedException("TODO");
+        return this.unbreakable;
     }
 
     @Override
     public void setUnbreakable(boolean unbreakable) {
-        throw new NotImplementedException("TODO");
+        this.unbreakable = unbreakable;
     }
 
     @Override

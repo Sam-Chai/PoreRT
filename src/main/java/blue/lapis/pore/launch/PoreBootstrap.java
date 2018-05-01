@@ -27,6 +27,7 @@ package blue.lapis.pore.launch;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import org.apache.commons.lang3.StringUtils;
+import org.bstats.sponge.Metrics;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.Order;
 import org.spongepowered.api.event.game.state.GameAboutToStartServerEvent;
@@ -50,6 +51,10 @@ public class PoreBootstrap implements PoreEventManager {
     private static final String IMPLEMENTATION_CLASS = "blue.lapis.pore.Pore";
 
     private final PoreEventManager pore;
+
+    @Inject
+    public static Metrics metrics;
+
 
     @Inject
     public PoreBootstrap(Injector injector) {

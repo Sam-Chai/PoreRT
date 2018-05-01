@@ -19,21 +19,18 @@
  * An exception applies to this license, see the LICENSE file in the main directory for more information.
  */
 
-package blue.lapis.pore.mixin.network;
+package blue.lapis.pore.mixin.net.minecraft.entity.player;
 
-import net.minecraft.network.NetworkManager;
+import blue.lapis.pore.impl.entity.PorePlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 
-import java.net.SocketAddress;
+@Mixin(EntityPlayerMP.class)
+public abstract class MixinEntityPlayerMP implements Player {
 
-@Mixin(NetworkManager.class)
-public abstract class MixinNetworkManager {
-
-    @Shadow private SocketAddress socketAddress;
-
-    public SocketAddress getRawAddress() {
-        return this.socketAddress;
+    public PorePlayer getBukkitEntity() {
+        return PorePlayer.of(this);
     }
 
 }
