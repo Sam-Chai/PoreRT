@@ -3,10 +3,13 @@
 	url = https://hub.spigotmc.org/stash/scm/spigot/bukkit.git
 [submodule "lib/ReflectionRemapper"]
 	path = lib/ReflectionRemapper
-	url = https://github.com/Maxqia/ReflectionRemapper.git
+	url = https://git.coding.net/IceSoulHanxi/ReflectionRemapper.git
 [submodule "lib/SpongeRemapping"]
 	path = lib/SpongeRemapping
-	url = https://github.com/Maxqia/SpongeRemapping.git
+	url = https://git.coding.net/IceSoulHanxi/SpongeRemapping.git
 [submodule "lib/Spigot"]
 	path = lib/Spigot
 	url = https://hub.spigotmc.org/stash/scm/spigot/spigot.git
+[submodule "lib/Paper"]
+	path = lib/Paper
+	url = https://git.coding.net/IceSoulHanxi/Paper.git
