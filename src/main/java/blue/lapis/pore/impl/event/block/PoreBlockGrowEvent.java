@@ -64,7 +64,7 @@ public final class PoreBlockGrowEvent extends BlockGrowEvent implements PoreEven
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of((Location<World>) handle.getSource());
+        return PoreBlock.of(getHandle().getCause().first(Location.class).orElse(null));
     }
 
     @Override
@@ -92,7 +92,6 @@ public final class PoreBlockGrowEvent extends BlockGrowEvent implements PoreEven
     @RegisterEvent
     public static void register() { // TODO ChangeBlockEvent.Grow isn't implemented yet ...
         PoreEventRegistry.register(PoreBlockGrowEvent.class, ChangeBlockEvent.Grow.class, event -> {
-            System.out.println(event.getCause().toString());
             return event.getTransactions().stream()
                     .map(transaction -> new PoreBlockGrowEvent(event, transaction))
                     .collect(GuavaCollectors.toImmutableList());

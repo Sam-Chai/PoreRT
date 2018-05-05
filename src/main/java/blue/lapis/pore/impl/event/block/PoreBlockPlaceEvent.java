@@ -128,13 +128,13 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public EquipmentSlot getHand() {
-        throw new NotImplementedException("TODO");
+        throw new UnsupportedOperationException("NONE");
     }
 
     @RegisterEvent
     public static void register() {
         PoreEventRegistry.register(PoreBlockPlaceEvent.class, ChangeBlockEvent.Place.class, event -> {
-            Player player = (Player) event.getSource();
+            Player player = event.getCause().first(Player.class).orElse(null);
             if (player != null) {
                 return event.getTransactions().stream()
                         .map(transaction -> new PoreBlockPlaceEvent(event, player, transaction))

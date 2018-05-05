@@ -54,13 +54,8 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
     private final Entity cause;
 
     @SuppressWarnings("deprecation")
-    public PoreEntityDamageByEntityEvent(DamageEntityEvent handle, @Source DamageSource damageSource) {
-        //@Source不能为entity 传回的参数是DamageSource 所有@Source估计都得改
+    public PoreEntityDamageByEntityEvent(DamageEntityEvent handle, @Source Entity entity) {
         super(null, null, null, -1.0);
-        Entity entity = null;
-        if (damageSource instanceof EntityDamageSource){
-            entity = checkNotNull(((Entity)((EntityDamageSource) damageSource).getTrueSource()),"entity");
-        }
         this.handle = checkNotNull(handle, "handle");
         this.cause = checkNotNull(entity, "entity");
     }

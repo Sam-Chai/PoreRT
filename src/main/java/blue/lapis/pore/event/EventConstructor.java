@@ -37,8 +37,11 @@ import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.NotImplementedException;
 import org.spongepowered.api.event.Event;
 
+import java.io.File;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -134,7 +137,16 @@ abstract class EventConstructor<P extends org.bukkit.event.Event & PoreEvent<S>,
 
         @Override
         public ImmutableList<P> apply(S event) {
-            T source = (T) event.getSource();
+            Class<?> clazz = null;
+            Annotation[][] annotations = getPoreEvent().getDeclaredConstructors()[0].getParameterAnnotations();
+            for (int i = 0; i < annotations.length; i++){
+                for (int u = 0; u < annotations[i].length; u++){
+                    if (annotations[i][u] instanceof blue.lapis.pore.event.Source){
+                        clazz = getPoreEvent().getDeclaredConstructors()[0].getParameterTypes()[i];
+                    }
+                }
+            }
+            T source = (T) event.getCause().first(clazz).orElse(null);
             if (source == null || !test(event)) {
                 return ImmutableList.of();
             }

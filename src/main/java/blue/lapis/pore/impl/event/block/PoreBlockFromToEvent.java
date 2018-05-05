@@ -97,7 +97,7 @@ public final class PoreBlockFromToEvent extends BlockFromToEvent implements Pore
         PoreEventRegistry.register(PoreBlockFromToEvent.class, ChangeBlockEvent.Pre.class, event -> {
             if (event.getContext().containsKey(EventContextKeys.LIQUID_MIX)) {
                 System.out.println(event);
-                Optional<BlockSnapshot> optSource = Optional.of((BlockSnapshot) event.getSource());
+                Optional<BlockSnapshot> optSource = event.getCause().first(BlockSnapshot.class);
                 if (optSource.isPresent() && optSource.get().getLocation().isPresent()) {
                     PoreBlock source = PoreBlock.of(optSource.get().getLocation().get());
                     return event.getLocations().stream()

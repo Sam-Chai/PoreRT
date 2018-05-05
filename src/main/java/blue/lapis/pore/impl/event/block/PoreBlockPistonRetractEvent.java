@@ -112,7 +112,7 @@ public final class PoreBlockPistonRetractEvent extends BlockPistonRetractEvent
     @RegisterEvent
     public static void register() {
         PoreEventRegistry.register(PoreBlockPistonRetractEvent.class, ChangeBlockEvent.Pre.class, event -> {
-            Optional<BlockSnapshot> block = Optional.of((BlockSnapshot) event.getSource());
+            Optional<BlockSnapshot> block = event.getCause().first(BlockSnapshot.class);
             if (block.isPresent() && block.get().getExtendedState().getType().equals(BlockTypes.PISTON)) {
                 if (block.get().get(Keys.EXTENDED).get()) {
                     return ImmutableList.of(new PoreBlockPistonRetractEvent(event, block.get()));

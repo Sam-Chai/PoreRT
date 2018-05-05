@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinNotImplementedException {
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void onInit(String message, CallbackInfoReturnable callbackInfoReturnable){
+    private void onInit(String message, CallbackInfoReturnable<NotImplementedException> callbackInfoReturnable){
         if (message.equalsIgnoreCase("TODO")){
             Pore.catchTodo(Thread.currentThread().getStackTrace()[2].getClassName());
         }

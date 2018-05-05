@@ -110,7 +110,7 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
     public static void register() {
         PoreEventRegistry.register(PoreEntityChangeBlockEvent.class, ChangeBlockEvent.class, event -> {
             if (!(event instanceof ChangeBlockEvent.Post)) { // post creates duplicate events
-                Entity entity = (Entity) event.getSource();
+                Entity entity = event.getCause().first(Entity.class).orElse(null);
                 if (entity != null && !(entity instanceof Player)) {
                     return event.getTransactions().stream()
                             .map(transaction -> new PoreEntityChangeBlockEvent(event, entity, transaction))

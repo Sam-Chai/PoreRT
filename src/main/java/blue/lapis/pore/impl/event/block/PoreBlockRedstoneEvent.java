@@ -58,7 +58,7 @@ public final class PoreBlockRedstoneEvent extends BlockRedstoneEvent
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of((Location<World>) getHandle().getSource());
+        return PoreBlock.of(getHandle().getCause().first(Location.class).orElse(null));
     }
 
     @Override

@@ -88,7 +88,7 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
     public static void register() {
         PoreEventRegistry.register(PoreBlockBurnEvent.class, ChangeBlockEvent.class, event -> {
             ArrayList<PoreBlockBurnEvent> events = new ArrayList<PoreBlockBurnEvent>();
-            BlockSnapshot fire = (BlockSnapshot) event.getSource();
+            BlockSnapshot fire = event.getCause().first(BlockSnapshot.class).orElse(null);
             if (fire != null && fire.getState().getType() == BlockTypes.FIRE) {
                 for (Transaction<BlockSnapshot> trans : event.getTransactions()) {
                     BlockType from = trans.getOriginal().getState().getType();
