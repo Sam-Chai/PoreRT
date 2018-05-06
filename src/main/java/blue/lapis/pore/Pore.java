@@ -159,7 +159,7 @@ public final class Pore implements PoreEventManager {
 
     @Override // This is horrible but it's needed for setDisplayName ...
     public void onChatEvent(MessageChannelEvent.Chat event) {
-        Player player = (Player) event.getSource();
+        Player player = event.getCause().first(Player.class).orElse(null);
         if (player != null) { // fire ASyncPlayerChatEvent and PlayerChatEvent
             MessageFormatter formatter = event.getFormatter();
 
