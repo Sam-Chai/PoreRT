@@ -103,7 +103,7 @@ public class PoreBootstrap implements PoreEventManager {
         pore.onShutdown(event);
     }
 
-    @Listener(order = Order.EARLY)
+    @Listener//(order = Order.EARLY)
     @Override
     public void onChatEvent(MessageChannelEvent.Chat event) throws Exception {
         pore.onChatEvent(event);

@@ -52,6 +52,7 @@ public final class PoreEventRegistry {
     }
 
     private static final Map<Class<? extends Event>, SpongeEvent<?>> handlers = new IdentityHashMap<>();
+    public static PoreEventCache eventCache = new PoreEventCache();
 
     @SuppressWarnings("unchecked")
     private static <S extends Event> SpongeEvent<S> registerSpongeHandler(Class<S> event) {

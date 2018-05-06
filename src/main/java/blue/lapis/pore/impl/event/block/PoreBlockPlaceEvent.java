@@ -29,7 +29,9 @@ package blue.lapis.pore.impl.event.block;
 import static com.google.common.base.Preconditions.checkNotNull;
 //import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
 
+import blue.lapis.pore.converter.type.entity.player.HandTypeConverter;
 import blue.lapis.pore.converter.type.material.ItemStackConverter;
+import blue.lapis.pore.converter.wrapper.WrapperConverter;
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.PoreEventRegistry;
 import blue.lapis.pore.event.RegisterEvent;
@@ -37,15 +39,18 @@ import blue.lapis.pore.impl.block.PoreBlock;
 import blue.lapis.pore.impl.block.PoreBlockState;
 import blue.lapis.pore.impl.entity.PorePlayer;
 
+import blue.lapis.pore.impl.event.player.PorePlayerInteractEvent;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.event.Event;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.data.Transaction;
+import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 import org.spongepowered.api.util.GuavaCollectors;
@@ -55,6 +60,7 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
     private final ChangeBlockEvent.Place handle;
     private final Player player;
     private final Transaction<BlockSnapshot> transaction;
+    private final PorePlayerInteractEvent.Secondary interactEvent;
 
     @SuppressWarnings("deprecation") //TODO fix this
     public PoreBlockPlaceEvent(ChangeBlockEvent.Place handle, Player player, Transaction<BlockSnapshot> transaction) {
@@ -62,6 +68,10 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
         this.handle = checkNotNull(handle, "handle");
         this.player = checkNotNull(player, "player");
         this.transaction = checkNotNull(transaction, "transaction");
+        PorePlayerInteractEvent.Secondary tmpEvent = (PorePlayerInteractEvent.Secondary) PoreEventRegistry.eventCache.getLastEvent(PorePlayerInteractEvent.Secondary.class);
+        if (tmpEvent == null && !tmpEvent.getPlayer().equals(player) && !tmpEvent.isBlockInHand())
+            tmpEvent = null;
+        this.interactEvent = tmpEvent;
     }
 
     @Override
@@ -96,7 +106,7 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public ItemStack getItemInHand() {
-        return ItemStackConverter.of(this.player.getItemInHand(null).orElse(null)); //TODO : Better Hand Value
+        return ItemStackConverter.of(this.player.getItemInHand(this.interactEvent.getHandle().getHandType()).orElse(null));
     }
 
     @Override
@@ -128,7 +138,8 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public EquipmentSlot getHand() {
-        throw new UnsupportedOperationException("NONE");
+        return this.interactEvent.getHandle().getHandType() == HandTypes.MAIN_HAND
+                ? EquipmentSlot.HAND : EquipmentSlot.OFF_HAND;
     }
 
     @RegisterEvent

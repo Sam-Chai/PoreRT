@@ -203,8 +203,9 @@ public final class Pore implements PoreEventManager {
         List<Object> args = new ArrayList<Object>();
         Iterator<String> iter = formatHeader.iterator();
         while (iter.hasNext()) {
-            args.add(iter.next());
-            if (iter.hasNext()) args.add(TextTemplate.arg(arg));
+            //args.add(iter.next());  if (iter.hasNext())
+            args.add(TextTemplate.arg(arg));
+            iter.next();
         }
         return TextTemplate.of(args.toArray());
     }

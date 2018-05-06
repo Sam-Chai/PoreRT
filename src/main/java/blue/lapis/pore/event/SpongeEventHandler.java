@@ -108,6 +108,7 @@ class SpongeEventHandler<S extends Event> implements EventListener<S> {
 
             try {
                 registration.callEvent(event);
+                PoreEventRegistry.eventCache.addEventToCache(event.getClass(), event);
             } catch (AuthorNagException ex) {
                 Plugin plugin = registration.getPlugin();
 
