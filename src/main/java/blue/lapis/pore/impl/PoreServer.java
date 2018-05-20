@@ -589,22 +589,27 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public boolean addRecipe(Recipe recipe) {
-        throw new NotImplementedException("TODO");
+        return false;
+        //throw new NotImplementedException("TODO");
     }
 
     @Override
     public List<Recipe> getRecipesFor(ItemStack result) {
-        throw new NotImplementedException("TODO");
+        List<Recipe> list = new ArrayList<Recipe>();
+        return list;
+        //throw new NotImplementedException("TODO");
     }
 
     @Override
     public Iterator<Recipe> recipeIterator() {
-        throw new NotImplementedException("TODO");
+        List<Recipe> list = new ArrayList<Recipe>();
+        return list.iterator();
+        //throw new NotImplementedException("TODO");
     }
 
     @Override
     public void clearRecipes() {
-        throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO");
     }
 
     @Override
