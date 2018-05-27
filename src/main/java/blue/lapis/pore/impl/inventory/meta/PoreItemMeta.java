@@ -37,6 +37,7 @@ import org.spongepowered.api.data.manipulator.mutable.DisplayNameData;
 import org.spongepowered.api.data.manipulator.mutable.item.EnchantmentData;
 import org.spongepowered.api.data.manipulator.mutable.item.HideData;
 import org.spongepowered.api.data.manipulator.mutable.item.LoreData;
+import org.spongepowered.api.item.enchantment.EnchantmentType;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.common.item.enchantment.SpongeEnchantment;
@@ -80,7 +81,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     public boolean hasLore() {
         Optional<List<Text>> lore = getHandle().get(Keys.ITEM_LORE);
         if (lore.isPresent()) {
-            if (lore.get().isEmpty()) {
+            if (!lore.get().isEmpty()) {
                 return true;
             }
         }
@@ -94,7 +95,6 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
         if (lore.isPresent()) {
             for (Text text : lore.get()) {
                 lores.add(PoreText.convert(text));
-                System.out.println(PoreText.convert(text));
             }
         } else {
             lores.add("");
@@ -120,7 +120,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public boolean hasEnchant(Enchantment ench) {
         Optional<List<org.spongepowered.api.item.enchantment.Enchantment>> enchants = getHandle().get(Keys.ITEM_ENCHANTMENTS);
-        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
+        EnchantmentType target = getEnchant(ench);
         if (enchants.isPresent()) {
             for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get()) {
                 if (itmEnch.getType().equals(target)) {
@@ -134,7 +134,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public int getEnchantLevel(Enchantment ench) {
         Optional<List<org.spongepowered.api.item.enchantment.Enchantment>> enchants = getHandle().get(Keys.ITEM_ENCHANTMENTS);
-        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
+        EnchantmentType target = getEnchant(ench);
         if (enchants.isPresent()) {
             for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get()) {
                 if (itmEnch.getType().equals(target)) {
@@ -165,8 +165,8 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
                 level = ench.getMaxLevel();
             }
 
-            org.spongepowered.api.item.enchantment.Enchantment copy = getEnchant(ench);
-            enchants.get().add(new SpongeEnchantment(copy.getType(), level));
+            EnchantmentType copy = getEnchant(ench);
+            enchants.get().add(new SpongeEnchantment(copy, level));
             getHandle().offer(Keys.ITEM_ENCHANTMENTS, enchants.get());
             return true;
         }
@@ -176,7 +176,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public boolean removeEnchant(Enchantment ench) {
         Optional<List<org.spongepowered.api.item.enchantment.Enchantment>> enchants = getHandle().get(Keys.ITEM_ENCHANTMENTS);
-        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
+        EnchantmentType target = getEnchant(ench);
         if (enchants.isPresent()) {
             for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get()) {
                 if (itmEnch.getType().equals(target)) {
@@ -192,10 +192,10 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public boolean hasConflictingEnchant(Enchantment ench) {
         Optional<List<org.spongepowered.api.item.enchantment.Enchantment>> enchants = getHandle().get(Keys.ITEM_ENCHANTMENTS);
-        org.spongepowered.api.item.enchantment.Enchantment target = getEnchant(ench);
+        EnchantmentType target = getEnchant(ench);
         if (enchants.isPresent()) {
             for (org.spongepowered.api.item.enchantment.Enchantment itmEnch : enchants.get()) {
-                if (!itmEnch.getType().isCompatibleWith(target.getType())) {
+                if (!itmEnch.getType().isCompatibleWith(target)) {
                     return true;
                 }
             }
@@ -204,7 +204,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     }
 
 
-    private static org.spongepowered.api.item.enchantment.Enchantment getEnchant(Enchantment ench) {
+    private static EnchantmentType getEnchant(Enchantment ench) {
         if (ench instanceof EnchantmentWrapper) {
             ench = ((EnchantmentWrapper) ench).getEnchantment();
         }
@@ -330,6 +330,17 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
             removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         }
 
+    }
+
+    public boolean isEmpty() {
+        return !(hasDisplayName() || hasEnchants() || hasLore() || isUnbreakable());
+    }
+
+    public boolean equalsCommon(PoreItemMeta that) {
+        return ((this.hasDisplayName() == that.hasDisplayName()))
+                && (this.hasEnchants() == that.hasEnchants())
+                && (this.hasLore() == that.hasLore())
+                && (this.isUnbreakable() == that.isUnbreakable());
     }
 
     @Override

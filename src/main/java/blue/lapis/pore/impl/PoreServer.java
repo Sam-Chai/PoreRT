@@ -48,6 +48,7 @@ import com.avaje.ebean.config.ServerConfig;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import net.minecraft.init.Enchantments;
 import net.minecraft.server.MinecraftServer;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.BanList;
@@ -183,17 +184,15 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
     }
 
     private static void registerEnchantments() {
-        /*
         for (Field field : Enchantments.class.getFields()) {
             try {
                 Enchantment.registerEnchantment(new PoreEnchantment(
-                        (org.spongepowered.api.item.Enchantment) field.get(null)));
+                        (org.spongepowered.api.item.enchantment.EnchantmentType) field.get(null)));
             } catch (IllegalArgumentException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
         Enchantment.stopAcceptingRegistrations();
-        */
     }
 
     public void loadPlugins() {

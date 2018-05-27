@@ -58,8 +58,35 @@ public class PoreItemFactory implements ItemFactory {
 
     @Override
     public boolean equals(ItemMeta meta1, ItemMeta meta2) throws IllegalArgumentException {
-        //return (meta1 == meta2);
-        return true; //TODO
+        if (meta1 == meta2) {
+            return true;
+        }
+        if (meta1 != null && !(meta1 instanceof PoreItemMeta)) {
+            throw new IllegalArgumentException("First meta of " + meta1.getClass().getName() + " does not belong to " + PoreItemFactory.class.getName());
+        }
+        if (meta2 != null && !(meta2 instanceof PoreItemMeta)) {
+            throw new IllegalArgumentException("Second meta " + meta2.getClass().getName() + " does not belong to " + PoreItemFactory.class.getName());
+        }
+        if (meta1 == null) {
+            return ((PoreItemMeta) meta2).isEmpty();
+        }
+        if (meta2 == null) {
+            return ((PoreItemMeta) meta1).isEmpty();
+        }
+        return equals((PoreItemMeta) meta1, (PoreItemMeta) meta2);
+    }
+
+    boolean equals(PoreItemMeta meta1, PoreItemMeta meta2) {
+        /*
+         * This couldn't be done inside of the objects themselves, else force recursion.
+         * This is a fairly clean way of implementing it, by dividing the methods into purposes and letting each method perform its own function.
+         *
+         * The common and uncommon were split, as both could have variables not applicable to the other, like a skull and book.
+         * Each object needs its chance to say "hey wait a minute, we're not equal," but without the redundancy of using the 1.equals(2) && 2.equals(1) checking the 'commons' twice.
+         *
+         * Doing it this way fills all conditions of the .equals() method.
+         */
+        return meta1.equalsCommon(meta2) /* && meta1.notUncommon(meta2) && meta2.notUncommon(meta1)*/;
     }
 
     @Override

@@ -28,37 +28,35 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 import org.spongepowered.api.item.enchantment.Enchantment;
+import org.spongepowered.api.item.enchantment.EnchantmentType;
 
 public class PoreEnchantment extends org.bukkit.enchantments.Enchantment {
 
-    private Enchantment handle;
+    private EnchantmentType handle;
 
-    public PoreEnchantment(Enchantment enchantment) {
+    public PoreEnchantment(EnchantmentType enchantment) {
         super(net.minecraft.enchantment.Enchantment.getEnchantmentID(
                 (net.minecraft.enchantment.Enchantment) enchantment));
         this.handle = enchantment;
     }
 
-    public Enchantment getHandle() {
+    public EnchantmentType getHandle() {
         return this.handle;
     }
 
     @Override
     public String getName() {
-        throw new NotImplementedException("TODO"); // TODO
-        //return getHandle().getName();
+        return getHandle().getName();
     }
 
     @Override
     public int getMaxLevel() {
-        throw new NotImplementedException("TODO"); // TODO
-        //return getHandle().getMaximumLevel();
+        return getHandle().getMaximumLevel();
     }
 
     @Override
     public int getStartLevel() {
-        throw new NotImplementedException("TODO"); // TODO
-        //return getHandle().getMinimumLevel();
+        return getHandle().getMinimumLevel();
     }
 
     @Override
@@ -98,14 +96,12 @@ public class PoreEnchantment extends org.bukkit.enchantments.Enchantment {
 
     @Override
     public boolean conflictsWith(org.bukkit.enchantments.Enchantment other) {
-        throw new NotImplementedException("TODO"); // TODO
-        //return getHandle().isCompatibleWith(((PoreEnchantment) other).getHandle());
+        return getHandle().isCompatibleWith(((PoreEnchantment) other).getHandle());
     }
 
     @Override
     public boolean canEnchantItem(ItemStack item) {
-        throw new NotImplementedException("TODO"); // TODO
-        //return getHandle().canBeAppliedToStack(ItemStackConverter.of(item));
+        return getHandle().canBeAppliedToStack(ItemStackConverter.of(item));
     }
 
     @Override
