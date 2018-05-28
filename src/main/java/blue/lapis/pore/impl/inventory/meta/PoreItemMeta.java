@@ -27,11 +27,15 @@ import blue.lapis.pore.util.PoreText;
 import blue.lapis.pore.util.PoreWrapper;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.spongepowered.api.data.key.Key;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.data.manipulator.mutable.DisplayNameData;
 import org.spongepowered.api.data.manipulator.mutable.item.EnchantmentData;
@@ -91,12 +95,13 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public List<String> getLore() {
         List<String> lores = new ArrayList<String>();
-        Optional<List<Text>> lore = getHandle().get(Keys.ITEM_LORE);
-        if (lore.isPresent()) {
-            for (Text text : lore.get()) {
-                lores.add(PoreText.convert(text));
-            }
-        } else {
+        NBTTagCompound nbt = ((net.minecraft.item.ItemStack)(Object)getHandle()).getTagCompound();
+        NBTTagList lorenbt = nbt.getCompoundTag("display").getTagList("Lore", 8);
+        int count = lorenbt.tagCount();
+        for (int i = 0; i < count; i++) {
+            lores.add(lorenbt.getStringTagAt(i));
+        }
+        if (lores.size() == 0){
             lores.add("");
         }
         return lores;
@@ -104,11 +109,16 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
 
     @Override
     public void setLore(List<String> lore) {
-        List<Text> text = new ArrayList<Text>();
-        for (String string : lore) {
-            text.add(PoreText.convert(string));
+        NBTTagCompound nbt = ((net.minecraft.item.ItemStack)(Object)getHandle()).getTagCompound();
+        NBTTagList lorenbt = nbt.getCompoundTag("display").getTagList("Lore", 8);
+        while (lorenbt.tagCount() != 0){
+            lorenbt.removeTag(lorenbt.tagCount() - 1);
         }
-        getHandle().offer(Keys.ITEM_LORE, text);
+        for (String string : lore) {
+            lorenbt.appendTag(new NBTTagString(string));
+        }
+        nbt.getCompoundTag("display").setTag("Lore", lorenbt);
+        ((net.minecraft.item.ItemStack)(Object)getHandle()).setTagCompound(nbt);
     }
 
     @Override

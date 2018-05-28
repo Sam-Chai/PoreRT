@@ -60,6 +60,7 @@ import org.spongepowered.api.text.transform.SimpleTextTemplateApplier;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.management.ManagementFactory;
 import java.util.*;
 import java.util.concurrent.Callable;
 
@@ -67,7 +68,7 @@ import java.util.concurrent.Callable;
  * An implementation of the Bukkit API built on Sponge.
  * (Main Plugin Class)
  * @author Lapis Blue
- * @see //PoreBootstrap
+ * @see PoreBootstrap
  */
 public final class Pore implements PoreEventManager {
 
@@ -80,6 +81,7 @@ public final class Pore implements PoreEventManager {
     private PoreServer server;
 
     public Metrics metrics = PoreBootstrap.metrics;
+    public boolean debuging = false;
 
     @Inject
     public Pore(Game game, Logger logger, PluginContainer plugin) {
@@ -120,8 +122,11 @@ public final class Pore implements PoreEventManager {
         // Initialize logging
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
+        debuging = isDebug();
 
         logger.info("Loading Pore server, please wait...");
+        if(debuging)
+            logger.warn("Pore is debugging mode!!!");
 
         // init server
         server = new PoreServer(game, logger);
@@ -172,7 +177,7 @@ public final class Pore implements PoreEventManager {
             String second = PoreText.convert(body.toText()).replace(text, "%2$s");
 
             String format = first.concat(second);
-            if (!name.equals(player.getName())) {
+            if (!name.equals(player.getName()) && debuging) {
                 Pore.getLogger().warn("Name changed from " + player.getName() + " to " + name + " during chat event!");
             }
 
@@ -236,5 +241,17 @@ public final class Pore implements PoreEventManager {
                 break;
             }
         }
+    }
+
+    private boolean isDebug(){
+        List<String> args = ManagementFactory.getRuntimeMXBean().getInputArguments();
+        boolean isDebug = false;
+        for (String arg : args) {
+            if (arg.startsWith("-Xrunjdwp") || arg.startsWith("-agentlib:jdwp")) {
+                isDebug = true;
+                break;
+            }
+        }
+        return isDebug;
     }
 }
