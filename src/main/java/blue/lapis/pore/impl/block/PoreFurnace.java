@@ -68,4 +68,9 @@ public class PoreFurnace extends PoreContainer implements org.bukkit.block.Furna
         return PoreFurnaceInventory.of(getTileEntity().getInventory());
     }
 
+    @Override
+    public FurnaceInventory getSnapshotInventory() {
+        return null;
+    }
+
 }

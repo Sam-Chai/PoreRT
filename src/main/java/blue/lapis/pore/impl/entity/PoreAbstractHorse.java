@@ -30,6 +30,7 @@ import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse.Variant;
+import org.bukkit.inventory.AbstractHorseInventory;
 import org.bukkit.inventory.Inventory;
 import org.spongepowered.api.entity.living.animal.Horse;
 
@@ -97,7 +98,7 @@ public class PoreAbstractHorse extends PoreTameable implements AbstractHorse {
     }
 
     @Override
-    public Inventory getInventory() {
-        return PoreInventory.of(getHandle().getInventory());
+    public AbstractHorseInventory getInventory() {
+        return (AbstractHorseInventory) PoreInventory.of(getHandle().getInventory());
     }
 }

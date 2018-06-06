@@ -66,6 +66,8 @@ import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.Statistic;
 import org.bukkit.WeatherType;
+import org.bukkit.advancement.Advancement;
+import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.conversations.Conversation;
 import org.bukkit.conversations.ConversationAbandonedEvent;
 import org.bukkit.entity.Entity;
@@ -683,10 +685,12 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
         return bs.isPresent() && bs.get().isBanned(getHandle().getProfile());
     }
 
+    /*
     @Override
     public void setBanned(boolean banned) {
         applyBan(getHandle().getProfile(), banned);
     }
+    */
 
     @Override
     public boolean isWhitelisted() {
@@ -782,8 +786,18 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     }
 
     @Override
+    public void hidePlayer(Plugin plugin, org.bukkit.entity.Player player) {
+
+    }
+
+    @Override
     public void showPlayer(org.bukkit.entity.Player player) {
         //TODO: implement this once contextual data is merged into master
+    }
+
+    @Override
+    public void showPlayer(Plugin plugin, org.bukkit.entity.Player player) {
+
     }
 
     @Override
@@ -848,6 +862,11 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     }
 
     @Override
+    public void setResourcePack(String url, byte[] hash) {
+
+    }
+
+    @Override
     public Scoreboard getScoreboard() {
         return PoreScoreboard.of(getHandle().getScoreboard());
     }
@@ -881,6 +900,11 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     @Override
     public void sendTitle(String title, String subtitle) {
         getHandle().sendTitle(Title.of(PoreText.convert(title), PoreText.convert(subtitle)));
+    }
+
+    @Override
+    public void sendTitle(String title, String subtitle, int fadeIn, int stay, int fadeOut) {
+
     }
 
     @Override
@@ -1039,6 +1063,16 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     @Override
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data) {
         ParticleConverter.spawnParticle(getHandle(), particle, x, y, z, count, offsetX, offsetY, offsetZ, extra, data);
+    }
+
+    @Override
+    public AdvancementProgress getAdvancementProgress(Advancement advancement) {
+        return null;
+    }
+
+    @Override
+    public String getLocale() {
+        return null;
     }
 
     @Override

@@ -28,6 +28,7 @@ import blue.lapis.pore.impl.inventory.PoreInventory;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.BeaconInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -52,8 +53,13 @@ public class PoreBeacon extends PoreContainer implements org.bukkit.block.Beacon
     }
 
     @Override
-    public Inventory getInventory() {
-        return PoreInventory.of(getTileEntity().getInventory());
+    public BeaconInventory getInventory() {
+        return (BeaconInventory) PoreInventory.of(getTileEntity().getInventory());
+    }
+
+    @Override
+    public BeaconInventory getSnapshotInventory() {
+        return null;
     }
 
     @Override

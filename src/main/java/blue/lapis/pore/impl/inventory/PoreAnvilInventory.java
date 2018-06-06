@@ -41,4 +41,18 @@ public class PoreAnvilInventory extends PoreInventory implements AnvilInventory 
         super(handle);
     }
 
+    @Override
+    public String getRenameText() {
+        return null;
+    }
+
+    @Override
+    public int getRepairCost() {
+        return 0;
+    }
+
+    @Override
+    public void setRepairCost(int levels) {
+
+    }
 }

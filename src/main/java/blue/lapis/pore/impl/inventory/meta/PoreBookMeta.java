@@ -133,4 +133,9 @@ public class PoreBookMeta extends PoreItemMeta implements BookMeta {
         // TODO Auto-generated method stub
         throw new NotImplementedException("TODO"); //TODO
     }
+
+    @Override
+    public BookMeta.Spigot spigot() {
+        throw new NotImplementedException("TODO"); //TODO
+    }
 }

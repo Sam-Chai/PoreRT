@@ -63,6 +63,11 @@ public class PoreCommandSender extends PorePermissible implements CommandSender 
     }
 
     @Override
+    public Spigot spigot() {
+        return null;
+    }
+
+    @Override
     public Server getServer() {
         return Pore.getServer();
     }

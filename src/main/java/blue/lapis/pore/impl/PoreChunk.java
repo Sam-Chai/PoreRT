@@ -131,4 +131,9 @@ public class PoreChunk extends PoreWrapper<Chunk> implements org.bukkit.Chunk {
     public boolean unload() {
         return unload(true);
     }
+
+    @Override
+    public boolean isSlimeChunk() {
+        return false;
+    }
 }

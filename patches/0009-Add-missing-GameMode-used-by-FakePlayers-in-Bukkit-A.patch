@@ -1,4 +1,4 @@
-From 1c867edfe9f1d97dba806ba639f105d8838b2a03 Mon Sep 17 00:00:00 2001
+From 95df14db22d7c473bcb52469445b7e8b10bb6fdb Mon Sep 17 00:00:00 2001
 From: bloodshot <jdroque@gmail.com>
 Date: Wed, 18 Jun 2014 22:20:10 -0400
 Subject: [PATCH] Add missing GameMode used by FakePlayers in Bukkit API. Fixes
@@ -8,9 +8,6 @@ FakePlayers do not set their GameMode which results in using the default
 'NOT_SET(-1)' GameMode. Since this does not exist in Bukkit's API, any
 references from plugins to player.getGameMode() will be null. This commit
 simply adds the missing gamemode.
----
- src/main/java/org/bukkit/GameMode.java | 6 ++++++
- 1 file changed, 6 insertions(+)
 
 diff --git a/src/main/java/org/bukkit/GameMode.java b/src/main/java/org/bukkit/GameMode.java
 index 803944ea..9b6d220f 100644
@@ -30,5 +27,5 @@ index 803944ea..9b6d220f 100644
       * Creative mode may fly, build instantly, become invulnerable and create
       * free items.
 -- 
-2.11.0
+2.16.2.windows.1
 

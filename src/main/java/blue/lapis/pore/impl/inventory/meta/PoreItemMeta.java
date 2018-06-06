@@ -82,6 +82,21 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     }
 
     @Override
+    public boolean hasLocalizedName() {
+        return false;
+    }
+
+    @Override
+    public String getLocalizedName() {
+        return null;
+    }
+
+    @Override
+    public void setLocalizedName(String name) {
+
+    }
+
+    @Override
     public boolean hasLore() {
         Optional<List<Text>> lore = getHandle().get(Keys.ITEM_LORE);
         if (lore.isPresent()) {

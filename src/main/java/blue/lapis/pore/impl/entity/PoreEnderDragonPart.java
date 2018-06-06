@@ -63,6 +63,7 @@ public class PoreEnderDragonPart extends PoreComplexEntityPart implements org.bu
         getParent().damage(amount, source);
     }
 
+    /*
     @Override
     public void _INVALID_damage(int amount) {
         this.damage(amount);
@@ -72,49 +73,58 @@ public class PoreEnderDragonPart extends PoreComplexEntityPart implements org.bu
     public void _INVALID_damage(int amount, Entity source) {
         this.damage(amount, source);
     }
+    */
 
     @Override
     public double getHealth() {
-        return getParent().getHealth();
+        return this.getHandle().getParent().getHealthData().health().get();
     }
 
+    /*
     @Override
     public int _INVALID_getHealth() {
         return (int) getHealth();
     }
+    */
 
     @Override
     public void setHealth(double health) {
-        getParent().setHealth(health);
+        this.getHandle().getParent().getHealthData().health().set(health);
     }
 
+    /*
     @Override
     public void _INVALID_setHealth(int health) {
         this.setHealth(health);
     }
+    */
 
     @Override
     public double getMaxHealth() {
-        throw new NotImplementedException("TODO"); //TODO
+        return this.getHandle().getParent().getHealthData().maxHealth().get();
     }
 
+    /*
     @Override
     public int _INVALID_getMaxHealth() {
         return (int) this.getMaxHealth();
     }
+    */
 
     @Override
     public void setMaxHealth(double health) {
-        getParent().setMaxHealth(health);
+        this.getHandle().getParent().getHealthData().maxHealth().set(health);
     }
 
+    /*
     @Override
     public void _INVALID_setMaxHealth(int health) {
         this.setMaxHealth(health);
     }
+    */
 
     @Override
     public void resetMaxHealth() {
-        getParent().resetMaxHealth();
+        this.setMaxHealth(this.getHandle().getParent().getHealthData().maxHealth().getDefault());
     }
 }

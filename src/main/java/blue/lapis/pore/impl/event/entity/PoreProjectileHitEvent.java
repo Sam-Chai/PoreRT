@@ -32,12 +32,17 @@ import blue.lapis.pore.converter.type.entity.EntityConverter;
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.event.Source;
+import blue.lapis.pore.impl.block.PoreBlock;
+import blue.lapis.pore.impl.entity.PoreEntity;
 import blue.lapis.pore.impl.entity.PoreProjectile;
 
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.spongepowered.api.entity.projectile.Projectile;
 import org.spongepowered.api.event.action.CollideEvent;
+import org.spongepowered.api.event.cause.EventContextKeys;
 
 @RegisterEvent
 public final class PoreProjectileHitEvent extends ProjectileHitEvent implements PoreEvent<CollideEvent.Impact> {
@@ -53,6 +58,17 @@ public final class PoreProjectileHitEvent extends ProjectileHitEvent implements 
 
     public CollideEvent.Impact getHandle() {
         return this.handle;
+    }
+
+    @Override
+    public Block getHitBlock() {
+        return PoreBlock.of(this.getHandle().getContext().get(EventContextKeys.BLOCK_HIT).orElse(null)
+                .getLocation().orElse(null));
+    }
+
+    @Override
+    public Entity getHitEntity() {
+        return PoreEntity.of(this.getHandle().getContext().get(EventContextKeys.ENTITY_HIT).orElse(null));
     }
 
     @Override

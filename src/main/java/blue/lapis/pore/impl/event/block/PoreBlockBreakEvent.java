@@ -44,6 +44,7 @@ import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
+import org.spongepowered.api.event.cause.EventContextKeys;
 import org.spongepowered.api.util.GuavaCollectors;
 import org.spongepowered.api.world.Location;
 
@@ -73,6 +74,16 @@ public final class PoreBlockBreakEvent extends BlockBreakEvent implements PoreEv
     @Override
     public Block getBlock() {
         return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
+    }
+
+    @Override
+    public void setDropItems(boolean dropItems) {
+        // TODO
+    }
+
+    @Override
+    public boolean isDropItems() {
+        return true;
     }
 
     @Override

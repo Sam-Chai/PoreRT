@@ -27,6 +27,7 @@
 package blue.lapis.pore.impl.inventory.meta;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.spongepowered.api.item.inventory.ItemStack;
 
@@ -54,6 +55,16 @@ public class PoreSkullMeta extends PoreItemMeta implements SkullMeta {
     @Override
     public boolean setOwner(String owner) {
         throw new NotImplementedException("TODO"); //TODO
+    }
+
+    @Override
+    public OfflinePlayer getOwningPlayer() {
+        return null;
+    }
+
+    @Override
+    public boolean setOwningPlayer(OfflinePlayer owner) {
+        return false;
     }
 
     @Override

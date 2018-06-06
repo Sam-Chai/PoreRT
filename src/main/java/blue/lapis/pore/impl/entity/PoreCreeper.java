@@ -68,4 +68,24 @@ public class PoreCreeper extends PoreMonster implements org.bukkit.entity.Creepe
             }
         }
     }
+
+    @Override
+    public void setMaxFuseTicks(int ticks) {
+
+    }
+
+    @Override
+    public int getMaxFuseTicks() {
+        return 0;
+    }
+
+    @Override
+    public void setExplosionRadius(int radius) {
+
+    }
+
+    @Override
+    public int getExplosionRadius() {
+        return 0;
+    }
 }

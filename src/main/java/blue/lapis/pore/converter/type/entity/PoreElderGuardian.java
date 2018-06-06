@@ -23,7 +23,11 @@ package blue.lapis.pore.converter.type.entity;
 
 import blue.lapis.pore.impl.entity.PoreGuardian;
 
+import org.bukkit.block.PistonMoveReaction;
+import org.bukkit.entity.Entity;
 import org.spongepowered.api.entity.living.monster.Guardian;
+
+import java.util.List;
 
 public class PoreElderGuardian extends PoreGuardian implements org.bukkit.entity.ElderGuardian {
 
@@ -32,4 +36,33 @@ public class PoreElderGuardian extends PoreGuardian implements org.bukkit.entity
         super(handle);
     }
 
+    @Override
+    public double getHeight() {
+        return 0;
+    }
+
+    @Override
+    public double getWidth() {
+        return 0;
+    }
+
+    @Override
+    public List<Entity> getPassengers() {
+        return null;
+    }
+
+    @Override
+    public boolean addPassenger(Entity passenger) {
+        return false;
+    }
+
+    @Override
+    public boolean removePassenger(Entity passenger) {
+        return false;
+    }
+
+    @Override
+    public PistonMoveReaction getPistonMoveReaction() {
+        return null;
+    }
 }

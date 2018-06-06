@@ -29,6 +29,7 @@ package blue.lapis.pore.impl.entity;
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.spongepowered.api.entity.living.monster.Slime;
 
 public class PoreSlime extends PoreLivingEntity implements org.bukkit.entity.Slime {
@@ -59,5 +60,15 @@ public class PoreSlime extends PoreLivingEntity implements org.bukkit.entity.Sli
     @Override
     public void setSize(int size) {
         getHandle().offer(getHandle().getSlimeData().size().set(size));
+    }
+
+    @Override
+    public void setTarget(LivingEntity target) {
+
+    }
+
+    @Override
+    public LivingEntity getTarget() {
+        return null;
     }
 }

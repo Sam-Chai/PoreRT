@@ -64,4 +64,9 @@ public class PoreDispenser extends PoreContainer implements org.bukkit.block.Dis
     public Inventory getInventory() {
         return PoreInventory.of(getTileEntity().getInventory());
     }
+
+    @Override
+    public Inventory getSnapshotInventory() {
+        return null;
+    }
 }

@@ -51,4 +51,9 @@ public class PoreHopper extends PoreContainer implements org.bukkit.block.Hopper
     public Inventory getInventory() {
         return PoreInventory.of(getTileEntity().getInventory());
     }
+
+    @Override
+    public Inventory getSnapshotInventory() {
+        return null;
+    }
 }

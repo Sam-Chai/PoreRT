@@ -51,15 +51,8 @@ import com.google.common.collect.Lists;
 import net.minecraft.init.Enchantments;
 import net.minecraft.server.MinecraftServer;
 import org.apache.commons.lang3.NotImplementedException;
-import org.bukkit.BanList;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Server;
-import org.bukkit.UnsafeValues;
-import org.bukkit.Warning;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -71,6 +64,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.generator.ChunkGenerator;
@@ -282,11 +276,13 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
         return PoreVersion.API_VERSION + '@' + game.getPlatform().getApi().getVersion();
     }
 
+    /*
     @Override
     public Player[] _INVALID_getOnlinePlayers() {
         Collection<? extends Player> online = getOnlinePlayers();
         return online.toArray(new Player[online.size()]);
     }
+    */
 
     @Override
     public Collection<? extends Player> getOnlinePlayers() {
@@ -553,6 +549,11 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
     }
 
     @Override
+    public void reloadData() {
+
+    }
+
+    @Override
     public Logger getLogger() {
         return logger;
     }
@@ -581,10 +582,12 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
         return commandMap.dispatch(sender, commandLine);
     }
 
+    /*
     @Override
     public void configureDbConfig(ServerConfig config) {
         throw new NotImplementedException("TODO"); //TODO
     }
+    */
 
     @Override
     public boolean addRecipe(Recipe recipe) {
@@ -594,14 +597,14 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public List<Recipe> getRecipesFor(ItemStack result) {
-        List<Recipe> list = new ArrayList<Recipe>();
+        List<Recipe> list = new ArrayList<>();
         return list;
         //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Iterator<Recipe> recipeIterator() {
-        List<Recipe> list = new ArrayList<Recipe>();
+        List<Recipe> list = new ArrayList<>();
         return list.iterator();
         //throw new NotImplementedException("TODO"); //TODO
     }
@@ -941,6 +944,21 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
     @Override
     public BossBar createBossBar(String title, BarColor color, BarStyle style, BarFlag... flags) {
         throw new NotImplementedException("TODO"); //TODO
+    }
+
+    @Override
+    public Entity getEntity(UUID uuid) {
+        return null;
+    }
+
+    @Override
+    public Advancement getAdvancement(NamespacedKey key) {
+        return null;
+    }
+
+    @Override
+    public Iterator<Advancement> advancementIterator() {
+        return null;
     }
 
     @Override

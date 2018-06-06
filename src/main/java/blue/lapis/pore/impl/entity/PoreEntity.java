@@ -36,6 +36,7 @@ import org.bukkit.EntityEffect;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.block.PistonMoveReaction;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -110,6 +111,16 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
     public Vector getVelocity() {
         return getHandle().get(Keys.VELOCITY).map(VectorConverter::createBukkitVector)
                 .orElseGet(() -> new Vector(0, 0, 0));
+    }
+
+    @Override
+    public double getHeight() {
+        return 0;
+    }
+
+    @Override
+    public double getWidth() {
+        return 0;
     }
 
     @Override
@@ -228,6 +239,21 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
             return getHandle().remove(Keys.PASSENGERS).isSuccessful();
         }
         */
+    }
+
+    @Override
+    public List<org.bukkit.entity.Entity> getPassengers() {
+        return null;
+    }
+
+    @Override
+    public boolean addPassenger(org.bukkit.entity.Entity passenger) {
+        return false;
+    }
+
+    @Override
+    public boolean removePassenger(org.bukkit.entity.Entity passenger) {
+        return false;
     }
 
     @Override
@@ -402,6 +428,11 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
     @Override
     public boolean removeScoreboardTag(String tag) {
         throw new NotImplementedException("Sponge API needs Merge");
+    }
+
+    @Override
+    public PistonMoveReaction getPistonMoveReaction() {
+        return null;
     }
 
     @Override

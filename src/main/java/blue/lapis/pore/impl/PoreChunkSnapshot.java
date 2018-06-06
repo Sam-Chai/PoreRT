@@ -28,6 +28,7 @@ package blue.lapis.pore.impl;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.ChunkSnapshot;
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
 
 //TODO: skeleton implementation
@@ -46,6 +47,11 @@ public class PoreChunkSnapshot implements ChunkSnapshot {
     @Override
     public String getWorldName() {
         throw new NotImplementedException("TODO"); //TODO
+    }
+
+    @Override
+    public Material getBlockType(int x, int y, int z) {
+        return null;
     }
 
     @Override

@@ -44,7 +44,7 @@ public final class PoreBrewEvent extends org.bukkit.event.inventory.BrewEvent im
     private final BrewingEvent.Start handle;
 
     public PoreBrewEvent(BrewingEvent.Start handle) {
-        super(null, null);
+        super(null, null, 0);
         this.handle = checkNotNull(handle, "handle");
     }
 
@@ -60,6 +60,11 @@ public final class PoreBrewEvent extends org.bukkit.event.inventory.BrewEvent im
     @Override
     public BrewerInventory getContents() {
         return PoreBrewerInventory.of(this.getHandle().getTargetTile().getInventory());
+    }
+
+    @Override
+    public int getFuelLevel() {
+        return 0;
     }
 
     @Override

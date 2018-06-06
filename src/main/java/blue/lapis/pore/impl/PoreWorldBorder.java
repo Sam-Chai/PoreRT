@@ -138,4 +138,9 @@ public class PoreWorldBorder extends PoreWrapper<WorldBorder> implements org.buk
     public void setWarningDistance(int distance) {
         getHandle().setWarningDistance(distance);
     }
+
+    @Override
+    public boolean isInside(Location location) {
+        return false;
+    }
 }

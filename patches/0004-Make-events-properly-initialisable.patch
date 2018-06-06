@@ -1,22 +1,11 @@
-From 65eb0f343925cbf316a09fe0d60b5569b0b4fa4b Mon Sep 17 00:00:00 2001
+From e8d0e522091ad5aa92a1555e5851d87ffc97ff55 Mon Sep 17 00:00:00 2001
 From: Minecrell <dev@minecrell.net>
 Date: Tue, 3 Mar 2015 22:31:03 +0100
-Subject: [PATCH 1/5] Make events properly initialisable
+Subject: [PATCH] Make events properly initialisable
 
----
- src/main/java/org/bukkit/event/Event.java                      |  4 ++++
- src/main/java/org/bukkit/event/block/BlockMultiPlaceEvent.java | 10 ++++++++--
- .../java/org/bukkit/event/enchantment/EnchantItemEvent.java    |  2 +-
- .../java/org/bukkit/event/inventory/InventoryClickEvent.java   |  6 +++++-
- src/main/java/org/bukkit/event/player/PlayerEditBookEvent.java | 10 ++++++----
- src/main/java/org/bukkit/event/world/ChunkEvent.java           |  2 +-
- src/main/java/org/bukkit/event/world/PortalCreateEvent.java    |  4 ++--
- src/main/java/org/bukkit/event/world/StructureGrowEvent.java   |  2 +-
- src/main/java/org/bukkit/event/world/WorldEvent.java           |  8 ++++++++
- 9 files changed, 36 insertions(+), 12 deletions(-)
 
 diff --git a/src/main/java/org/bukkit/event/Event.java b/src/main/java/org/bukkit/event/Event.java
-index 6677e1b..d8ce291 100644
+index 6677e1bd..d8ce2910 100644
 --- a/src/main/java/org/bukkit/event/Event.java
 +++ b/src/main/java/org/bukkit/event/Event.java
 @@ -95,4 +95,8 @@ public abstract class Event {
@@ -29,7 +18,7 @@ index 6677e1b..d8ce291 100644
 +    }
  }
 diff --git a/src/main/java/org/bukkit/event/block/BlockMultiPlaceEvent.java b/src/main/java/org/bukkit/event/block/BlockMultiPlaceEvent.java
-index d16e4be..e6b9ee0 100644
+index d16e4be7..e6b9ee02 100644
 --- a/src/main/java/org/bukkit/event/block/BlockMultiPlaceEvent.java
 +++ b/src/main/java/org/bukkit/event/block/BlockMultiPlaceEvent.java
 @@ -19,8 +19,14 @@ public class BlockMultiPlaceEvent extends BlockPlaceEvent {
@@ -50,7 +39,7 @@ index d16e4be..e6b9ee0 100644
  
      /**
 diff --git a/src/main/java/org/bukkit/event/enchantment/EnchantItemEvent.java b/src/main/java/org/bukkit/event/enchantment/EnchantItemEvent.java
-index de28f1d..a06ceba 100644
+index de28f1d9..a06ceba5 100644
 --- a/src/main/java/org/bukkit/event/enchantment/EnchantItemEvent.java
 +++ b/src/main/java/org/bukkit/event/enchantment/EnchantItemEvent.java
 @@ -32,7 +32,7 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
@@ -63,7 +52,7 @@ index de28f1d..a06ceba 100644
          this.button = i;
      }
 diff --git a/src/main/java/org/bukkit/event/inventory/InventoryClickEvent.java b/src/main/java/org/bukkit/event/inventory/InventoryClickEvent.java
-index 60feaf3..0a8dd9f 100644
+index 60feaf3b..0a8dd9fe 100644
 --- a/src/main/java/org/bukkit/event/inventory/InventoryClickEvent.java
 +++ b/src/main/java/org/bukkit/event/inventory/InventoryClickEvent.java
 @@ -65,7 +65,11 @@ public class InventoryClickEvent extends InventoryInteractEvent {
@@ -80,16 +69,13 @@ index 60feaf3..0a8dd9f 100644
          this.action = action;
      }
 diff --git a/src/main/java/org/bukkit/event/player/PlayerEditBookEvent.java b/src/main/java/org/bukkit/event/player/PlayerEditBookEvent.java
-index ea7ecef..ff75381 100644
+index 2cb8ca28..d3b12ced 100644
 --- a/src/main/java/org/bukkit/event/player/PlayerEditBookEvent.java
 +++ b/src/main/java/org/bukkit/event/player/PlayerEditBookEvent.java
-@@ -23,11 +23,13 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
-     public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, boolean isSigning) {
-         super(who);
- 
--        Validate.isTrue(slot >= 0 && slot <=8, "Slot must be in range 0-8 inclusive");
--        Validate.notNull(previousBookMeta, "Previous book meta must not be null");
--        Validate.notNull(newBookMeta, "New book meta must not be null");
+@@ -26,8 +26,13 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
+         Validate.isTrue(slot >= 0 && slot <= 8, "Slot must be in range 0-8 inclusive");
+         Validate.notNull(previousBookMeta, "Previous book meta must not be null");
+         Validate.notNull(newBookMeta, "New book meta must not be null");
 +        if (!isPoreEvent()) {
 +            Validate.isTrue(slot >= 0 && slot <=8, "Slot must be in range 0-8 inclusive");
 +            Validate.notNull(previousBookMeta, "Previous book meta must not be null");
@@ -102,7 +88,7 @@ index ea7ecef..ff75381 100644
          this.previousBookMeta = previousBookMeta;
          this.newBookMeta = newBookMeta;
 diff --git a/src/main/java/org/bukkit/event/world/ChunkEvent.java b/src/main/java/org/bukkit/event/world/ChunkEvent.java
-index 4710d40..b1bde64 100644
+index 4710d40f..b1bde644 100644
 --- a/src/main/java/org/bukkit/event/world/ChunkEvent.java
 +++ b/src/main/java/org/bukkit/event/world/ChunkEvent.java
 @@ -9,7 +9,7 @@ public abstract class ChunkEvent extends WorldEvent {
@@ -115,7 +101,7 @@ index 4710d40..b1bde64 100644
      }
  
 diff --git a/src/main/java/org/bukkit/event/world/PortalCreateEvent.java b/src/main/java/org/bukkit/event/world/PortalCreateEvent.java
-index d83d7a9..c7fb32d 100644
+index d83d7a99..c7fb32d5 100644
 --- a/src/main/java/org/bukkit/event/world/PortalCreateEvent.java
 +++ b/src/main/java/org/bukkit/event/world/PortalCreateEvent.java
 @@ -14,13 +14,13 @@ import java.util.Collection;
@@ -135,7 +121,7 @@ index d83d7a9..c7fb32d 100644
      }
  
 diff --git a/src/main/java/org/bukkit/event/world/StructureGrowEvent.java b/src/main/java/org/bukkit/event/world/StructureGrowEvent.java
-index 62d300d..fe57c79 100644
+index 62d300d7..fe57c79c 100644
 --- a/src/main/java/org/bukkit/event/world/StructureGrowEvent.java
 +++ b/src/main/java/org/bukkit/event/world/StructureGrowEvent.java
 @@ -22,7 +22,7 @@ public class StructureGrowEvent extends WorldEvent implements Cancellable {
@@ -148,7 +134,7 @@ index 62d300d..fe57c79 100644
          this.species = species;
          this.bonemeal = bonemeal;
 diff --git a/src/main/java/org/bukkit/event/world/WorldEvent.java b/src/main/java/org/bukkit/event/world/WorldEvent.java
-index bd89b81..e4bc7c3 100644
+index bd89b81d..e4bc7c3b 100644
 --- a/src/main/java/org/bukkit/event/world/WorldEvent.java
 +++ b/src/main/java/org/bukkit/event/world/WorldEvent.java
 @@ -13,6 +13,14 @@ public abstract class WorldEvent extends Event {
@@ -167,5 +153,5 @@ index bd89b81..e4bc7c3 100644
       * Gets the world primarily involved with this event
       *
 -- 
-2.10.2
+2.16.2.windows.1
 

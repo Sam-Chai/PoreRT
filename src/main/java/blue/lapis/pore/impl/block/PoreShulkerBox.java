@@ -45,6 +45,11 @@ public class PoreShulkerBox extends PoreContainer implements org.bukkit.block.Sh
     }
 
     @Override
+    public Inventory getSnapshotInventory() {
+        return null;
+    }
+
+    @Override
     public DyeColor getColor() {
         throw new NotImplementedException("Not available in Sponge");
     }

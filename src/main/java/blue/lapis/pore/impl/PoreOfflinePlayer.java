@@ -76,10 +76,12 @@ public class PoreOfflinePlayer extends PoreWrapper<User> implements OfflinePlaye
         return bs.isPresent() && bs.get().isBanned(getHandle().getProfile());
     }
 
+    /*
     @Override
     public void setBanned(boolean banned) {
         PorePlayer.applyBan(getHandle().getProfile(), banned);
     }
+    */
 
     @Override
     public boolean isWhitelisted() {

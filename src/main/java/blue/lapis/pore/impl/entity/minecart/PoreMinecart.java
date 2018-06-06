@@ -31,10 +31,14 @@ import blue.lapis.pore.converter.wrapper.WrapperConverter;
 import blue.lapis.pore.impl.entity.PoreVehicle;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.block.PistonMoveReaction;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.material.MaterialData;
 import org.bukkit.util.Vector;
 import org.spongepowered.api.entity.vehicle.minecart.Minecart;
+
+import java.util.List;
 
 public class PoreMinecart extends PoreVehicle implements org.bukkit.entity.Minecart {
 
@@ -52,24 +56,58 @@ public class PoreMinecart extends PoreVehicle implements org.bukkit.entity.Minec
     }
 
     @Override
+    public double getHeight() {
+        return 0;
+    }
+
+    @Override
+    public double getWidth() {
+        return 0;
+    }
+
+    @Override
+    public List<Entity> getPassengers() {
+        return null;
+    }
+
+    @Override
+    public boolean addPassenger(Entity passenger) {
+        return false;
+    }
+
+    @Override
+    public boolean removePassenger(Entity passenger) {
+        return false;
+    }
+
+    @Override
     public EntityType getType() {
         return EntityType.MINECART;
     }
 
     @Override
+    public PistonMoveReaction getPistonMoveReaction() {
+        return null;
+    }
+
+    /*
+    @Override
     public void _INVALID_setDamage(int damage) {
         this.setDamage((double) damage);
     }
+    */
 
     @Override
     public void setDamage(double damage) {
         throw new NotImplementedException("TODO"); //TODO
     }
 
+    /*
     @Override
     public int _INVALID_getDamage() {
         return (int) this.getDamage();
     }
+    */
 
     @Override
     public double getDamage() {

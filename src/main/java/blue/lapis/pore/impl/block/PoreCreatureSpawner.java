@@ -77,4 +77,64 @@ public class PoreCreatureSpawner extends PoreBlockState implements CreatureSpawn
     public void setDelay(int delay) {
         throw new NotImplementedException("TODO"); //TODO
     }
+
+    @Override
+    public int getMinSpawnDelay() {
+        return 0;
+    }
+
+    @Override
+    public void setMinSpawnDelay(int delay) {
+
+    }
+
+    @Override
+    public int getMaxSpawnDelay() {
+        return 0;
+    }
+
+    @Override
+    public void setMaxSpawnDelay(int delay) {
+
+    }
+
+    @Override
+    public int getSpawnCount() {
+        return 0;
+    }
+
+    @Override
+    public void setSpawnCount(int spawnCount) {
+
+    }
+
+    @Override
+    public int getMaxNearbyEntities() {
+        return 0;
+    }
+
+    @Override
+    public void setMaxNearbyEntities(int maxNearbyEntities) {
+
+    }
+
+    @Override
+    public int getRequiredPlayerRange() {
+        return 0;
+    }
+
+    @Override
+    public void setRequiredPlayerRange(int requiredPlayerRange) {
+
+    }
+
+    @Override
+    public int getSpawnRange() {
+        return 0;
+    }
+
+    @Override
+    public void setSpawnRange(int spawnRange) {
+
+    }
 }

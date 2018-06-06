@@ -58,6 +58,11 @@ public class PoreBukkitTask extends PoreWrapper<Task> implements BukkitTask {
     }
 
     @Override
+    public boolean isCancelled() {
+        return false;
+    }
+
+    @Override
     public void cancel() {
         if (!getHandle().cancel()) {
             throw new RuntimeException("Failed to cancel task " + getTaskId());

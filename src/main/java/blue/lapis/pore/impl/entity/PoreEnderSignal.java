@@ -28,6 +28,7 @@ package blue.lapis.pore.impl.entity;
 
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 
+import org.bukkit.Location;
 import org.bukkit.entity.EnderSignal;
 import org.bukkit.entity.EntityType;
 import org.spongepowered.api.entity.projectile.EyeOfEnder;
@@ -52,4 +53,33 @@ public class PoreEnderSignal extends PoreEntity implements EnderSignal {
         return EntityType.ENDER_SIGNAL;
     }
 
+    @Override
+    public Location getTargetLocation() {
+        return null;
+    }
+
+    @Override
+    public void setTargetLocation(Location location) {
+
+    }
+
+    @Override
+    public boolean getDropItem() {
+        return false;
+    }
+
+    @Override
+    public void setDropItem(boolean drop) {
+
+    }
+
+    @Override
+    public int getDespawnTimer() {
+        return 0;
+    }
+
+    @Override
+    public void setDespawnTimer(int timer) {
+
+    }
 }

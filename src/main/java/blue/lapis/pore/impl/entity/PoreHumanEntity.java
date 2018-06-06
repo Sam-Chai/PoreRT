@@ -33,6 +33,8 @@ import blue.lapis.pore.impl.inventory.PorePlayerInventory;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.Inventory;
@@ -173,6 +175,21 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
     }
 
     @Override
+    public boolean hasCooldown(Material material) {
+        return false;
+    }
+
+    @Override
+    public int getCooldown(Material material) {
+        return 0;
+    }
+
+    @Override
+    public void setCooldown(Material material, int ticks) {
+
+    }
+
+    @Override
     public boolean isSleeping() {
         return getHandle().get(Keys.IS_SLEEPING).get();
     }
@@ -201,6 +218,26 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
     public int getExpToLevel() {
         return getHandle().get(EXPERIENCE_HOLDER_DATA).get().getExperienceBetweenLevels().get()
                 - getHandle().get(EXPERIENCE_HOLDER_DATA).get().experienceSinceLevel().get();
+    }
+
+    @Override
+    public Entity getShoulderEntityLeft() {
+        return null;
+    }
+
+    @Override
+    public void setShoulderEntityLeft(Entity entity) {
+
+    }
+
+    @Override
+    public Entity getShoulderEntityRight() {
+        return null;
+    }
+
+    @Override
+    public void setShoulderEntityRight(Entity entity) {
+
     }
 
     @Override

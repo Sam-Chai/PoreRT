@@ -78,9 +78,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.MetadataStore;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.Consumer;
 import org.bukkit.util.Vector;
 import org.spongepowered.api.block.BlockTypes;
 import org.spongepowered.api.entity.EntityTypes;
@@ -429,6 +431,11 @@ public class PoreWorld extends PoreWrapper<World> implements org.bukkit.World {
     }
 
     @Override
+    public boolean setSpawnLocation(Location location) {
+        return false;
+    }
+
+    @Override
     public boolean setSpawnLocation(int x, int y, int z) {
         Vector3i position = new Vector3i(x, y, z);
         getHandle().getProperties().setSpawnPosition(position);
@@ -580,6 +587,16 @@ public class PoreWorld extends PoreWrapper<World> implements org.bukkit.World {
             throw new IllegalStateException("Spawned entity was not of the appropriate type: "
                     + "Expected " + clazz + ", found " + spawned.getClass());
         }
+    }
+
+    @Override
+    public <T extends Entity> T spawn(Location location, Class<T> clazz, Consumer<T> function) throws IllegalArgumentException {
+        return null;
+    }
+
+    @Override
+    public FallingBlock spawnFallingBlock(Location location, MaterialData data) throws IllegalArgumentException {
+        return null;
     }
 
     @Override

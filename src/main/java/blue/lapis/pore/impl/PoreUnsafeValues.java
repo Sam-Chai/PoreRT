@@ -34,8 +34,10 @@ import blue.lapis.pore.converter.type.statistic.StatisticConverter;
 import com.google.common.collect.Iterables;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Statistic;
 import org.bukkit.UnsafeValues;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
 import org.spongepowered.api.CatalogType;
@@ -138,5 +140,15 @@ public class PoreUnsafeValues implements UnsafeValues {
         ));
         return found;
         */
+    }
+
+    @Override
+    public Advancement loadAdvancement(NamespacedKey key, String advancement) {
+        return null;
+    }
+
+    @Override
+    public boolean removeAdvancement(NamespacedKey key) {
+        return false;
     }
 }

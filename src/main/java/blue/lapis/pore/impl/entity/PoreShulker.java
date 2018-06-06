@@ -2,6 +2,7 @@ package blue.lapis.pore.impl.entity;
 
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 
+import org.bukkit.DyeColor;
 import org.bukkit.entity.EntityType;
 import org.spongepowered.api.entity.living.golem.Shulker;
 
@@ -25,4 +26,13 @@ public class PoreShulker extends PoreGolem implements org.bukkit.entity.Shulker 
         return EntityType.SHULKER;
     }
 
+    @Override
+    public DyeColor getColor() {
+        return null;
+    }
+
+    @Override
+    public void setColor(DyeColor color) {
+
+    }
 }

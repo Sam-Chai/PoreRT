@@ -1,15 +1,15 @@
-From 2a8c925d9e95887c6cc5aba972dd2b9470560a79 Mon Sep 17 00:00:00 2001
+From 77e03961d7a6df7a5781251b4e86841155bb477d Mon Sep 17 00:00:00 2001
 From: Minecrell <dev@minecrell.net>
 Date: Thu, 14 May 2015 15:05:09 +0200
 Subject: [PATCH] Remove plugin prefixes and use normal logger instead
 
 
 diff --git a/src/main/java/org/bukkit/plugin/java/JavaPlugin.java b/src/main/java/org/bukkit/plugin/java/JavaPlugin.java
-index c961b18..75e9f80 100644
+index 16b1eb37..bbca8f59 100644
 --- a/src/main/java/org/bukkit/plugin/java/JavaPlugin.java
 +++ b/src/main/java/org/bukkit/plugin/java/JavaPlugin.java
-@@ -56,7 +56,7 @@ public abstract class JavaPlugin extends PluginBase {
-     private EbeanServer ebean = null;
+@@ -50,7 +50,7 @@ public abstract class JavaPlugin extends PluginBase {
+     private boolean naggable = true;
      private FileConfiguration newConfig = null;
      private File configFile = null;
 -    private PluginLogger logger = null;
@@ -17,15 +17,65 @@ index c961b18..75e9f80 100644
  
      public JavaPlugin() {
          final ClassLoader classLoader = this.getClass().getClassLoader();
-@@ -351,7 +351,7 @@ public abstract class JavaPlugin extends PluginBase {
+@@ -277,7 +277,57 @@ public abstract class JavaPlugin extends PluginBase {
          this.dataFolder = dataFolder;
          this.classLoader = classLoader;
          this.configFile = new File(dataFolder, "config.yml");
 -        this.logger = new PluginLogger(this);
 +        this.logger = Logger.getLogger("pore." + description.getName());
++
++        /*
++        if (description.isDatabaseEnabled()) {
++            ServerConfig db = new ServerConfig();
++
++            db.setDefaultServer(false);
++            db.setRegister(false);
++            db.setClasses(getDatabaseClasses());
++            db.setName(description.getName());
++            server.configureDbConfig(db);
++
++            DataSourceConfig ds = db.getDataSourceConfig();
++
++            ds.setUrl(replaceDatabaseString(ds.getUrl()));
++            dataFolder.mkdirs();
++
++            ClassLoader previous = Thread.currentThread().getContextClassLoader();
++
++            Thread.currentThread().setContextClassLoader(classLoader);
++            ebean = EbeanServerFactory.create(db);
++            Thread.currentThread().setContextClassLoader(previous);
++        }
++        */
++    }
++
++    /**
++     * Provides a list of all classes that should be persisted in the database
++     *
++     * @return List of Classes that are Ebeans
++     */
++    public List<Class<?>> getDatabaseClasses() {
++        return new ArrayList<Class<?>>();
++    }
++
++    private String replaceDatabaseString(String input) {
++        input = input.replaceAll("\\{DIR\\}", dataFolder.getPath().replaceAll("\\\\", "/") + "/");
++        input = input.replaceAll("\\{NAME\\}", description.getName().replaceAll("[^\\w_-]", ""));
++        return input;
++    }
++
++    /**
++     * Gets the initialization status of this plugin
++     *
++     * @return true if this plugin is initialized, otherwise false
++     * @deprecated This method cannot return false, as {@link
++     *     JavaPlugin} is now initialized in the constructor.
++     */
++    @Deprecated
++    public final boolean isInitialized() {
++        return true;
+     }
  
-         if (description.isDatabaseEnabled()) {
-             ServerConfig db = new ServerConfig();
+     /**
 -- 
-2.4.0
+2.16.2.windows.1
 

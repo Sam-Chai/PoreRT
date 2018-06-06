@@ -1,14 +1,11 @@
-From b1ec0da514c86b824c621e5691c4e47285c2e13c Mon Sep 17 00:00:00 2001
+From 7f6337b4fb2286cbf696fb215c07f8cc646f7069 Mon Sep 17 00:00:00 2001
 From: Maxqia <public@maxqia.com>
 Date: Sun, 25 Dec 2016 19:43:54 -0800
 Subject: [PATCH] Add ability to add materials to Material (thx Cauldron)
 
----
- src/main/java/org/bukkit/Material.java | 226 ++++++++++++++++++++++++++++++++-
- 1 file changed, 223 insertions(+), 3 deletions(-)
 
 diff --git a/src/main/java/org/bukkit/Material.java b/src/main/java/org/bukkit/Material.java
-index 62062234..1beacb7e 100644
+index fcc76e19..a60776dc 100644
 --- a/src/main/java/org/bukkit/Material.java
 +++ b/src/main/java/org/bukkit/Material.java
 @@ -4,6 +4,14 @@ import java.lang.reflect.Constructor;
@@ -26,7 +23,7 @@ index 62062234..1beacb7e 100644
  import org.apache.commons.lang.Validate;
  import org.bukkit.map.MapView;
  import org.bukkit.material.Bed;
-@@ -519,15 +527,31 @@ public enum Material {
+@@ -540,15 +548,31 @@ public enum Material {
  
      private final int id;
      private final Constructor<? extends MaterialData> ctor;
@@ -60,7 +57,7 @@ index 62062234..1beacb7e 100644
      private Material(final int id, final int stack) {
          this(id, stack, MaterialData.class);
      }
-@@ -628,7 +652,7 @@ public enum Material {
+@@ -649,7 +673,7 @@ public enum Material {
       * @return true if this material is a block
       */
      public boolean isBlock() {
@@ -69,8 +66,8 @@ index 62062234..1beacb7e 100644
      }
  
      /**
-@@ -1252,4 +1276,200 @@ public enum Material {
-                 return false;
+@@ -1453,4 +1477,200 @@ public enum Material {
+                 return true;
          }
      }
 +
@@ -271,5 +268,5 @@ index 62062234..1beacb7e 100644
 +    /* ===============================  Cauldron END============================= */
  }
 -- 
-2.11.0
+2.16.2.windows.1
 

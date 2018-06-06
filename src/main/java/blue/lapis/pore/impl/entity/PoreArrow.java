@@ -32,6 +32,7 @@ import static org.spongepowered.api.data.manipulator.catalog.CatalogEntityData.K
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.spongepowered.api.entity.projectile.arrow.Arrow;
 
@@ -81,6 +82,26 @@ public class PoreArrow extends PoreProjectile implements org.bukkit.entity.Arrow
                 getHandle().remove(CRITICAL_HIT_DATA);
             }
         }
+    }
+
+    @Override
+    public boolean isInBlock() {
+        return false;
+    }
+
+    @Override
+    public Block getAttachedBlock() {
+        return null;
+    }
+
+    @Override
+    public PickupStatus getPickupStatus() {
+        return null;
+    }
+
+    @Override
+    public void setPickupStatus(PickupStatus status) {
+
     }
 
     @Override

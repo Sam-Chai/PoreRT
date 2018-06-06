@@ -62,6 +62,11 @@ public class PoreBrewingStand extends PoreContainer implements org.bukkit.block.
     }
 
     @Override
+    public BrewerInventory getSnapshotInventory() {
+        return null;
+    }
+
+    @Override
     public int getFuelLevel() { //TODO bug Sponge about this
         throw new NotImplementedException("TODO"); //TODO
     }

@@ -135,10 +135,12 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
         return BlockRay.from(getHandle()).skipFilter(new IncludeTargetFilter(filter)).distanceLimit(maxDistance);
     }
 
+    /*
     @Override
     public List<Block> getLineOfSight(HashSet<Byte> transparent, int maxDistance) {
         return getLineOfSight(toMaterial(transparent), maxDistance);
     }
+    */
 
     @Override
     public List<Block> getLineOfSight(Set<Material> transparent, int maxDistance) {
@@ -149,20 +151,24 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
         return blocks;
     }
 
+    /*
     @Override
     public Block getTargetBlock(HashSet<Byte> transparent, int maxDistance) {
         return getTargetBlock(toMaterial(transparent), maxDistance);
     }
+    */
 
     @Override
     public Block getTargetBlock(Set<Material> transparent, int maxDistance) {
         return PoreBlock.of(getBlockRay(transparent, maxDistance).end().map(BlockRayHit::getLocation).orElse(null));
     }
 
+    /*
     @Override
     public List<Block> getLastTwoTargetBlocks(HashSet<Byte> transparent, int maxDistance) {
         return getLastTwoTargetBlocks(toMaterial(transparent), maxDistance);
     }
+    */
 
     @Override
     public List<Block> getLastTwoTargetBlocks(Set<Material> transparent, int maxDistance) {
@@ -217,20 +223,24 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
         return getHandle().get(Keys.LAST_DAMAGE).get().orElse(0.0);
     }
 
+    /*
     @Override
     public int _INVALID_getLastDamage() {
         return (int) this.getLastDamage();
     }
+    */
 
     @Override
     public void setLastDamage(double damage) {
         getHandle().offer(Keys.LAST_DAMAGE, Optional.of(damage));
     }
 
+    /*
     @Override
     public void _INVALID_setLastDamage(int damage) {
         this.setLastDamage(damage);
     }
+    */
 
     @Override
     public int getNoDamageTicks() {
@@ -381,6 +391,7 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
         }
     }
 
+    /*
     @Override
     public void _INVALID_damage(int amount) {
         damage((double) amount);
@@ -390,46 +401,55 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
     public void _INVALID_damage(int amount, Entity source) {
         damage((double) amount, source);
     }
+    */
 
     @Override
     public double getHealth() {
         return getHandle().get(Keys.HEALTH).orElse(0.0);
     }
 
+    /*
     @Override
     public int _INVALID_getHealth() {
         return (int) getHealth();
     }
+    */
 
     @Override
     public void setHealth(double health) {
         getHandle().offer(Keys.HEALTH, health);
     }
 
+    /*
     @Override
     public void _INVALID_setHealth(int health) {
         setHealth((double) health);
     }
+    */
 
     @Override
     public double getMaxHealth() {
         return getHandle().get(Keys.MAX_HEALTH).orElse(0.0);
     }
 
+    /*
     @Override
     public int _INVALID_getMaxHealth() {
         return (int) getMaxHealth();
     }
+    */
 
     @Override
     public void setMaxHealth(double health) {
         getHandle().offer(Keys.MAX_HEALTH, health);
     }
 
+    /*
     @Override
     public void _INVALID_setMaxHealth(int health) {
         setMaxHealth((double) health);
     }
+    */
 
     @Override
     public void resetMaxHealth() {

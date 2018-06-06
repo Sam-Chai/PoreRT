@@ -4,6 +4,7 @@ import blue.lapis.pore.converter.wrapper.WrapperConverter;
 
 import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Spellcaster;
 import org.spongepowered.api.entity.living.monster.Evoker;
 
 public class PoreEvoker extends PoreMonster implements org.bukkit.entity.Evoker {
@@ -36,4 +37,13 @@ public class PoreEvoker extends PoreMonster implements org.bukkit.entity.Evoker 
         throw new NotImplementedException("TODO"); //TODO
     }
 
+    @Override
+    public Spellcaster.Spell getSpell() {
+        return null;
+    }
+
+    @Override
+    public void setSpell(Spellcaster.Spell spell) {
+
+    }
 }

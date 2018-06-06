@@ -57,4 +57,9 @@ public class PoreChest extends PoreContainer implements org.bukkit.block.Chest {
     public Inventory getInventory() {
         return PoreInventory.of(getTileEntity().getInventory());
     }
+
+    @Override
+    public Inventory getSnapshotInventory() {
+        return null;
+    }
 }

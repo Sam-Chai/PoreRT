@@ -35,7 +35,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.MerchantRecipe;
-import org.spongepowered.api.data.type.Career;
 import org.spongepowered.api.data.type.Careers;
 import org.spongepowered.api.entity.living.Villager;
 
@@ -68,9 +67,24 @@ public class PoreVillager extends PoreAgeable implements org.bukkit.entity.Villa
 
     @Override
     public void setProfession(Profession profession) {
-        Career career = Iterables.getFirst(ProfessionConverter.of(profession).getCareers(), Careers.FARMER);
+        org.spongepowered.api.data.type.Career career = Iterables.getFirst(ProfessionConverter.of(profession).getCareers(), Careers.FARMER);
         assert career != null;
         getHandle().getCareerData().type().set(career);
+    }
+
+    @Override
+    public Career getCareer() {
+        return null;
+    }
+
+    @Override
+    public void setCareer(Career career) {
+
+    }
+
+    @Override
+    public void setCareer(Career career, boolean resetTrades) {
+
     }
 
     @Override

@@ -35,6 +35,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Scoreboard;
@@ -100,6 +101,16 @@ public class PoreTeam extends PoreWrapper<Team> implements org.bukkit.scoreboard
         checkState();
         checkArgument(suffix != null, "Suffix must not be null");
         getHandle().setSuffix(PoreText.convert(suffix));
+    }
+
+    @Override
+    public ChatColor getColor() throws IllegalStateException {
+        return null;
+    }
+
+    @Override
+    public void setColor(ChatColor color) {
+
     }
 
     @Override

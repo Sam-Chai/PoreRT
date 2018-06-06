@@ -42,6 +42,7 @@ import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.block.BlockTypes;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
+import org.spongepowered.api.event.cause.EventContextKeys;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,11 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
     @Override
     public Block getBlock() {
         return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
+    }
+
+    @Override
+    public Block getIgnitingBlock() {
+        return PoreBlock.of(this.transaction.getFinal().getLocation().orElse(null));
     }
 
     @Override

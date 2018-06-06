@@ -32,13 +32,18 @@ import blue.lapis.pore.converter.type.entity.EntityConverter;
 import blue.lapis.pore.event.PoreEvent;
 import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.event.Source;
+import blue.lapis.pore.impl.block.PoreBlock;
+import blue.lapis.pore.impl.entity.PoreEntity;
 import blue.lapis.pore.impl.entity.PoreThrownPotion;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.spongepowered.api.entity.projectile.ThrownPotion;
+import org.spongepowered.api.event.cause.EventContextKeys;
 import org.spongepowered.api.event.entity.CollideEntityEvent;
 
 import java.util.Collection;
@@ -88,6 +93,18 @@ public final class PorePotionSplashEvent extends PotionSplashEvent implements Po
     @Override
     public void setIntensity(LivingEntity entity, double intensity) {
         throw new NotImplementedException("TODO"); //TODO
+    }
+
+
+    @Override
+    public Block getHitBlock() {
+        return PoreBlock.of(this.getHandle().getContext().get(EventContextKeys.BLOCK_HIT).orElse(null)
+                .getLocation().orElse(null));
+    }
+
+    @Override
+    public Entity getHitEntity() {
+        return PoreEntity.of(this.getHandle().getContext().get(EventContextKeys.ENTITY_HIT).orElse(null));
     }
 
     @Override
