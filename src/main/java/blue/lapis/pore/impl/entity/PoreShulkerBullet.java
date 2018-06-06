@@ -30,12 +30,12 @@ public class PoreShulkerBullet extends PoreProjectile implements org.bukkit.enti
 
     @Override
     public Entity getTarget() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setTarget(Entity target) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

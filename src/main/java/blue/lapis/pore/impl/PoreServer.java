@@ -311,7 +311,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public int getViewDistance() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -326,32 +326,32 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public String getServerName() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public String getServerId() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public String getWorldType() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean getGenerateStructures() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean getAllowEnd() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean getAllowNether() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -366,12 +366,12 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public Set<OfflinePlayer> getWhitelistedPlayers() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void reloadWhitelist() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -393,17 +393,17 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public long getConnectionThrottle() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getTicksPerAnimalSpawns() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getTicksPerMonsterSpawns() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -539,12 +539,12 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public MapView getMap(short id) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public MapView createMap(World world) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -570,7 +570,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public void savePlayers() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -583,52 +583,52 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public void configureDbConfig(ServerConfig config) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean addRecipe(Recipe recipe) {
         return false;
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public List<Recipe> getRecipesFor(ItemStack result) {
         List<Recipe> list = new ArrayList<Recipe>();
         return list;
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Iterator<Recipe> recipeIterator() {
         List<Recipe> list = new ArrayList<Recipe>();
         return list.iterator();
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void clearRecipes() {
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void resetRecipes() {
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     } // commented for ProtocolSupport
 
     @Override
     public Map<String, String[]> getCommandAliases() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getSpawnRadius() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setSpawnRadius(int value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -638,17 +638,17 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public boolean getAllowFlight() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isHardcore() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void shutdown() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -741,17 +741,17 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public Set<OfflinePlayer> getOperators() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public GameMode getDefaultGameMode() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDefaultGameMode(GameMode mode) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -761,7 +761,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public File getWorldContainer() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -839,22 +839,22 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public int getMonsterSpawnLimit() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getAnimalSpawnLimit() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getWaterAnimalSpawnLimit() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getAmbientSpawnLimit() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -869,7 +869,7 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public String getShutdownMessage() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -904,12 +904,12 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public void setIdleTimeout(int threshold) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getIdleTimeout() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Deprecated
@@ -940,12 +940,12 @@ public class PoreServer extends PoreWrapper<org.spongepowered.api.Server> implem
 
     @Override
     public BossBar createBossBar(String title, BarColor color, BarStyle style, BarFlag... flags) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Merchant createMerchant(String title) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

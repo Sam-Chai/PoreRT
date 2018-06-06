@@ -43,46 +43,46 @@ public class PoreBannerMeta extends PoreItemMeta implements org.bukkit.inventory
 
     @Override
     public DyeColor getBaseColor() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setBaseColor(DyeColor color) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public List<Pattern> getPatterns() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setPatterns(List<Pattern> patterns) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void addPattern(Pattern pattern) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Pattern getPattern(int i) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Pattern removePattern(int i) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setPattern(int i, Pattern pattern) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int numberOfPatterns() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

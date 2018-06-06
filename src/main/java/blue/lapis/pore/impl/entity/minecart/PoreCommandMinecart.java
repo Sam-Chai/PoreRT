@@ -80,7 +80,7 @@ public class PoreCommandMinecart extends PoreMinecart implements CommandMinecart
 
     @Override
     public void setName(String name) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -97,67 +97,67 @@ public class PoreCommandMinecart extends PoreMinecart implements CommandMinecart
 
     @Override
     public boolean isPermissionSet(String name) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isPermissionSet(Permission perm) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasPermission(String name) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasPermission(Permission perm) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public PermissionAttachment addAttachment(Plugin plugin) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value, int ticks) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public PermissionAttachment addAttachment(Plugin plugin, int ticks) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void removeAttachment(PermissionAttachment attachment) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void recalculatePermissions() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Set<PermissionAttachmentInfo> getEffectivePermissions() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isOp() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setOp(boolean value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 

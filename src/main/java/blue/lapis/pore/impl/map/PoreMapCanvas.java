@@ -40,42 +40,42 @@ public class PoreMapCanvas implements MapCanvas {
 
     @Override
     public MapView getMapView() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public MapCursorCollection getCursors() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setCursors(MapCursorCollection cursors) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setPixel(int x, int y, byte color) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public byte getPixel(int x, int y) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public byte getBasePixel(int x, int y) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void drawImage(int x, int y, Image image) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void drawText(int x, int y, MapFont font, String text) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

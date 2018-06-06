@@ -35,7 +35,6 @@ import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.impl.block.PoreBlock;
 
 import com.google.common.collect.ImmutableList;
-import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBurnEvent;
 import org.spongepowered.api.block.BlockSnapshot;
@@ -64,7 +63,7 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(this.transaction.getOriginal().getLocation().get());
+        return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
     }
 
     @Override
@@ -87,7 +86,7 @@ public final class PoreBlockBurnEvent extends BlockBurnEvent implements PoreEven
     @RegisterEvent
     public static void register() {
         PoreEventRegistry.register(PoreBlockBurnEvent.class, ChangeBlockEvent.class, event -> {
-            ArrayList<PoreBlockBurnEvent> events = new ArrayList<PoreBlockBurnEvent>();
+            ArrayList<PoreBlockBurnEvent> events = new ArrayList<>();
             BlockSnapshot fire = event.getCause().first(BlockSnapshot.class).orElse(null);
             if (fire != null && fire.getState().getType() == BlockTypes.FIRE) {
                 for (Transaction<BlockSnapshot> trans : event.getTransactions()) {

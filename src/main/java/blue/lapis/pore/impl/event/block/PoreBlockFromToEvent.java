@@ -37,7 +37,6 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
-//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.event.cause.EventContextKeys;
 import org.spongepowered.api.util.GuavaCollectors;
 import org.spongepowered.api.world.Location;
@@ -67,7 +66,7 @@ public final class PoreBlockFromToEvent extends BlockFromToEvent implements Pore
 
     @Override
     public BlockFace getFace() {
-        throw new NotImplementedException("TODO");
+        return getBlock().getFace(getToBlock()) ;
     }
 
     @Override

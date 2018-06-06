@@ -39,18 +39,18 @@ public class PorePotionBrewer implements PotionBrewer {
 
     @Override
     public PotionEffect createEffect(PotionEffectType potion, int duration, int amplifier) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Collection<PotionEffect> getEffectsFromDamage(int damage) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Collection<PotionEffect> getEffects(PotionType type, boolean upgraded, boolean extended) {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

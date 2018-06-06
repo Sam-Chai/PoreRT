@@ -37,18 +37,18 @@ public class PoreConversationCanceller implements ConversationCanceller {
 
     @Override
     public void setConversation(Conversation conversation) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean cancelBasedOnInput(ConversationContext context, String input) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 
     @Override
     public ConversationCanceller clone() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

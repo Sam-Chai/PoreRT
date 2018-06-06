@@ -61,17 +61,17 @@ public class PoreAgeable extends PoreCreature implements org.bukkit.entity.Ageab
 
     @Override
     public boolean getAgeLock() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setAgeLock(boolean lock) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setBaby() {
-        //throw new NotImplementedException("TODO"); // TODO
+        //throw new NotImplementedException("TODO"); //TODO
         //getHandle().offer(getHandle().getOrCreate(AGEABLE_DATA).get().baby().set(true));
     }
 

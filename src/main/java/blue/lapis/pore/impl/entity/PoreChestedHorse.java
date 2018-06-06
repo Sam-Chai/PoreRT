@@ -33,12 +33,12 @@ public class PoreChestedHorse extends PoreAbstractHorse implements ChestedHorse 
 
     @Override
     public boolean isCarryingChest() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setCarryingChest(boolean chest) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

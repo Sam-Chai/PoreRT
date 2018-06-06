@@ -109,7 +109,7 @@ public final class PoreInventoryClickEvent extends InventoryClickEvent implement
 
     @Override
     public InventoryType.SlotType getSlotType() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

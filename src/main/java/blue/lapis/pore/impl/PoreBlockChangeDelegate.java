@@ -34,36 +34,36 @@ public class PoreBlockChangeDelegate implements BlockChangeDelegate {
 
     @Override
     public boolean setRawTypeId(int x, int y, int z, int typeId) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean setRawTypeIdAndData(int x, int y, int z, int typeId, int data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean setTypeId(int x, int y, int z, int typeId) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean setTypeIdAndData(int x, int y, int z, int typeId, int data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getTypeId(int x, int y, int z) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getHeight() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isEmpty(int x, int y, int z) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

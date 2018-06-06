@@ -78,12 +78,12 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public Inventory getEnderChest() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean setWindowProperty(InventoryView.Property prop, int value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -98,17 +98,17 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
         }
 
         // TODO
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public InventoryView openInventory(Inventory inventory) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void openInventory(InventoryView inventory) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -141,7 +141,7 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public void closeInventory() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         /*
         if (getHandle() instanceof org.spongepowered.api.entity.living.player.Player) {
             ((org.spongepowered.api.entity.living.player.Player) getHandle())
@@ -164,12 +164,12 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public ItemStack getItemOnCursor() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setItemOnCursor(ItemStack item) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -179,7 +179,7 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public int getSleepTicks() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -194,7 +194,7 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public boolean isBlocking() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -210,16 +210,16 @@ public class PoreHumanEntity extends PoreLivingEntity implements HumanEntity {
 
     @Override
     public InventoryView openMerchant(Villager trader, boolean force) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isHandRaised() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public InventoryView openMerchant(Merchant merchant, boolean force) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

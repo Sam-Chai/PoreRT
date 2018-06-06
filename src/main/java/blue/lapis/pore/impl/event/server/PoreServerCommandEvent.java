@@ -68,7 +68,7 @@ public final class PoreServerCommandEvent extends ServerCommandEvent implements 
 
     @Override
     public void setCommand(String message) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

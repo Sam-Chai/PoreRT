@@ -22,8 +22,6 @@
 
 package blue.lapis.pore.impl.entity;
 
-import static org.spongepowered.api.data.manipulator.catalog.CatalogEntityData.POTION_EFFECT_DATA;
-
 import blue.lapis.pore.converter.type.material.MaterialConverter;
 import blue.lapis.pore.converter.type.material.PotionEffectConverter;
 import blue.lapis.pore.converter.type.material.PotionEffectTypeConverter;
@@ -31,7 +29,6 @@ import blue.lapis.pore.converter.vector.LocationConverter;
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 import blue.lapis.pore.impl.block.PoreBlock;
 import blue.lapis.pore.util.ProjectileUtil;
-
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.NotImplementedException;
@@ -61,16 +58,11 @@ import org.spongepowered.api.util.blockray.BlockRay;
 import org.spongepowered.api.util.blockray.BlockRayHit;
 import org.spongepowered.api.world.World;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static org.spongepowered.api.data.manipulator.catalog.CatalogEntityData.POTION_EFFECT_DATA;
 
 public class PoreLivingEntity extends PoreEntity implements LivingEntity {
 
@@ -217,7 +209,7 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
 
     @Override
     public void setMaximumNoDamageTicks(int ticks) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -252,7 +244,7 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
 
     @Override
     public Player getKiller() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -320,43 +312,43 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
 
     @Override
     public boolean hasLineOfSight(Entity other) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean getRemoveWhenFarAway() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setRemoveWhenFarAway(boolean remove) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public EntityEquipment getEquipment() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setCanPickupItems(boolean pickup) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean getCanPickupItems() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isLeashed() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return getHandle().get(Keys.LEASH_HOLDER).isPresent();
     }
 
     @Override
     public Entity getLeashHolder() throws IllegalStateException {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         /*
         if (isLeashed()) {
             return PoreEntity.of(getHandle().get(Keys.LEASH_HOLDER).get());
@@ -368,7 +360,7 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
 
     @Override
     public boolean setLeashHolder(Entity holder) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return getHandle().offer(Keys.LEASH_HOLDER, ((PoreEntity) holder).getHandle().createSnapshot()).isSuccessful();
     }
 
@@ -452,34 +444,34 @@ public class PoreLivingEntity extends PoreEntity implements LivingEntity {
     @Override
     public <T extends Projectile> T launchProjectile(Class<? extends T> projectile, Vector velocity) {
         if (getHandle() instanceof ProjectileSource) {
-            return ProjectileUtil.launchProjectile((ProjectileSource) getHandle(), projectile, velocity).orNull();
+            return ProjectileUtil.launchProjectile((ProjectileSource) getHandle(), projectile, velocity).orElse(null);
         }
         throw new UnsupportedOperationException();
     }
 
     @Override
     public AttributeInstance getAttribute(Attribute attribute) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isGliding() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setGliding(boolean gliding) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setAI(boolean ai) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasAI() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

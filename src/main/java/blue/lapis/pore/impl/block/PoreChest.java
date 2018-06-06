@@ -50,7 +50,7 @@ public class PoreChest extends PoreContainer implements org.bukkit.block.Chest {
 
     @Override
     public Inventory getBlockInventory() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

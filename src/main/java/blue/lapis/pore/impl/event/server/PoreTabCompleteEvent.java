@@ -42,7 +42,7 @@ public final class PoreTabCompleteEvent extends org.bukkit.event.server.TabCompl
     private final TabCompleteEvent handle;
 
     public PoreTabCompleteEvent(TabCompleteEvent.Chat handle) {
-        super(PoreCommandSender.of((CommandSource) handle.getCause().first(CommandSource.class).orElse(null)), "", Collections.<String>emptyList());
+        super(PoreCommandSender.of(handle.getCause().first(CommandSource.class).orElse(null)), "", Collections.<String>emptyList());
         this.handle = checkNotNull(handle, "handle");
     }
 
@@ -53,7 +53,7 @@ public final class PoreTabCompleteEvent extends org.bukkit.event.server.TabCompl
 
     @Override
     public org.bukkit.command.CommandSender getSender() {
-        return PoreCommandSender.of((CommandSource) getHandle().getCause().first(CommandSource.class).orElse(null));
+        return PoreCommandSender.of(getHandle().getCause().first(CommandSource.class).orElse(null));
     }
 
     @Override

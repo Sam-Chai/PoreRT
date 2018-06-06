@@ -58,7 +58,7 @@ public class PoreBeacon extends PoreContainer implements org.bukkit.block.Beacon
 
     @Override
     public Collection<LivingEntity> getEntitiesInRange() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

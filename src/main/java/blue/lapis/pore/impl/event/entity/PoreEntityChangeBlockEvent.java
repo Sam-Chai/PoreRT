@@ -24,8 +24,6 @@ package blue.lapis.pore.impl.event.entity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-//import static org.spongepowered.api.event.cause.NamedCause.SOURCE;
-
 import blue.lapis.pore.converter.data.block.BlockDataConverter;
 import blue.lapis.pore.converter.type.entity.EntityConverter;
 import blue.lapis.pore.converter.type.material.MaterialConverter;
@@ -36,7 +34,6 @@ import blue.lapis.pore.impl.block.PoreBlock;
 import blue.lapis.pore.impl.entity.PoreEntity;
 
 import com.google.common.collect.ImmutableList;
-import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -56,7 +53,7 @@ public final class PoreEntityChangeBlockEvent extends EntityChangeBlockEvent imp
 
     @SuppressWarnings({ "deprecation", "null" })
     public PoreEntityChangeBlockEvent(ChangeBlockEvent handle, Entity entity, Transaction<BlockSnapshot> transaction) {
-        super(null, null, null, (Byte) null);
+        super(null, null, null, (byte) 0);
         this.handle = checkNotNull(handle, "handle");
         this.entity = checkNotNull(entity, "entity");
         this.transaction = checkNotNull(transaction, "transaction");

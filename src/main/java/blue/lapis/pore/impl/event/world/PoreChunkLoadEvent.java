@@ -66,7 +66,7 @@ public final class PoreChunkLoadEvent extends ChunkLoadEvent implements PoreEven
 
     @Override
     public boolean isNewChunk() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

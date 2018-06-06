@@ -30,6 +30,7 @@ import org.spongepowered.api.data.property.item.UseLimitProperty;
 import org.spongepowered.api.item.inventory.ItemStack;
 
 import java.lang.reflect.Field;
+import java.util.Objects;
 import java.util.Optional;
 
 public class PoreItemStack extends org.bukkit.inventory.ItemStack {
@@ -37,7 +38,7 @@ public class PoreItemStack extends org.bukkit.inventory.ItemStack {
     private ItemStack handle;
 
     public PoreItemStack(ItemStack handle) {
-        super(MaterialConverter.of(handle.getItem()));
+        super(MaterialConverter.of(handle.getType()));
         this.handle = handle;
         try {
             Field field = this.getClass().getSuperclass().getDeclaredField("meta");
@@ -57,16 +58,18 @@ public class PoreItemStack extends org.bukkit.inventory.ItemStack {
         Optional<UseLimitProperty> maxdur = getHandle().getProperty(UseLimitProperty.class);
         if (maxdur.isPresent()) {
             int dur = getHandle().get(Keys.ITEM_DURABILITY).orElse(0);
-            return (short) (maxdur.get().getValue() - dur);
+            return (short) (Objects.requireNonNull(maxdur.get().getValue()) - dur);
         }
         return 0;
     }
 
     @Override
     public void setDurability(short durability) {
-        int maxdur = getHandle().getProperty(UseLimitProperty.class).get().getValue();
-        getHandle().offer(Keys.ITEM_DURABILITY, maxdur - durability);
-        return;
+        Optional<UseLimitProperty> optional = getHandle().getProperty(UseLimitProperty.class);
+        if (optional.isPresent()){
+            int maxdur = Objects.requireNonNull(optional.get().getValue());
+            getHandle().offer(Keys.ITEM_DURABILITY, maxdur - durability);
+        }
     }
 
     @Override
@@ -77,5 +80,14 @@ public class PoreItemStack extends org.bukkit.inventory.ItemStack {
     @Override
     public void setAmount(int amount) {
         getHandle().setQuantity(amount);
+    }
+
+    public net.minecraft.item.ItemStack asNMSCopy(org.bukkit.inventory.ItemStack itemStack){
+        if (itemStack instanceof PoreItemStack){
+            return (net.minecraft.item.ItemStack) (Object) ((PoreItemStack)itemStack).getHandle();
+        } else {
+            System.out.println(itemStack);
+        }
+        return null;
     }
 }

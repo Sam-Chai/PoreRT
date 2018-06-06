@@ -58,7 +58,7 @@ public final class PoreEntityDeathEvent extends EntityDeathEvent implements Pore
 
     @Override
     public LivingEntity getEntity() {
-        return (LivingEntity) PoreLivingEntity.of(this.getHandle().getTargetEntity());
+        return PoreLivingEntity.of(this.getHandle().getTargetEntity());
     }
 
     @Override
@@ -68,17 +68,17 @@ public final class PoreEntityDeathEvent extends EntityDeathEvent implements Pore
 
     @Override
     public int getDroppedExp() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDroppedExp(int exp) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public List<ItemStack> getDrops() {
-        throw new NotImplementedException("TODO"); // TODO: drops are separated from EntityDeathEvent
+        throw new NotImplementedException("TODO"); //TODO // TODO: drops are separated from EntityDeathEvent
     }
 
     @Override

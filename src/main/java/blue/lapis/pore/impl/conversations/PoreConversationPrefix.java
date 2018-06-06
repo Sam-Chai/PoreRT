@@ -38,7 +38,7 @@ public class PoreConversationPrefix implements ConversationPrefix {
 
     @Override
     public String getPrefix(ConversationContext context) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

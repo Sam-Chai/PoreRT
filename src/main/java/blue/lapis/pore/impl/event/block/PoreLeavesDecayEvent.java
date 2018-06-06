@@ -57,7 +57,7 @@ public final class PoreLeavesDecayEvent extends LeavesDecayEvent implements Pore
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(this.transaction.getOriginal().getLocation().get());
+        return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
     }
 
     @Override

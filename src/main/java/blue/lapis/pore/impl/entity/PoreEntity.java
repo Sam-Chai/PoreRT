@@ -207,7 +207,7 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
 
     @Override
     public org.bukkit.entity.Entity getPassenger() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
         /*
         Entity passenger = null;
         Optional<List<EntitySnapshot>> passengers = getHandle().get(Keys.PASSENGERS);
@@ -220,7 +220,7 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
 
     @Override
     public boolean setPassenger(final org.bukkit.entity.Entity passenger) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
         /*
         if (passenger != null) {
             return getHandle().get(Keys.PASSENGERS).get().add(((PoreEntity) passenger).getHandle().createSnapshot());
@@ -268,17 +268,17 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
 
     @Override
     public int getTicksLived() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setTicksLived(int value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void playEffect(EntityEffect type) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -350,13 +350,13 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
     @Override
     public void setInvulnerable(boolean flag) {
         // TODO
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isInvulnerable() {
         // TODO
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -406,6 +406,6 @@ public class PoreEntity extends PoreCommandSender implements org.bukkit.entity.E
 
     @Override
     public org.bukkit.entity.Entity.Spigot spigot() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

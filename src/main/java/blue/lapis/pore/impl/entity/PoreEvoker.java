@@ -28,12 +28,12 @@ public class PoreEvoker extends PoreMonster implements org.bukkit.entity.Evoker 
 
     @Override
     public Spell getCurrentSpell() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setCurrentSpell(Spell spell) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

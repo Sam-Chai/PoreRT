@@ -65,7 +65,7 @@ public final class PoreExplosionPrimeEvent extends ExplosionPrimeEvent implement
 
     @Override
     public float getRadius() {
-        return this.getHandle().getTargetEntity().explosionRadius().or(null).get();
+        return this.getHandle().getTargetEntity().explosionRadius().or(0).get();
     }
 
     @Override
@@ -75,12 +75,12 @@ public final class PoreExplosionPrimeEvent extends ExplosionPrimeEvent implement
 
     @Override
     public boolean getFire() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setFire(boolean fire) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

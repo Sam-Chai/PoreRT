@@ -193,7 +193,7 @@ public class PoreBlock extends PoreWrapper<Location<org.spongepowered.api.world.
 
     @Override
     public Chunk getChunk() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -254,7 +254,7 @@ public class PoreBlock extends PoreWrapper<Location<org.spongepowered.api.world.
 
     @Override
     public void setBiome(Biome bio) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -273,19 +273,19 @@ public class PoreBlock extends PoreWrapper<Location<org.spongepowered.api.world.
 
     @Override
     public boolean isBlockFacePowered(BlockFace face) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         //return getHandle().isBlockFacePowered(DirectionConverter.of(face));
     }
 
     @Override
     public boolean isBlockFaceIndirectlyPowered(BlockFace face) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         //return getHandle().isBlockFaceIndirectlyPowered(DirectionConverter.of(face));
     }
 
     @Override
     public int getBlockPower(BlockFace face) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -312,34 +312,34 @@ public class PoreBlock extends PoreWrapper<Location<org.spongepowered.api.world.
 
     @Override
     public double getHumidity() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public PistonMoveReaction getPistonMoveReaction() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean breakNaturally() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         //return getHandle().digBlock();
     }
 
     @Override
     public boolean breakNaturally(ItemStack tool) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         //return getHandle().digBlockWith(ItemStackConverter.of(tool));
     }
 
     @Override
     public Collection<ItemStack> getDrops() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Collection<ItemStack> getDrops(ItemStack tool) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

@@ -116,11 +116,11 @@ public final class EffectConverter {
                 case IRON_TRAPDOOR_CLOSE:
                     return SoundTypes.BLOCK_IRON_TRAPDOOR_CLOSE;
                 case FENCE_GATE_CLOSE:
-                    throw new NotImplementedException("TODO");
+                    throw new NotImplementedException("TODO"); //TODO
                 case EXTINGUISH:
                     return SoundTypes.BLOCK_FIRE_EXTINGUISH;
                 case RECORD_PLAY:
-                    throw new NotImplementedException("TODO");
+                    throw new NotImplementedException("TODO"); //TODO
                 case GHAST_SHRIEK:
                     return SoundTypes.ENTITY_GHAST_SCREAM;
                 case GHAST_SHOOT:
@@ -188,7 +188,7 @@ public final class EffectConverter {
                 case DRAGON_BREATH:
                     return ParticleTypes.DRAGON_BREATH_ATTACK;
                 case END_GATEWAY_SPAWN: //TODO actually do
-                    throw new NotImplementedException("TODO");
+                    throw new NotImplementedException("TODO"); //TODO
                 case STEP_SOUND:
                     return ParticleTypes.BREAK_BLOCK;
                 default:

@@ -56,14 +56,14 @@ public class PoreGuardian extends PoreMonster implements org.bukkit.entity.Guard
 
     @Override
     public boolean isElder() {
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
         return false;//hasData(ELDER_DATA); todo
     }
 
     @Override
     @Deprecated
     public void setElder(boolean shouldBeElder) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         /*
         if (shouldBeElder != isElder()) {
             if (shouldBeElder) {

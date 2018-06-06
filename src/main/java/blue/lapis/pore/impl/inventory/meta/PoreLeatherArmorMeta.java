@@ -44,17 +44,17 @@ public class PoreLeatherArmorMeta extends PoreItemMeta implements LeatherArmorMe
 
     @Override
     public Color getColor() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setColor(Color color) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public LeatherArmorMeta clone() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

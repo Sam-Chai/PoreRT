@@ -65,7 +65,7 @@ public class PoreNoteBlock extends PoreBlockState implements NoteBlock {
 
     @Override
     public void setNote(org.bukkit.Note note) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -81,11 +81,11 @@ public class PoreNoteBlock extends PoreBlockState implements NoteBlock {
 
     @Override
     public boolean play(byte instrument, byte note) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean play(Instrument instrument, org.bukkit.Note note) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

@@ -65,7 +65,7 @@ public class PoreCommandBlock extends PoreBlockState implements org.bukkit.block
 
     @Override
     public void setName(String name) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

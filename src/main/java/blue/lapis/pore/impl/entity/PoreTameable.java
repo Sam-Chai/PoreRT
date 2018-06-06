@@ -63,13 +63,13 @@ public class PoreTameable extends PoreAnimals implements org.bukkit.entity.Tamea
 
     @Override
     public AnimalTamer getOwner() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         //return isTamed() ? PoreAnimalTamer.of(getHandle().get(TAMEABLE_DATA).get().owner().get().get()) : null;
     }
 
     @Override
     public void setOwner(AnimalTamer tamer) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
         /*getHandle().offer(getHandle().getOrCreate(TAMEABLE_DATA).get()
                 .owner().setTo(((PoreAnimalTamer) tamer).getHandle()));*/
     }

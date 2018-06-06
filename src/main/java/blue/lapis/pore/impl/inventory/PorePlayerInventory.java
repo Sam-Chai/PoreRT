@@ -29,10 +29,8 @@ import blue.lapis.pore.converter.type.material.MaterialConverter;
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 import blue.lapis.pore.impl.entity.PorePlayer;
 
-import com.google.common.collect.Iterables;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
@@ -48,6 +46,7 @@ import org.spongepowered.common.item.inventory.util.ItemStackUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class PorePlayerInventory extends PoreInventory implements org.bukkit.inventory.PlayerInventory {
@@ -72,26 +71,42 @@ public class PorePlayerInventory extends PoreInventory implements org.bukkit.inv
 
     @Override
     public ItemStack getHelmet() {
-        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)this.getHandle()
-                .getCarrier().orElse(null)).getItemStackFromSlot(EntityEquipmentSlot.HEAD)));
+        return ItemStackConverter.of(Objects.requireNonNull(getHandle().getEquipment().getCarrier()
+                .orElse(null)).getHelmet().orElse(null));
+        /*
+        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)Objects.requireNonNull(this.getHandle()
+                .getCarrier().orElse(null))).getItemStackFromSlot(EntityEquipmentSlot.HEAD)));
+        */
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
     public ItemStack getChestplate() {
-        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)this.getHandle()
-                .getCarrier().orElse(null)).getItemStackFromSlot(EntityEquipmentSlot.CHEST)));
+        return ItemStackConverter.of(Objects.requireNonNull(getHandle().getEquipment().getCarrier()
+                .orElse(null)).getChestplate().orElse(null));
+        /*
+        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)Objects.requireNonNull(this.getHandle()
+                .getCarrier().orElse(null))).getItemStackFromSlot(EntityEquipmentSlot.CHEST)));
+        */
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
     public ItemStack getLeggings() {
-        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)this.getHandle()
-                .getCarrier().orElse(null)).getItemStackFromSlot(EntityEquipmentSlot.LEGS)));
+        return ItemStackConverter.of(Objects.requireNonNull(getHandle().getEquipment().getCarrier()
+                .orElse(null)).getLeggings().orElse(null));
+        /*
+        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)Objects.requireNonNull(this.getHandle()
+                .getCarrier().orElse(null))).getItemStackFromSlot(EntityEquipmentSlot.LEGS)));
+        */
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
     public ItemStack getBoots() {
-        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)this.getHandle()
-                .getCarrier().orElse(null)).getItemStackFromSlot(EntityEquipmentSlot.FEET)));
+        return ItemStackConverter.of(Objects.requireNonNull(getHandle().getEquipment().getCarrier()
+                .orElse(null)).getBoots().orElse(null));
+        /*
+        return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)Objects.requireNonNull(this.getHandle()
+                .getCarrier().orElse(null))).getItemStackFromSlot(EntityEquipmentSlot.FEET)));
+        */
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
@@ -114,26 +129,38 @@ public class PorePlayerInventory extends PoreInventory implements org.bukkit.inv
     @Override
     public void setHelmet(ItemStack helmet) {
         // this code relies on the notion that Mojang won't implement hydra-people or something
+        getHandle().getEquipment().set(EquipmentTypes.HEADWEAR, ItemStackConverter.of(helmet));
+        /*
         Iterables.get(this.getHandle().query(EquipmentTypes.HEADWEAR).<Slot>slots(), 0)
                 .set(ItemStackConverter.of(helmet));
+        */
     }
 
     @Override
     public void setChestplate(ItemStack chestplate) {
+        getHandle().getEquipment().set(EquipmentTypes.CHESTPLATE, ItemStackConverter.of(chestplate));
+        /*
         Iterables.get(this.getHandle().query(EquipmentTypes.CHESTPLATE).<Slot>slots(), 0)
                 .set(ItemStackConverter.of(chestplate));
+        */
     }
 
     @Override
     public void setLeggings(ItemStack leggings) {
+        getHandle().getEquipment().set(EquipmentTypes.LEGGINGS, ItemStackConverter.of(leggings));
+        /*
         Iterables.get(this.getHandle().query(EquipmentTypes.LEGGINGS).<Slot>slots(), 0)
                 .set(ItemStackConverter.of(leggings));
+        */
     }
 
     @Override
     public void setBoots(ItemStack boots) {
+        getHandle().getEquipment().set(EquipmentTypes.BOOTS, ItemStackConverter.of(boots));
+        /*
         Iterables.get(this.getHandle().query(EquipmentTypes.BOOTS).<Slot>slots(), 0)
                 .set(ItemStackConverter.of(boots));
+        */
     }
 
     @Override
@@ -180,9 +207,7 @@ public class PorePlayerInventory extends PoreInventory implements org.bukkit.inv
     @Override
     public Player getHolder() {
         if (this.getHandle().getCarrier().isPresent()) {
-            if (this.getHandle().getCarrier().get() instanceof org.spongepowered.api.entity.living.player.Player) {
-                return PorePlayer.of(this.getHandle().getCarrier().get());
-            }
+            return PorePlayer.of(this.getHandle().getCarrier().get());
         }
         return null;
     }
@@ -190,32 +215,32 @@ public class PorePlayerInventory extends PoreInventory implements org.bukkit.inv
     @Override
     public ItemStack[] getExtraContents() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setExtraContents(ItemStack[] items) {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public ItemStack getItemInMainHand() {
         return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)
-                this.getHandle().getCarrier().orElse(null)).getHeldItemMainhand()));
+                Objects.requireNonNull(this.getHandle().getCarrier().orElse(null))).getHeldItemMainhand()));
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
     public void setItemInMainHand(ItemStack item) {
         Hotbar hotbar = getHandle().getHotbar();
         Optional<Slot> mainHand = hotbar.getSlot(SlotIndex.of(hotbar.getSelectedSlotIndex()));
-        mainHand.get().offer(ItemStackConverter.of(item));
+        mainHand.ifPresent(inventories -> inventories.set(ItemStackConverter.of(item)));
     }
 
     @Override
     public ItemStack getItemInOffHand() {
         return ItemStackConverter.of(ItemStackUtil.fromNative(((EntityPlayerMP)
-                this.getHandle().getCarrier().orElse(null)).getHeldItemOffhand()));
+                Objects.requireNonNull(this.getHandle().getCarrier().orElse(null))).getHeldItemOffhand()));
     } // .getItemInHand() and .peek() returns a copy instead of the original itemstack
 
     @Override
@@ -225,9 +250,8 @@ public class PorePlayerInventory extends PoreInventory implements org.bukkit.inv
 
     @Override
     protected List<net.minecraft.item.ItemStack> getInternalContents() {
-        System.out.println(getHandle().getClass());
         InventoryPlayer inv = (InventoryPlayer) getHandle();
-        List<net.minecraft.item.ItemStack> combined = new ArrayList<net.minecraft.item.ItemStack>();
+        List<net.minecraft.item.ItemStack> combined = new ArrayList<>();
         combined.addAll(inv.mainInventory);
         combined.addAll(inv.armorInventory);
         combined.addAll(inv.offHandInventory);

@@ -58,27 +58,27 @@ public class PoreZombie extends PoreMonster implements org.bukkit.entity.Zombie 
 
     @Override
     public boolean isBaby() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return getHandle().getAgeData().baby().get();
     }
 
     @Override
     public void setBaby(boolean isBaby) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //getHandle().getAgeData().baby().set(isBaby);
     }
 
     @Override
     @Deprecated
     public boolean isVillager() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return getHandle().getZombieData().type().equals(ZombieTypes.VILLAGER);
     }
 
     @Override
     @Deprecated
     public void setVillager(boolean isVillager) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         /*
         if (isVillager != isVillager()) {
             if (isVillager) {
@@ -93,14 +93,14 @@ public class PoreZombie extends PoreMonster implements org.bukkit.entity.Zombie 
     @Override
     @Deprecated
     public void setVillagerProfession(Profession profession) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //getHandle().getZombieData().profession().setTo(ProfessionConverter.of(profession));
     }
 
     @Override
     @Deprecated
     public Profession getVillagerProfession() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return ProfessionConverter.of(getHandle().getZombieData().profession().get().orElse(null));
     }
 }

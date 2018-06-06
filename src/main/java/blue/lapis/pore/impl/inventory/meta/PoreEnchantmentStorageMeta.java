@@ -44,41 +44,41 @@ public class PoreEnchantmentStorageMeta extends PoreItemMeta implements Enchantm
 
     @Override
     public boolean hasStoredEnchants() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasStoredEnchant(Enchantment ench) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getStoredEnchantLevel(Enchantment ench) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Map<Enchantment, Integer> getStoredEnchants() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean addStoredEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean removeStoredEnchant(Enchantment ench) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasConflictingStoredEnchant(Enchantment ench) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public EnchantmentStorageMeta clone() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

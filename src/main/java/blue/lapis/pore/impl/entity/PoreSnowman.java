@@ -54,11 +54,11 @@ public class PoreSnowman extends PoreGolem implements org.bukkit.entity.Snowman 
 
     @Override
     public boolean isDerp() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDerp(boolean derpMode) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

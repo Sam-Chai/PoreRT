@@ -48,28 +48,28 @@ public class PoreBrewerInventory extends PoreInventory implements BrewerInventor
 
     @Override
     public ItemStack getIngredient() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setIngredient(ItemStack ingredient) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public BrewingStand getHolder() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public ItemStack getFuel() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setFuel(ItemStack fuel) {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

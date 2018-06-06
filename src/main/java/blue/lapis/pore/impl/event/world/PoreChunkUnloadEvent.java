@@ -81,12 +81,12 @@ public final class PoreChunkUnloadEvent extends ChunkUnloadEvent implements Pore
 
     @Override
     public boolean isSaveChunk() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setSaveChunk(boolean saveChunk) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

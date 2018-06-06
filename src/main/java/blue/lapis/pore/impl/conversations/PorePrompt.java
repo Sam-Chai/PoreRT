@@ -38,17 +38,17 @@ public class PorePrompt implements Prompt {
 
     @Override
     public String getPromptText(ConversationContext context) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean blocksForInput(ConversationContext context) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Prompt acceptInput(ConversationContext context, String input) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

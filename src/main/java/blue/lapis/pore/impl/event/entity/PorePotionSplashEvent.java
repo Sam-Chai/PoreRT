@@ -77,17 +77,17 @@ public final class PorePotionSplashEvent extends PotionSplashEvent implements Po
 
     @Override
     public Collection<LivingEntity> getAffectedEntities() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public double getIntensity(LivingEntity entity) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setIntensity(LivingEntity entity, double intensity) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

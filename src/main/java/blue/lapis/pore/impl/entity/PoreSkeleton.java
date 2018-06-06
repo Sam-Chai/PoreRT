@@ -57,12 +57,12 @@ public class PoreSkeleton extends PoreMonster implements org.bukkit.entity.Skele
     @Override
     public SkeletonType getSkeletonType() {
         //return SkeletonConverter.of(getHandle().getSkeletonData().type().get());
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setSkeletonType(SkeletonType type) {
         //getHandle().offer(getHandle().getSkeletonData().type().set(SkeletonConverter.of(type)));
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

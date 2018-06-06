@@ -36,15 +36,11 @@ import blue.lapis.pore.event.Source;
 import blue.lapis.pore.impl.entity.PoreEntity;
 import blue.lapis.pore.impl.entity.PorePlayer;
 
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.event.entity.DamageEntityEvent;
-
-import java.util.function.DoubleUnaryOperator;
 
 @RegisterEvent
 public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEvent
@@ -81,19 +77,14 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
 
     @Override
     public double getOriginalDamage(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDamage(DamageModifier type, double damage) throws IllegalArgumentException {
         getHandle().setDamage(org.spongepowered.api.event.cause.entity.damage.DamageModifier.builder()
-                .type(DamageModifierConverter.of(type)).build(), new DoubleUnaryOperator() {
-            @Override
-            public double applyAsDouble(double operand) {
-                return operand + damage;
-            }
-        });
-        throw new NotImplementedException("TODO");
+                .type(DamageModifierConverter.of(type)).build(), operand -> operand + damage);
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -104,7 +95,7 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
 
     @Override
     public boolean isApplicable(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -124,7 +115,7 @@ public final class PoreEntityDamageByEntityEvent extends EntityDamageByEntityEve
 
     @Override
     public DamageCause getCause() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

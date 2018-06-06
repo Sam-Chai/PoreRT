@@ -98,12 +98,12 @@ public class PoreBukkitScheduler implements BukkitScheduler {
 
     @Override
     public boolean isCurrentlyRunning(int taskId) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isQueued(int taskId) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -113,7 +113,7 @@ public class PoreBukkitScheduler implements BukkitScheduler {
 
     @Override
     public List<BukkitTask> getPendingTasks() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     private BukkitTask register(PoreBukkitTask task) {

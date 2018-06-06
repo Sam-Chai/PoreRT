@@ -63,11 +63,11 @@ public class PoreBrewingStand extends PoreContainer implements org.bukkit.block.
 
     @Override
     public int getFuelLevel() { //TODO bug Sponge about this
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setFuelLevel(int level) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

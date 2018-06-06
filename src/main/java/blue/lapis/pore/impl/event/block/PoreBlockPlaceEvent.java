@@ -86,7 +86,7 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(this.transaction.getOriginal().getLocation().get());
+        return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
     }
 
     @Override
@@ -101,7 +101,7 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public Block getBlockAgainst() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -111,12 +111,12 @@ public final class PoreBlockPlaceEvent extends BlockPlaceEvent implements PoreEv
 
     @Override
     public boolean canBuild() {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setBuild(boolean canBuild) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

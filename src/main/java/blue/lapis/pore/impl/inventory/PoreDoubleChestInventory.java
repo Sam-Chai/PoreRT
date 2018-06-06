@@ -49,16 +49,16 @@ public class PoreDoubleChestInventory extends PoreInventory implements DoubleChe
 
     @Override
     public Inventory getLeftSide() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Inventory getRightSide() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public DoubleChest getHolder() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

@@ -63,7 +63,7 @@ public class PoreMinecart extends PoreVehicle implements org.bukkit.entity.Minec
 
     @Override
     public void setDamage(double damage) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -73,7 +73,7 @@ public class PoreMinecart extends PoreVehicle implements org.bukkit.entity.Minec
 
     @Override
     public double getDamage() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -118,21 +118,21 @@ public class PoreMinecart extends PoreVehicle implements org.bukkit.entity.Minec
 
     @Override
     public MaterialData getDisplayBlock() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDisplayBlock(MaterialData material) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getDisplayBlockOffset() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDisplayBlockOffset(int offset) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

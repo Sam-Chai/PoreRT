@@ -21,18 +21,14 @@
 
 package blue.lapis.pore.impl.generator;
 
-import blue.lapis.pore.Pore;
 import blue.lapis.pore.converter.type.material.MaterialConverter;
 import blue.lapis.pore.converter.wrapper.WrapperConverter;
 import blue.lapis.pore.util.PoreWrapper;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 import org.bukkit.material.MaterialData;
 import org.spongepowered.api.block.BlockState;
-import org.spongepowered.api.event.cause.Cause;
-//import org.spongepowered.api.event.cause.NamedCause;
 import org.spongepowered.api.world.extent.MutableBlockVolume;
 
 public class PoreChunkData extends PoreWrapper<MutableBlockVolume> implements ChunkData {
@@ -69,12 +65,8 @@ public class PoreChunkData extends PoreWrapper<MutableBlockVolume> implements Ch
 
     @Override
     public void setBlock(int x, int y, int z, MaterialData material) { //TODO data
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         getHandle().setBlock(x, y, z, BlockState.builder()
-                .blockType(MaterialConverter.asBlock(material.getItemType())).build(),
-                Cause.of(NamedCause.of(NamedCause.SOURCE, Pore.getPlugin())));
-        */
+                .blockType(MaterialConverter.asBlock(material.getItemType())).build());
     }
 
     @Override
@@ -96,16 +88,12 @@ public class PoreChunkData extends PoreWrapper<MutableBlockVolume> implements Ch
 
     @Override
     public void setRegion(int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, MaterialData material) { //TODO data
-        throw new NotImplementedException("TODO"); // TODO
-        /*
         BlockState state = BlockState.builder().blockType(MaterialConverter.asBlock(material.getItemType())).build();
-        Cause cause = Cause.of(NamedCause.of(NamedCause.SOURCE, Pore.getPlugin()));
         for (int x = xMin; x <= xMax; x++)
             for (int y = yMin; y <= yMax; y++)
                 for (int z = zMin; z <= zMax; z++) {
-                   getHandle().setBlock(x, y, z, state, cause);
+                   getHandle().setBlock(x, y, z, state);
         }
-        */
     }
 
     @Override

@@ -491,6 +491,6 @@ public class PoreInventory extends PoreWrapper<Inventory> implements org.bukkit.
     @Override
     public Location getLocation() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

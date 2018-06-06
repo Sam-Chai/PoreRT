@@ -37,6 +37,7 @@ import blue.lapis.pore.impl.entity.PorePlayer;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.spongepowered.api.block.BlockSnapshot;
@@ -44,6 +45,7 @@ import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 import org.spongepowered.api.util.GuavaCollectors;
+import org.spongepowered.api.world.Location;
 
 public final class PoreBlockBreakEvent extends BlockBreakEvent implements PoreEvent<ChangeBlockEvent.Break> {
 
@@ -70,7 +72,7 @@ public final class PoreBlockBreakEvent extends BlockBreakEvent implements PoreEv
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(this.transaction.getOriginal().getLocation().get());
+        return PoreBlock.of(this.transaction.getOriginal().getLocation().orElse(null));
     }
 
     @Override

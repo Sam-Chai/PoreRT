@@ -138,7 +138,7 @@ public class PoreBlockState extends PoreWrapper<BlockSnapshot> implements org.bu
 
     @Override
     public void setData(MaterialData data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -181,31 +181,31 @@ public class PoreBlockState extends PoreWrapper<BlockSnapshot> implements org.bu
 
     @Override
     public void setRawData(byte data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isPlaced() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setMetadata(String metadataKey, MetadataValue newMetadataValue) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public List<MetadataValue> getMetadata(String metadataKey) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean hasMetadata(String metadataKey) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void removeMetadata(String metadataKey, Plugin owningPlugin) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

@@ -114,26 +114,26 @@ public class PoreOfflinePlayer extends PoreWrapper<User> implements OfflinePlaye
 
     @Override
     public boolean hasPlayedBefore() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Location getBedSpawnLocation() {
-        throw new NotImplementedException("TODO"); // can't determine the world
+        throw new NotImplementedException("TODO"); //TODO // can't determine the world
     }
 
     @Override
     public Map<String, Object> serialize() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isOp() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setOp(boolean value) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

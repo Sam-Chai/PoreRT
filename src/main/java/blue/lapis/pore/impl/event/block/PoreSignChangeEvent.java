@@ -76,11 +76,11 @@ public final class PoreSignChangeEvent extends SignChangeEvent implements PoreEv
 
     @Override
     public String[] getLines() {
-        ArrayList<String> array = new ArrayList<String>();
+        ArrayList<String> array = new ArrayList<>();
         for (Text text : getHandle().getText().lines()) {
             array.add(PoreText.convert(text));
         }
-        return array.toArray(new String[array.size()]);
+        return array.toArray(new String[0]);
     }
 
     @Override

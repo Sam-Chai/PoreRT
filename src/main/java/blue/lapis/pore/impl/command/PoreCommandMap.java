@@ -45,10 +45,7 @@ import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.plugin.PluginContainer;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class PoreCommandMap extends SimpleCommandMap {
 
@@ -120,10 +117,10 @@ public class PoreCommandMap extends SimpleCommandMap {
     }
 
     private static final Predicate<CommandMapping> PORE_COMMAND_CALLABLE =
-            input -> input.getCallable() instanceof PoreCommandCallable;
+            input -> Objects.requireNonNull(input).getCallable() instanceof PoreCommandCallable;
 
     private static final Function<CommandMapping, Command> GET_PORE_COMMAND =
-            input -> ((PoreCommandCallable) input).getHandle();
+            input -> ((PoreCommandCallable) Objects.requireNonNull(input)).getHandle();
 
     @Override
     public synchronized void clearCommands() {
@@ -143,7 +140,7 @@ public class PoreCommandMap extends SimpleCommandMap {
 
     @Override
     public void registerServerAliases() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

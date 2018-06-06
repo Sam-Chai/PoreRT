@@ -57,17 +57,17 @@ public final class PoreFurnaceExtractEvent extends FurnaceExtractEvent
 
     @Override
     public Block getBlock() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getExpToDrop() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setExpToDrop(int exp) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -77,12 +77,12 @@ public final class PoreFurnaceExtractEvent extends FurnaceExtractEvent
 
     @Override
     public Material getItemType() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public int getItemAmount() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

@@ -32,7 +32,6 @@ import static org.spongepowered.api.data.manipulator.catalog.CatalogEntityData.J
 import blue.lapis.pore.Pore;
 import blue.lapis.pore.converter.type.entity.EntityConverter;
 import blue.lapis.pore.converter.type.material.MaterialConverter;
-import blue.lapis.pore.converter.type.statistic.AchievementConverter;
 import blue.lapis.pore.converter.type.statistic.StatisticConverter;
 import blue.lapis.pore.converter.type.world.effect.EffectConverter;
 import blue.lapis.pore.converter.type.world.effect.ParticleConverter;
@@ -48,6 +47,7 @@ import blue.lapis.pore.impl.metadata.PoreMetadataStore;
 import blue.lapis.pore.impl.scoreboard.PoreScoreboard;
 import blue.lapis.pore.util.PoreText;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -89,6 +89,7 @@ import org.spongepowered.api.data.type.HandPreferences;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.entity.living.player.tab.TabListEntry;
 import org.spongepowered.api.event.cause.Cause;
+import org.spongepowered.api.event.message.MessageChannelEvent;
 import org.spongepowered.api.network.ChannelBinding;
 import org.spongepowered.api.profile.GameProfile;
 import org.spongepowered.api.resourcepack.ResourcePacks;
@@ -98,10 +99,12 @@ import org.spongepowered.api.statistic.BlockStatistic;
 import org.spongepowered.api.statistic.EntityStatistic;
 import org.spongepowered.api.statistic.StatisticType;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.channel.MessageChannel;
 import org.spongepowered.api.text.title.Title;
 import org.spongepowered.api.util.ban.Ban;
 import org.spongepowered.api.world.World;
 
+import javax.annotation.Nullable;
 import java.io.FileNotFoundException;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -110,10 +113,9 @@ import java.util.*;
 
 public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Player {
 
-    private static final MetadataStore<org.bukkit.entity.Player> playerMeta =
-            new PoreMetadataStore<org.bukkit.entity.Player>();
+    private static final MetadataStore<org.bukkit.entity.Player> playerMeta = new PoreMetadataStore<>();
     private String displayName = this.getName();
-    private final Set<String> channels = new HashSet<String>();
+    private final Set<String> channels = new HashSet<>();
 
     public static PorePlayer of(Player handle) {
         return WrapperConverter.of(PorePlayer.class, handle);
@@ -177,26 +179,19 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     @Override
     public void setPlayerListName(String name) {
         Optional<TabListEntry> info = this.getHandle().getTabList().getEntry(this.getUniqueId());
-        if (info.isPresent()) {
-            info.get().setDisplayName(PoreText.convert(name));
-        }
+        info.ifPresent(tabListEntry -> tabListEntry.setDisplayName(PoreText.convert(name)));
     }
 
     @Override
     public Location getCompassTarget() {
         Optional<TargetedLocationData> data = getHandle().get(TargetedLocationData.class);
-        if (data.isPresent()) {
-            return LocationConverter.fromVector3d(getHandle().getWorld(), data.get().target().get());
-        }
-        return null;
+        return data.map(targetedLocationData -> LocationConverter.fromVector3d(getHandle().getWorld(), targetedLocationData.target().get())).orElse(null);
     }
 
     @Override
     public void setCompassTarget(Location loc) {
         Optional<TargetedLocationData> data = getHandle().getOrCreate(TargetedLocationData.class);
-        if (data.isPresent()) {
-           data.get().target().set(LocationConverter.of(loc).getPosition());
-        }
+        data.ifPresent(targetedLocationData -> targetedLocationData.target().set(LocationConverter.of(loc).getPosition()));
     }
 
     @Override
@@ -211,22 +206,22 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void acceptConversationInput(String input) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean beginConversation(Conversation conversation) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void abandonConversation(Conversation conversation) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void abandonConversation(Conversation conversation, ConversationAbandonedEvent details) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -241,7 +236,16 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void chat(String msg) {
-        throw new NotImplementedException("TODO");
+        /*
+        if (getMCHandle().connection == null) return;
+
+        getMCHandle().connection.chat(msg, false);
+        */
+        if (msg.startsWith("/")){
+            this.performCommand(msg.substring(1, msg.length()));
+        } else {
+            this.sendRawMessage(msg);// TODO
+        }
     }
 
     @Override
@@ -253,7 +257,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public boolean isSneaking() {
-        return getHandle().get(Keys.IS_SNEAKING).get();
+        return getHandle().get(Keys.IS_SNEAKING).orElse(false);
     }
 
     @Override
@@ -263,7 +267,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public boolean isSprinting() {
-        return getHandle().get(Keys.IS_SPRINTING).get();
+        return getHandle().get(Keys.IS_SPRINTING).orElse(false);
     }
 
     @Override
@@ -273,36 +277,36 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void saveData() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void loadData() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isSleepingIgnored() {
         //TODO: This feature is deeply implemented in CB, so I have no damn clue how we're going to manage to implement
         // this on top of Sponge short of mixins (which is obviously a really bad idea).
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setSleepingIgnored(boolean isSleeping) {
         //TODO: Same deal here. I commented the NotImplementedExcpetion out temporarily to keep Essentials from
         // freaking out every two seconds when it tries to call this method from a scheduler.
-        //throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void playNote(Location loc, byte instrument, byte note) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void playNote(Location loc, Instrument instrument, Note note) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -339,27 +343,27 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void sendBlockChange(Location loc, Material material, byte data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean sendChunkChange(Location loc, int sx, int sy, int sz, byte[] data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void sendBlockChange(Location loc, int material, byte data) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void sendSignChange(Location loc, String[] lines) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void sendMap(MapView map) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -387,19 +391,19 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void awardAchievement(Achievement achievement) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //getHandle().offer(getHandle().getAchievementData().achievements().add(AchievementConverter.of(achievement)));
     }
 
     @Override
     public void removeAchievement(Achievement achievement) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //getHandle().offer(getHandle().getAchievementData().achievements().remove(AchievementConverter.of(achievement)));
     }
 
     @Override
     public boolean hasAchievement(Achievement achievement) {
-        throw new NotImplementedException("TODO"); // TODO
+        throw new NotImplementedException("TODO"); //TODO // TODO
         //return getHandle().getAchievementData().achievements().contains(AchievementConverter.of(achievement));
     }
 
@@ -514,7 +518,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
         checkNotNull(statistic, "Statistic must not be null");
         checkState(statistic.getType() == Statistic.Type.ENTITY,
                 "Statistic " + statistic.name() + " cannot accept an Entity parameter");
-        StatisticType type = StatisticConverter.of(statistic).getType();;
+        StatisticType type = StatisticConverter.of(statistic).getType();
         Optional<EntityStatistic> stat =
                 Pore.getGame().getRegistry().getEntityStatistic(type, EntityConverter.of(entityType));
         if (!stat.isPresent()) {
@@ -605,8 +609,8 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
         if (!hasData(EXPERIENCE_HOLDER_DATA)) {
             return 0;
         }
-        return getHandle().get(EXPERIENCE_HOLDER_DATA).get().experienceSinceLevel().get()
-                / getHandle().get(EXPERIENCE_HOLDER_DATA).get().getExperienceBetweenLevels().get();
+        return Objects.requireNonNull(getHandle().get(EXPERIENCE_HOLDER_DATA).orElse(null)).experienceSinceLevel().get()
+                / Objects.requireNonNull(getHandle().get(EXPERIENCE_HOLDER_DATA).orElse(null)).getExperienceBetweenLevels().get();
     }
 
     @Override
@@ -615,7 +619,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
         //        (getHandle().getOrCreate(EXPERIENCE_HOLDER_DATA).get().getExperienceBetweenLevels().get() * exp);
         //TODO: setExperienceSinceLevel(newExp)
         //getHandle().get(EXPERIENCE_HOLDER_DATA).get().totalExperience();
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -640,7 +644,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public float getExhaustion() {
-        return getHandle().get(Keys.EXHAUSTION).get().floatValue();
+        return getHandle().get(Keys.EXHAUSTION).orElse(0.0).floatValue();
     }
 
     @Override
@@ -650,7 +654,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public float getSaturation() {
-        return getHandle().get(Keys.SATURATION).get().floatValue();
+        return getHandle().get(Keys.SATURATION).orElse(0.0).floatValue();
     }
 
     @Override
@@ -660,7 +664,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public int getFoodLevel() {
-        return getHandle().get(Keys.FOOD_LEVEL).get();
+        return getHandle().get(Keys.FOOD_LEVEL).orElse(0);
     }
 
     @Override
@@ -702,7 +706,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
                 if (banned) {
                     bs.get().addBan(Ban.of(profile));
                 } else {
-                    bs.get().removeBan(bs.get().getBanFor(profile).get());
+                    bs.get().removeBan(Objects.requireNonNull(bs.get().getBanFor(profile).orElse(null)));
                 }
             }
         }
@@ -728,12 +732,12 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public long getFirstPlayed() {
-        return getHandle().get(JOIN_DATA).get().firstPlayed().get().getEpochSecond();
+        return Objects.requireNonNull(getHandle().get(JOIN_DATA).orElse(null)).firstPlayed().get().getEpochSecond();
     }
 
     @Override
     public long getLastPlayed() {
-        return getHandle().get(JOIN_DATA).get().lastPlayed().get().getEpochSecond();
+        return Objects.requireNonNull(getHandle().get(JOIN_DATA).orElse(null)).lastPlayed().get().getEpochSecond();
     }
 
     @Override
@@ -748,11 +752,9 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
         World world = (World) player.getEntityWorld();
         BlockPos bed = player.getBedLocation();
 
-        if (world != null && bed != null) {
-            bed = EntityPlayer.getBedSpawnLocation((net.minecraft.world.World) world, bed, player.isSpawnForced());
-            if (bed != null) {
-                return new Location(PoreWorld.of(world), bed.getX(), bed.getY(), bed.getZ());
-            }
+        bed = EntityPlayer.getBedSpawnLocation((net.minecraft.world.World) world, bed, player.isSpawnForced());
+        if (bed != null) {
+            return new Location(PoreWorld.of(world), bed.getX(), bed.getY(), bed.getZ());
         }
         return null;
     } // Keys.RESPAWN_LOCATIONS doesn't work
@@ -792,7 +794,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public boolean isFlying() {
-        return getHandle().get(Keys.IS_FLYING).get();
+        return getHandle().get(Keys.IS_FLYING).orElse(false);
     }
 
     @Override
@@ -803,7 +805,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     //TODO: movement speeds and flight toggle will be included with the attributes API
     @Override
     public boolean getAllowFlight() {
-        return getHandle().get(Keys.CAN_FLY).get(); // TODO
+        return getHandle().get(Keys.CAN_FLY).orElse(false); // TODO
     }
 
     @Override
@@ -813,7 +815,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override // Craftbukkit multiplies/divides it by 2 for some reason ...
     public float getWalkSpeed() {
-        return getHandle().get(Keys.WALKING_SPEED).get().floatValue() * 2;
+        return getHandle().get(Keys.WALKING_SPEED).orElse(1.0).floatValue() * 2;
     }
 
     @Override
@@ -823,7 +825,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public float getFlySpeed() {
-        return getHandle().get(Keys.FLYING_SPEED).get().floatValue() * 2;
+        return getHandle().get(Keys.FLYING_SPEED).orElse(1.0).floatValue() * 2;
     }
 
     @Override
@@ -858,22 +860,22 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     //TODO: As far as I can tell this is unique to Bukkit, so it'll need to be handled exclusively by Pore.
     @Override
     public boolean isHealthScaled() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public double getHealthScale() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public Entity getSpectatorTarget() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setSpectatorTarget(Entity entity) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -888,12 +890,12 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public void setHealthScaled(boolean scale) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setHealthScale(double scale) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -920,9 +922,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
     @Override
     public void sendPluginMessage(Plugin source, String channel, byte[] message) {
         ChannelBinding.RawDataChannel rdc = Pore.getGame().getChannelRegistrar().getOrCreateRaw(Pore.getPlugin(), channel);
-        rdc.sendTo(getHandle(), buf -> {
-            buf.writeBytes(message);
-        }); // contained classloaders are fun ...
+        rdc.sendTo(getHandle(), buf -> buf.writeBytes(message)); // contained classloaders are fun ...
         Pore.getGame().getChannelRegistrar().unbindChannel(rdc);
     }
 
@@ -940,7 +940,7 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public Set<String> getListeningPluginChannels() {
-        throw new NotImplementedException("TODO");
+        return ImmutableSet.copyOf(channels);
     }
 
     @Override
@@ -956,27 +956,27 @@ public class PorePlayer extends PoreHumanEntity implements org.bukkit.entity.Pla
 
     @Override
     public InventoryView openMerchant(Villager trader, boolean force) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void stopSound(Sound sound, SoundCategory category) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void stopSound(String sound, SoundCategory category) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void stopSound(String sound) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void stopSound(Sound sound) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     // --snip craftbukkit--

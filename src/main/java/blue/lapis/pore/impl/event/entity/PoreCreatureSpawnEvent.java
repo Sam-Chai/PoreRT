@@ -36,15 +36,12 @@ import blue.lapis.pore.event.RegisterEvent;
 import blue.lapis.pore.impl.entity.PoreLivingEntity;
 
 import com.google.common.collect.ImmutableList;
-import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.Living;
-//import org.spongepowered.api.event.cause.NamedCause;
-//import org.spongepowered.api.event.cause.entity.spawn.SpawnCause;
 import org.spongepowered.api.event.cause.entity.spawn.SpawnType;
 import org.spongepowered.api.event.entity.SpawnEntityEvent;
 
@@ -67,7 +64,7 @@ public final class PoreCreatureSpawnEvent extends CreatureSpawnEvent implements 
 
     @Override
     public LivingEntity getEntity() {
-        return (LivingEntity) PoreLivingEntity.of(this.entity);
+        return PoreLivingEntity.of(this.entity);
     }
 
     @Override
@@ -103,7 +100,7 @@ public final class PoreCreatureSpawnEvent extends CreatureSpawnEvent implements 
     @RegisterEvent
     public static void register() {
         PoreEventRegistry.register(PoreCreatureSpawnEvent.class, SpawnEntityEvent.class, event -> {
-            ArrayList<PoreCreatureSpawnEvent> list = new ArrayList<PoreCreatureSpawnEvent>();
+            ArrayList<PoreCreatureSpawnEvent> list = new ArrayList<>();
             for (Entity entity : event.getEntities()) {
                 if (entity instanceof Living) {
                     list.add(new PoreCreatureSpawnEvent(event, (Living) entity));

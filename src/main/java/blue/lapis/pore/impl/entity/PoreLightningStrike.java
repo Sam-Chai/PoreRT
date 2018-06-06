@@ -60,6 +60,6 @@ public class PoreLightningStrike extends PoreEntity implements LightningStrike {
 
     @Override
     public LightningStrike.Spigot spigot() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

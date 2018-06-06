@@ -143,7 +143,7 @@ public class PorePermissible extends PoreWrapper<Object> implements Permissible 
 
     @Override
     public void recalculatePermissions() {
-        throw new NotImplementedException("TODO");
+        //throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

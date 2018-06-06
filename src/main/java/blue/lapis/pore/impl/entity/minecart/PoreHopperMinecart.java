@@ -62,13 +62,13 @@ public class PoreHopperMinecart extends PoreMinecart implements org.bukkit.entit
     @Override
     public boolean isEnabled() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

@@ -85,17 +85,17 @@ public class PoreArrow extends PoreProjectile implements org.bukkit.entity.Arrow
 
     @Override
     public boolean doesBounce() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setBounce(boolean doesBounce) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public org.bukkit.entity.Arrow.Spigot spigot() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

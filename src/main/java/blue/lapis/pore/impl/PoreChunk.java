@@ -76,13 +76,13 @@ public class PoreChunk extends PoreWrapper<Chunk> implements org.bukkit.Chunk {
 
     @Override
     public ChunkSnapshot getChunkSnapshot() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public ChunkSnapshot getChunkSnapshot(boolean includeMaxblocky, boolean includeBiome,
             boolean includeBiomeTempRain) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

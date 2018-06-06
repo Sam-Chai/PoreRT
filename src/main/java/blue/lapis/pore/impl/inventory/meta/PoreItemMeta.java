@@ -245,7 +245,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
                     getHandle().offer(Keys.HIDE_UNBREAKABLE, true);
                     break;
                 default:
-                    throw new NotImplementedException("TODO");
+                    throw new NotImplementedException("TODO"); //TODO
             }
         }
     }
@@ -273,7 +273,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
                     getHandle().offer(Keys.HIDE_UNBREAKABLE, false);
                     break;
                 default:
-                    throw new NotImplementedException("TODO");
+                    throw new NotImplementedException("TODO"); //TODO
             }
         }
     }
@@ -312,7 +312,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
             case HIDE_UNBREAKABLE:
                 return getHandle().get(Keys.HIDE_UNBREAKABLE).orElse(false);
             default:
-                throw new NotImplementedException("TODO");
+                throw new NotImplementedException("TODO"); //TODO
         }
     }
 
@@ -323,7 +323,7 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
 
     @Override
     public Map<String, Object> serialize() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -334,12 +334,6 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
     @Override
     public void setUnbreakable(boolean unbreakable) {
         this.unbreakable = unbreakable;
-        if (unbreakable){
-            addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        } else {
-            removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        }
-
     }
 
     public boolean isEmpty() {
@@ -355,6 +349,6 @@ public class PoreItemMeta extends PoreWrapper<ItemStack> implements ItemMeta {
 
     @Override
     public Spigot spigot() {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 }

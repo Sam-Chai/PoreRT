@@ -120,7 +120,7 @@ public abstract class PorePlayerInteractEvent<T extends InteractBlockEvent & Han
 
     @Override
     public void setUseInteractedBlock(Result useInteractedBlock) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -130,7 +130,7 @@ public abstract class PorePlayerInteractEvent<T extends InteractBlockEvent & Han
 
     @Override
     public void setUseItemInHand(Result useItemInHand) {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override

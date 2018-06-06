@@ -46,6 +46,7 @@ import org.spongepowered.api.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public final class PoreBlockPistonExtendEvent extends BlockPistonExtendEvent
@@ -66,17 +67,17 @@ public final class PoreBlockPistonExtendEvent extends BlockPistonExtendEvent
 
     @Override
     public Block getBlock() {
-        return PoreBlock.of(block.getLocation().get());
+        return PoreBlock.of(block.getLocation().orElse(null));
     } //TODO check which block this is, the piston or the block moved
 
     @Override
     public boolean isSticky() {
-        return block.get(Keys.PISTON_TYPE).get().equals(PistonTypes.STICKY);
+        return Objects.requireNonNull(block.get(Keys.PISTON_TYPE).orElse(null)).equals(PistonTypes.STICKY);
     }
 
     @Override
     public BlockFace getDirection() {
-        return DirectionConverter.of(block.get(Keys.DIRECTION).get());
+        return DirectionConverter.of(block.get(Keys.DIRECTION).orElse(null));
     }
 
     @Override
@@ -86,7 +87,7 @@ public final class PoreBlockPistonExtendEvent extends BlockPistonExtendEvent
 
     @Override
     public List<Block> getBlocks() {
-        ArrayList<Block> blocks = new ArrayList<Block>();
+        ArrayList<Block> blocks = new ArrayList<>();
         for (Location<World> trans : getHandle().getLocations()) {
             blocks.add(PoreBlock.of(trans));
         }

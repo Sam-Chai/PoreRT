@@ -46,13 +46,13 @@ public class PoreMerchantInventory extends PoreInventory implements MerchantInve
     @Override
     public int getSelectedRecipeIndex() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public MerchantRecipe getSelectedRecipe() {
         // TODO Auto-generated method stub
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
 }

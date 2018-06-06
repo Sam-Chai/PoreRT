@@ -72,22 +72,22 @@ public final class PoreEntityDamageEvent extends EntityDamageEvent implements Po
 
     @Override //TODO DamageModifer Conversion
     public double getOriginalDamage(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public void setDamage(DamageModifier type, double damage) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public double getDamage(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
     public boolean isApplicable(DamageModifier type) throws IllegalArgumentException {
-        throw new NotImplementedException("TODO");
+        throw new NotImplementedException("TODO"); //TODO
     }
 
     @Override
@@ -107,11 +107,9 @@ public final class PoreEntityDamageEvent extends EntityDamageEvent implements Po
 
     @Override
     public DamageCause getCause() {
-        DamageSource cause = null;
+        DamageSource cause;
         Optional<DamageSource> source = Optional.of((DamageSource) getHandle().getSource());
-        if (source.isPresent()) {
-            cause = source.get();
-        }
+        cause = source.get();
         return DamageCauseConverter.of(cause);
     }
 
