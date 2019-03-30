@@ -201,6 +201,7 @@ jar {
                 "TweakOrder": 0,
                 "MixinConfigs": "mixins.pore.core.json,mixins.pore.bukkit.json,mixins.pore.lib.json",
                 'FMLAT': 'pore_at.cfg',
+		'FMLCorePluginContainsFMLMod': 'true',
                 "ForceLoadAsMod": true
         )
     }
