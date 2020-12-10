@@ -14,6 +14,7 @@ index a229d08..513485c 100644
          register("bukkit", new VersionCommand("version"));
 -        register("bukkit", new ReloadCommand("reload"));
 +        //register("bukkit", new ReloadCommand("reload"));
++        //Re-Build reload command with Minecraft but not on Bukkit or Forge
          register("bukkit", new PluginsCommand("plugins"));
          register("bukkit", new TimingsCommand("timings"));
      }
